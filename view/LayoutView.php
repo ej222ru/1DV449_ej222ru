@@ -1,11 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of LayoutView
  *
@@ -13,6 +7,7 @@
  */
 class LayoutView {
   public function render($startUrl, UrlView $urlView, $scrap) {
+    echo ("scrap:" . $scrap);  
     echo '<!DOCTYPE html>
     <html>
         <head>

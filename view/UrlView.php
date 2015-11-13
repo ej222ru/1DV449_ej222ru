@@ -1,16 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of UrlView
- *
- * @author User
- */
 class UrlView {
     //put your code here
     
@@ -43,62 +32,28 @@ class UrlView {
             ';
     }    
     private function scrapUrlHTML($url) {
-        echo $url;
+
+        
         return 
         '
-            <script language="javascript" type="text/javascript">
-            function ajaxFunction($url){
-                var ajaxRequest = new XMLHttpRequest();
-                console.log("func");
-                ajaxRequest.onreadystatechange = function() {
-                    console.log( "svar" );
-                    console.log(ajaxRequest.readyState);
-                    console.log(ajaxRequest.status);
-                    if (ajaxRequest.readyState == 4 ) {
-                    alert(ajaxRequest.status);
-                    console.log( "readyState test");
-                    }
-                }
-                ajaxRequest.onload = function() {
-                 var responseText = xhr.responseText;
-                 console.log("onload" + responseText);
-                 // process the response.
-                };
 
-                ajaxRequest.onerror = function() {
-                  console.log("There was an error!");
-                };                
-                queryString =  "http://localhost:8080/" ;   
-                console.log( queryString );
-                ajaxRequest.open("GET", queryString, true);
-                ajaxRequest.withCredentials = true;
-                ajaxRequest.send();
-            }
-        </script>
         ';
 
     }    
     
     
-    public function setUrl($url) {
-        $_SESSION[self::$url] = $url;
-        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-            
-        }
-    }            
-    public function getUrl() {
-        if (isset($_SESSION[self::$url]))
-            return $_SESSION[self::$url];
-        else {
-            return null;
-        }
-    }            
+    public function getPostedUrl(){      
+        return $_POST[self::$url];
+    }
+        
     public function isUserPost() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-            if (isset($_POST[self::$url]))
-                $this->setUrl($_POST[self::$url]);
-            return true;
+            if (isset($_POST[self::$url])){
+                echo("is POST");                
+                return true;
+            }
         }
+            echo("is NOT POST");
         return false;
     }            
  
