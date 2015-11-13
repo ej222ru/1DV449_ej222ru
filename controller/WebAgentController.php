@@ -34,6 +34,11 @@ class WebAgentController {
     public function curl_get_items($data, $expression){
 
         $dom = new DomDocument();
+        // disable warnings   http://stackoverflow.com/questions/1148928/disable-warnings-when-loading-non-well-formed-html-by-domdocument-php
+        
+        
+        // modify state
+        $libxml_previous_state = libxml_use_internal_errors(true);
         if ($dom->loadHTML($data)){
             $xpath = new DOMXPath($dom);
             $items = $xpath->query($expression);
@@ -41,9 +46,13 @@ class WebAgentController {
         else {
             die("fel vid inläsning");
         }
+        // handle errors
+        libxml_clear_errors();
+        // restore
+        libxml_use_internal_errors($libxml_previous_state);  
+        
         return $items;
     }     
-    
     private function getCommonAvailableDays($arr){
         $available = array();
         $fridayCommon = true;
@@ -124,8 +133,6 @@ class WebAgentController {
         $data = $this->curl_get_request($url);      
         $items = $this->curl_get_items($data,'//select[@id = "movie"]/option[@value]');
         
-        // this is a bit risky not checking the url:s are as expected
-        // What if suddenly replaced with some really bad link
         $availableMovies = array();
         $movies = array();
         foreach($items as $item){
@@ -133,7 +140,6 @@ class WebAgentController {
         }
         
         // For each movie check if free seatings avalable days
-//        for ($i=0; $i<count($avaiableDaysForAll); $i++){
         foreach ($avaiableDaysForAll as $key => $value) {
             
             if ($key === "Friday"){
@@ -147,15 +153,12 @@ class WebAgentController {
             }
             
             for ($j=1; $j<=count($movies); $j++){
-                
-
                 if ($d+1 < 10) {
                     $day = "0" . strval($d);
                 }
                 else {
                     $day = strval($d);
                 }                
-
                     
                 if ($j < 10) {
                     $movie = "0" . strval($j);
@@ -176,20 +179,119 @@ class WebAgentController {
                 }
             }
         }
-        echo "Avaialble movies:";
-        var_dump($availableMovies);
-        var_dump($movies);
-        
-        
-        
-        
-        
-        
-        
-        
-        return $movies;
+        return $availableMovies;
     }
     
+    
+    private function translateDay($dayEnglish){
+        if (strcmp($dayEnglish, "Friday") == 0)
+                return "fre";
+        if (strcmp($dayEnglish, "Saturday") == 0)
+                return "lor";
+        if (strcmp($dayEnglish, "Sunday") == 0)
+                return "son";
+    }
+    
+
+    private function scrapeRestaurant($url, $availableMovies){
+
+        $data = $this->curl_get_request($url);   
+        
+        $items = $this->curl_get_items($data,"//input[@type='radio']");
+          
+        $availableTables = array();
+        $tables= array();
+        $movieIndex = array();
+        $tablesForMoviesStartTime = array();
+        $movieDays = array();
+        foreach ($availableMovies as $movie) {
+            for ($i=0; $i<count($movie); $i++){
+                $movieDay = $this->translateDay($movie[$i][0]);
+                $movieEnd = substr($movie[$i][1], 0, 2) + 2;
+                    
+                foreach($items as $item){
+                    $dayTime = $item->getAttribute('value');
+                    if ((substr($dayTime, 0, 3) == $movieDay) && (substr($dayTime, 3, 2) >= $movieEnd )){
+                        // $tables[substr($dayTime, 0,3)] = substr($dayTime, 3,2);
+                        $tablesForMoviesStartTime[] = array($movie[$i][0], $movie[$i][1]);
+                    }
+                }
+                $tables = array_unique($tablesForMoviesStartTime, SORT_REGULAR);
+            }
+        }   
+//        foreach ($availableMovies as $movie) {
+  //      var_dump($movie[0][0]);
+  //      var_dump($movie[0][1]);
+  //      var_dump($tables);
+        $key=0;
+        $supernewArray = array();
+        $newArray = array_keys($availableMovies);
+        echo $newArray[0];
+        foreach ($availableMovies as $movie){
+            for ($i=0; $i<count($movie);$i++){
+                $found = false;
+                foreach ($tables as $table){
+                    if ((strcmp($movie[$i][0],$table[0]) === 0 ) && (strcmp($movie[$i][1],$table[1]) === 0 )){
+       //                 var_dump($movie[$i]);
+                        $found = true;
+                        $supernewArray[$newArray[$key]][] = $movie[$i];
+                    }
+                }
+            }
+            $key++;
+        }        
+                var_dump($supernewArray);
+//            var_dump($movie);
+
+//        var_dump($availableMovies); 
+ //       var_dump($tables);
+
+/*        
+        // For each movie check if free seatings avalable days
+        foreach ($avaiableDaysForAll as $key => $value) {
+            
+            if ($key === "Friday"){
+                $d = 1;
+            }
+            if ($key === "Saturday"){
+                $d = 2;
+            }
+            if ($key === "Sunday"){
+                $d = 3;
+            }
+            
+            for ($j=1; $j<=count($movies); $j++){
+                if ($d+1 < 10) {
+                    $day = "0" . strval($d);
+                }
+                else {
+                    $day = strval($d);
+                }                
+                    
+                if ($j < 10) {
+                    $movie = "0" . strval($j);
+                }
+                else {
+                    $movie = strval($j);
+                }
+                $specUrl = $url . "check?day=" . $day . "&movie=" . $movie;
+
+                $data = $this->curl_get_request($specUrl);
+                $arr = array();
+                $arr = json_decode($data, true);
+                // $items = $this->curl_get_items($data,'//select[@id = "movie"]/option[@value]');
+                for ($i=0; $i<count($arr); $i++){
+                    if ($arr[$i]["status"] == 1){
+                        $availableMovies[$movies[$j-1]][] = array($key, $arr[$i]["time"]);
+                    }
+                }
+            }
+        }
+        return $availableMovies;
+ * 
+ * 
+ */
+    }
     
     public function startWebAgentApplikation() {
 
@@ -209,7 +311,10 @@ class WebAgentController {
                     $avaiableDaysForAll = $this->scrapeCalendar($url);
                 }
                 if ($item->nodeValue == "Stadens biograf!") {
-                    $movies = $this->scrapeCinema($url, $avaiableDaysForAll);
+                    $availableMovies = $this->scrapeCinema($url, $avaiableDaysForAll);
+                }
+                if ($item->nodeValue == "Zekes restaurang!") {
+                    $movies = $this->scrapeRestaurant($url, $availableMovies);
                 }
                 
             }
