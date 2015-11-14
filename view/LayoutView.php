@@ -6,8 +6,7 @@
  * @author User
  */
 class LayoutView {
-  public function render($startUrl, UrlView $urlView, $scrap) {
-    echo ("scrap:" . $scrap);  
+  public function render($startUrl, UrlView $urlView, $scrapeResult, scrapeResultView $scrapeResultView) {
     echo '<!DOCTYPE html>
     <html>
         <head>
@@ -19,8 +18,8 @@ class LayoutView {
 
             <div class="container">
            
-              ' . $urlView->response($startUrl, $scrap) . '
-
+                ' . $urlView->response($startUrl) . '
+                ' . $scrapeResultView->response($scrapeResult) . '
             </div>
         </body>
     </html>

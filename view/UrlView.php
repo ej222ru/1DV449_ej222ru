@@ -6,12 +6,9 @@ class UrlView {
     private static $url = 'UrlView::Url';    
     private static $urlToScrap = 'UrlView::UrlToScrap';    
     
-    public function response($url, $scrap) {
+    public function response($url) {
 
         $response = $this->generateUrlFormHTML($url);
-        if ($scrap){
-            $response .= $this->scrapUrlHTML($url);
-        }
         return $response;
     }
         
@@ -20,25 +17,15 @@ class UrlView {
             return '
                     <form method="post" > 
                             <fieldset>
-                                    <legend>WebAgent - enter Url to scrap</legend>
+                                    <legend>WebAgent - enter Url to scrape</legend>
                                     
                                     <label for="' . self::$url . '">Url :</label>
                                     <input type="text" id="' . self::$url . '" name="' . self::$url . '" value="' . $url . '" />
 
                                     <input type="submit" name="' . self::$urlToScrap . '" value="Start" />
-                                    <input type="button" onclick="ajaxFunction()" value="Scrap"/>    
                             </fieldset>
                     </form>
             ';
-    }    
-    private function scrapUrlHTML($url) {
-
-        
-        return 
-        '
-
-        ';
-
     }    
     
     
@@ -49,11 +36,9 @@ class UrlView {
     public function isUserPost() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             if (isset($_POST[self::$url])){
-                echo("is POST");                
                 return true;
             }
         }
-            echo("is NOT POST");
         return false;
     }            
  
