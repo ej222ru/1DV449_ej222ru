@@ -6,11 +6,11 @@ Webbserver> http://ej.3space.info/Lab1_WT2/index.php
 * Kan ta information som är upprättshovsskyddad och om inte det så i alla fall information som någon kanske betalat pengar för att få ha på sin sida. 
 * Kan användas för att spionera på konkurrenter map pris och på så sätt lägga sig bättre och då få genomslag på publika prisjämförelsesiter
 * Om man skrapar ex vis LinkedIn på info om personer för att sedan använda det i sin affärsverksamhet
-Craiglist vs 3taps Inc, Paddmapper Inc  and iscover Home Network Inc
-* Hävdade brott mot
-* Copyright
-* Trespass to goods
-*Breach of contract 
+* Craiglist vs 3taps Inc, Paddmapper Inc  and iscover Home Network Inc
+ * Hävdade brott mot
+ * Copyright
+ * Trespass to goods
+ *Breach of contract 
 
 ####Finns det några riktlinjer för utvecklare att tänka på om man vill vara "en god skrapare" mot serverägarna?
 *	Inte överbelasta med frågor
