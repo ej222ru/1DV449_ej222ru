@@ -2,7 +2,7 @@
 
 Webbserver> http://ej.3space.info/Lab1_WT2/index.php
 
-Finns det några etiska aspekter vid webbskrapning. Kan du hitta något rättsfall?
+##Finns det några etiska aspekter vid webbskrapning. Kan du hitta något rättsfall?
 o	Kan ta information som är upprättshovsskyddad och om inte det så i alla fall information som någon kanske betalat pengar för att få ha på sin sida. 
 o	Kan användas för att spionera på konkurrenter map pris och på så sätt lägga sig bättre och då få genomslag på publika prisjämförelsesiter
 o	Om man skrapar ex vis LinkedIn på info om personer för att sedan använda det i sin affärsverksamhet
