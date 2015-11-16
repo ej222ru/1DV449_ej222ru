@@ -4,7 +4,7 @@
  *
  * @author Erland Jönsson
  */
-class scrapeResultView {
+class ScrapeResultView {
     public function response($scrapeResult) {
         $response = "";
         if ($scrapeResult){
