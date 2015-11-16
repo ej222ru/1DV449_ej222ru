@@ -3,19 +3,19 @@
 Webbserver> http://ej.3space.info/Lab1_WT2/index.php
 
 ####Finns det några etiska aspekter vid webbskrapning. Kan du hitta något rättsfall?
-Kan ta information som är upprättshovsskyddad och om inte det så i alla fall information som någon kanske betalat pengar för att få ha på sin sida. 
-Kan användas för att spionera på konkurrenter map pris och på så sätt lägga sig bättre och då få genomslag på publika prisjämförelsesiter
-Om man skrapar ex vis LinkedIn på info om personer för att sedan använda det i sin affärsverksamhet
+* Kan ta information som är upprättshovsskyddad och om inte det så i alla fall information som någon kanske betalat pengar för att få ha på sin sida. 
+* Kan användas för att spionera på konkurrenter map pris och på så sätt lägga sig bättre och då få genomslag på publika prisjämförelsesiter
+* Om man skrapar ex vis LinkedIn på info om personer för att sedan använda det i sin affärsverksamhet
 Craiglist vs 3taps Inc, Paddmapper Inc  and iscover Home Network Inc
--Hävdade brott mot
--Copyright
--Trespass to goods
--Breach of contract 
+* Hävdade brott mot
+* Copyright
+* Trespass to goods
+*Breach of contract 
 
 ####Finns det några riktlinjer för utvecklare att tänka på om man vill vara "en god skrapare" mot serverägarna?
-o	Inte överbelasta med frågor
-o	Ge cred till upphovssiten för att man tagit info därifrån
-o	Informera serverägaren att man scrapar
+*	Inte överbelasta med frågor
+*	Ge cred till upphovssiten för att man tagit info därifrån
+*	Informera serverägaren att man scrapar
 
 ####Begränsningar i din lösning- vad är generellt och vad är inte generellt i din kod?
 o	Plockar in länkar som används utan validering att det är förväntade länkar
