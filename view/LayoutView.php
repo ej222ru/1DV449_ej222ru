@@ -1,9 +1,8 @@
 <?php
 
 /**
- * Description of LayoutView
  *
- * @author User
+ * @author Erland Jönsson
  */
 class LayoutView {
   public function render($startUrl, UrlView $urlView, $scrapeResult, scrapeResultView $scrapeResultView) {

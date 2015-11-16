@@ -1,12 +1,10 @@
 <?php
 
-
-
 /**
- * Description of WebAgentModel
  *
- * @author User
+ * @author Erland Jönsson
  */
+
 class WebAgentModel {
     private static $url = 'UrlView::Url';    
     

@@ -1,12 +1,10 @@
 <?php
 
-
-
 /**
- * Description of WebAgentController
  *
- * @author User
+ * @author Erland Jönsson
  */
+
 class WebAgentController {
     
     private $layoutView;
