@@ -16,6 +16,9 @@ Webbserver> http://ej.3space.info/Lab1_WT2/index.php
   
 ####Finns det några riktlinjer för utvecklare att tänka på om man vill vara "en god skrapare" mot serverägarna?
 *	Inte överbelasta med frågor
+*	Läs igenom terms of use
+*	acceptera det som står i Robot.txt
+*	identifiera dig genom user agent
 *	Ge cred till upphovssiten för att man tagit info därifrån
 *	Informera serverägaren att man scrapar
 
