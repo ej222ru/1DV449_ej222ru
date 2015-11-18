@@ -10,7 +10,8 @@ Webbserver> http://ej.3space.info/Lab1_WT2/index.php
  * Copyright
  * Trespass to goods
  * Breach of contract 
-
+* Feist Publications v. Rural Telephone Service
+ * Duplication is allowed
 ####Finns det några riktlinjer för utvecklare att tänka på om man vill vara "en god skrapare" mot serverägarna?
 *	Inte överbelasta med frågor
 *	Ge cred till upphovssiten för att man tagit info därifrån
