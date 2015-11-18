@@ -28,4 +28,4 @@ Webbserver> http://ej.3space.info/Lab1_WT2/index.php
 *	Kan hjälpa till att hålla trafik borta från sidor man inte vill ha icke auktoriserad trafik till
 *	Om den inte finns kan det påverka presetanda på webbplatsen
 *	Kan också uppmuntra sökningar på dessa sidor av hackare etc då man tydliggör vad man vill skydda
-*	Kan kanske göra att man får lägre rating av sökmotorer
+*	Kan göra att man får lägre rating av sökmotorer ... eller högre
