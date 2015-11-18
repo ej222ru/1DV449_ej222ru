@@ -24,6 +24,7 @@ Webbserver> http://ej.3space.info/Lab1_WT2/index.php
 
 ####Begränsningar i din lösning- vad är generellt och vad är inte generellt i din kod?
 *	Plockar in länkar som används utan validering att det är förväntade länkar
+*	testar mot hårdkodade namn t ex "Kalendrar"
 *	Hårdkodade namn Friday, Saturday, Sunday som matchas mot andra hårdkodade namn fre, lor och son
 *	Förutsätter vissa format ex vis ”sat1618” att de tre första tecknen är en kod för veckodag och att position 3-5 är starten på filmen
 *	Day  index och movie index är hårdkodade när man hämtar filmer
