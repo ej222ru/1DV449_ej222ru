@@ -1,6 +1,6 @@
 "use strict";
 
-function TrafficMessages(url) {
+function TrafficMessages(url, map) {
 
         var messages;
         var reply;
@@ -17,6 +17,13 @@ function TrafficMessages(url) {
                     aArea.innerHTML += "<div>";
                     aArea.innerHTML += messages[i].exactlocation;
                     aArea.innerHTML += "</div>";
+                    var pos = {lat: messages[i].latitude, lng:  messages[i].longitude};
+                    var header = messages[i].title;
+                    var description = '<b>' + messages[i].subcategory + '</b>' + '</br>';
+                    description += messages[i].description + '</br>' + messages[i].exactlocation;
+                    addMarker(pos, map, header, description);
+                    
+                    
                 }
                 
             }
@@ -28,42 +35,22 @@ function TrafficMessages(url) {
         aArea.innerHTML = "";
         
         
-    this.start = function(){
-        
-        var aArea = document.getElementById("trafficMessages");  
-        aArea.value = "";
-        
+        this.start = function(){
 
-//         document.getElementById("getQButton").addEventListener("click", this.getQButtonClicked);
-//        document.getElementById("sendAButton").addEventListener("click", this.sendAButtonClicked);
-//        var aArea = document.getElementById("questionOutput");  
-//        aArea.value = "Klicka på 'Hämta fråga!";
-//        var qArea = document.getElementById("answerInput");  
-//        qArea.value = "Skriv ditt svar här";        
-//        var rArea = document.getElementById("resultOutput");  
-//        rArea.innerHTML = "";   
-//        var tArea = document.getElementById("totalResult");  
-//        tArea.innerHTML = "";   
-        
-//        var getAButton = document.getElementById("sendAButton");  
-//        getAButton.style.color = "transparent";      
-//        getAButton.style.background = "transparent";  
-//        var getQButton = document.getElementById("getQButton");  
-//        getQButton.style.background = "green";            
-    };
+            var aArea = document.getElementById("trafficMessages");  
+            aArea.value = "";
+
+
+        };
         
         
 }
 
 var myTrafficMessages = {
     init: function(url){
-        var TrafficMessagesFunc = new TrafficMessages(url);
-        TrafficMessagesFunc.start();
-
         var map = initMap();
-        var P1 = {lat: 52.397, lng: 18.644}; 
-        addMarker(P1, map);
-    
+        var TrafficMessagesFunc = new TrafficMessages(url, map);
+   //     TrafficMessagesFunc.start();
     }      
 };
 window.addEventListener("load", myTrafficMessages.init("http://api.sr.se/api/v2/traffic/messages?format=json&size=100"));
