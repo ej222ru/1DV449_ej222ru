@@ -33,6 +33,7 @@ function TrafficMessages(url) {
         var aArea = document.getElementById("trafficMessages");  
         aArea.value = "";
         
+
 //         document.getElementById("getQButton").addEventListener("click", this.getQButtonClicked);
 //        document.getElementById("sendAButton").addEventListener("click", this.sendAButtonClicked);
 //        var aArea = document.getElementById("questionOutput");  
@@ -56,10 +57,13 @@ function TrafficMessages(url) {
 
 var myTrafficMessages = {
     init: function(url){
-      var TrafficMessagesFunc = new TrafficMessages(url);
-      TrafficMessagesFunc.start();
-      
+        var TrafficMessagesFunc = new TrafficMessages(url);
+        TrafficMessagesFunc.start();
 
+        var map = initMap();
+        var P1 = {lat: 52.397, lng: 18.644}; 
+        addMarker(P1, map);
+    
     }      
 };
 window.addEventListener("load", myTrafficMessages.init("http://api.sr.se/api/v2/traffic/messages?format=json&size=100"));
