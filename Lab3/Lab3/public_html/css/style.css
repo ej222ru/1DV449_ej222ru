@@ -1,0 +1,18 @@
+html, body { height: 100%; margin: 0; padding: 0; }
+#map { height: 100%; }
+#trafficMessages 
+{
+    max-width: 400px;
+    float : left;
+}
+
+
+.Message 
+{
+    border-style:dotted;
+    border-width:1px;
+    min-height:40px;
+}
+button{
+    float: right;
+}
