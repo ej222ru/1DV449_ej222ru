@@ -43,7 +43,7 @@ function toggleButton(id){
 };
       
 
-function sortTrafficMessages(){
+function renderTrafficMessages(){
   
     var msgArea = document.getElementById("trafficMessages");  
     var i;
@@ -110,10 +110,11 @@ function attachCheckboxHandlers() {
     // assign updateTotal function to onclick property of each checkbox
     for (var i=0, len=categories.length; i<len; i++) {
         if ( categories[i].type === 'checkbox' ) {
-            categories[i].onclick = sortTrafficMessages;
+            categories[i].onclick = renderTrafficMessages;
         }
     }
 }
+
 function checkCategory(category){
     var b;
     if (category === "Halkvarning")
@@ -144,88 +145,15 @@ function TrafficMessages(url) {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 reply = JSON.parse(xmlhttp.responseText);
                 messages = reply["messages"];
-                
                 messages.sort(sort_by('createddate', true, function(a){return parseJsonDateToInt(a)}));
                 
-                sortTrafficMessages();                
-/*                
-                for (i=0;i<messages.length ;i++){
-                    
-if (checkCategory(messages[i].subcategory)) 
-{
-                    
-                    var pos = {lat: messages[i].latitude, lng:  messages[i].longitude};
-                    var header = messages[i].title;
-                    var description = '<b>' + messages[i].subcategory + '</b>' + '</br>';
-                    description += messages[i].description + '</br>' + messages[i].exactlocation;
-                    addMarker(pos, map, header, description);
-                    
-                    var msg = document.createElement("DIV");
-                    msg.setAttribute("class", "Message");
-                    var header = document.createTextNode(messages[i].title);
-                    msg.appendChild(header);
-
-                    var button = document.createElement("BUTTON");
-                    var id = i;
-                    button.setAttribute("id", id);
-                    button.onclick = function() {toggleButton(this.id)};
-                    var buttonText = document.createTextNode("Info");
-                    button.appendChild(buttonText);
-
-                    
-                    var msgText = document.createElement("DIV");
-                    
-                    var date = parseJsonDate(messages[i].createddate);
-                    msgText.innerHTML = date;
-                    
-                    var subcategory = document.createElement("DIV");
-                    subcategory.innerHTML =  messages[i].subcategory;
-                    subcategory.setAttribute("class", "Subcategory")
-                    var info = document.createTextNode(messages[i].description);
-                    var location = document.createTextNode(messages[i].exactlocation);
-                    msgText.appendChild(subcategory);
-                    msgText.appendChild(info);
-                    msgText.appendChild(location);
-                    msgText.setAttribute("class", "Hide");
-                    id = "t"+i;
-                    msgText.setAttribute("id", id);
-
-//                    button.addEventListener("click", toggleButton(msgText));
-                    msg.appendChild(button);
-
-                    msg.appendChild(msgText);
-                    
-                    
-                    
-                    msgArea.appendChild(msg);
-                    
-                    var pos = {lat: messages[i].latitude, lng:  messages[i].longitude};
-                    var header = messages[i].title;
-                    var description = '<b>' + messages[i].subcategory + '</b>' + '</br>';
-                    description += messages[i].description + '</br>' + messages[i].exactlocation;
-                    addMarker(pos, map, header, description);
-                }
-         }                
-   */                 
+                renderTrafficMessages();                
             }
-        
         };
-        
-        
         
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
-       
-    
 
-        this.start = function(){
-
-//            var aArea = document.getElementById("trafficMessages");  
-//            aArea.value = "";
-
-
-        };
-        
         
 };
 
@@ -233,7 +161,6 @@ var myTrafficMessages = {
     init: function(url){
         map = initMap();
         var TrafficMessagesFunc = new TrafficMessages(url);
-   //     TrafficMessagesFunc.start();
         attachCheckboxHandlers();
     }      
 };
