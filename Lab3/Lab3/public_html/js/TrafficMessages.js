@@ -30,13 +30,17 @@ var sort_by = function(field, reverse, primer){
 
 function toggleButton(id){
     id.replace(/b/g, '')
+    var index = id;
     var newId = "t" + id ;
     var node = document.getElementById(newId);
-    if (node.className === "Hide")
+    if (node.className === "Hide"){
         node.setAttribute("class", "Show");
-    else
+        toggleBounce(markers[index]);
+    }
+    else{
         node.setAttribute("class", "Hide");
-
+        toggleBounce(markers[index]);
+    }
 };
       
 
@@ -51,13 +55,13 @@ function sortTrafficMessages(){
                     
                 if (checkCategory(messages[i].subcategory)) 
                 {
-/*                    
                     var pos = {lat: messages[i].latitude, lng:  messages[i].longitude};
                     var header = messages[i].title;
                     var description = '<b>' + messages[i].subcategory + '</b>' + '</br>';
                     description += messages[i].description + '</br>' + messages[i].exactlocation;
                     addMarker(pos, map, header, description);
-*/                    
+                    
+                    
                     var msg = document.createElement("DIV");
                     msg.setAttribute("class", "Message");
                     var header = document.createTextNode(messages[i].title);
@@ -69,7 +73,6 @@ function sortTrafficMessages(){
                     button.onclick = function() {toggleButton(this.id)};
                     var buttonText = document.createTextNode("Info");
                     button.appendChild(buttonText);
-
                     
                     var msgText = document.createElement("DIV");
                     
@@ -97,11 +100,7 @@ function sortTrafficMessages(){
                     
                     msgArea.appendChild(msg);
                
-                    var pos = {lat: messages[i].latitude, lng:  messages[i].longitude};
-                    var header = messages[i].title;
-                    var description = '<b>' + messages[i].subcategory + '</b>' + '</br>';
-                    description += messages[i].description + '</br>' + messages[i].exactlocation;
-                    addMarker(pos, map, header, description);
+
            
                 }
          }                

@@ -36,7 +36,8 @@ function addMarker(pos, map, heading, text){
       
       marker.addListener('click', function() {
         infowindow.open(map, marker);
-      });     
+      });
+      marker.setAnimation(null);
 } 
 
 // Sets the map on all markers in the array.
@@ -59,4 +60,12 @@ function showMarkers() {
 function deleteMarkers() {
   clearMarkers();
   markers = [];
+}
+
+function toggleBounce(marker) {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
 }
