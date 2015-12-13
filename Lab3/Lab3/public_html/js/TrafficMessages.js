@@ -50,61 +50,55 @@ function sortTrafficMessages(){
     var j=0;
     msgArea.innerHTML = "<h2>Trafikmeddelanden</h2>";
     deleteMarkers();
-               for (i=0;i<messages.length ;i++){
+    for (i=0;i<messages.length ;i++){
                     
-                if (checkCategory(messages[i].subcategory)) 
-                {
-                    var pos = {lat: messages[i].latitude, lng:  messages[i].longitude};
-                    var header = messages[i].title;
-                    var description = '<b>' + messages[i].subcategory + '</b>' + '</br>';
-                    description += messages[i].description + '</br>' + messages[i].exactlocation;
-                    addMarker(pos, map, header, description);
-                    
-                    
-                    var msg = document.createElement("DIV");
-                    msg.setAttribute("class", "Message");
-                    var header = document.createTextNode(messages[i].title);
-                    msg.appendChild(header);
+        if (checkCategory(messages[i].subcategory)) 
+        {
+            var date = parseJsonDate(messages[i].createddate);
+            
+            var pos = {lat: messages[i].latitude, lng:  messages[i].longitude};
+            var header = messages[i].title ;
+            var description = '<b>' + messages[i].subcategory + '   ' + date + '</b>' + '</br>';
+            description += messages[i].description + '</br>' + messages[i].exactlocation;
+            addMarker(pos, map, header, description);
 
-                    var button = document.createElement("BUTTON");
-                    var id = "b"+j;
-                    button.setAttribute("id", id);
-                    button.onclick = function() {toggleButton(this.id)};
-                    var buttonText = document.createTextNode("Info");
-                    button.appendChild(buttonText);
-                    
-                    var msgText = document.createElement("DIV");
-                    
-                    var date = parseJsonDate(messages[i].createddate);
-                    msgText.innerHTML = date;
-                    
-                    var subcategory = document.createElement("DIV");
-                    subcategory.innerHTML =  messages[i].subcategory;
-                    subcategory.setAttribute("class", "Subcategory")
-                    var info = document.createTextNode(messages[i].description);
-                    var location = document.createTextNode(messages[i].exactlocation);
-                    msgText.appendChild(subcategory);
-                    msgText.appendChild(info);
-                    msgText.appendChild(location);
-                    msgText.setAttribute("class", "Hide");
-                    id = "t"+j;
-                    msgText.setAttribute("id", id);
 
-//                    button.addEventListener("click", toggleButton(msgText));
-                    msg.appendChild(button);
+            var msg = document.createElement("DIV");
+            msg.setAttribute("class", "Message");
+            var header = document.createTextNode(messages[i].title);
+            msg.appendChild(header);
 
-                    msg.appendChild(msgText);
-                    
-                    
-                    
-                    msgArea.appendChild(msg);
-               
-                    j++;
-           
-                }
-         }                
-    
-    
+            var button = document.createElement("BUTTON");
+            var id = "b"+j;
+            button.setAttribute("id", id);
+            button.onclick = function() {toggleButton(this.id)};
+            var buttonText = document.createTextNode("Info");
+            button.appendChild(buttonText);
+
+            var msgText = document.createElement("DIV");
+
+            
+            msgText.innerHTML = date;
+
+            var subcategory = document.createElement("DIV");
+            subcategory.innerHTML =  messages[i].subcategory;
+            subcategory.setAttribute("class", "Subcategory")
+            var info = document.createTextNode(messages[i].description);
+            var location = document.createTextNode(messages[i].exactlocation);
+            msgText.appendChild(subcategory);
+            msgText.appendChild(info);
+            msgText.appendChild(location);
+            msgText.setAttribute("class", "Hide");
+            id = "t"+j;
+            msgText.setAttribute("id", id);
+
+            msg.appendChild(button);
+            msg.appendChild(msgText);
+            msgArea.appendChild(msg);
+
+            j++;
+        }
+    }                
 }
 function attachCheckboxHandlers() {
     // get reference to element containing toppings checkboxes
