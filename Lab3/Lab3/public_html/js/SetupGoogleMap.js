@@ -1,6 +1,7 @@
 "use strict";
 
 var markers = [];
+var openInfoWindow = "";
 
 function initMap() {
     var map;
@@ -36,6 +37,10 @@ function addMarker(pos, map, heading, text){
       
       marker.addListener('click', function() {
         infowindow.open(map, marker);
+        if (openInfoWindow != ""){
+            openInfoWindow.close();
+        }
+        openInfoWindow = infowindow;
       });
       marker.setAnimation(null);
 } 

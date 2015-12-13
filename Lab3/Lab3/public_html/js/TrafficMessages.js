@@ -29,9 +29,8 @@ var sort_by = function(field, reverse, primer){
 
 
 function toggleButton(id){
-    id.replace(/b/g, '')
-    var index = id;
-    var newId = "t" + id ;
+    var newId = id.replace('b', 't')
+    var index = id.substring(1);
     var node = document.getElementById(newId);
     if (node.className === "Hide"){
         node.setAttribute("class", "Show");
@@ -48,8 +47,8 @@ function sortTrafficMessages(){
   
     var msgArea = document.getElementById("trafficMessages");  
     var i;
-    
-    msgArea.innerHTML = "";
+    var j=0;
+    msgArea.innerHTML = "<h2>Trafikmeddelanden</h2>";
     deleteMarkers();
                for (i=0;i<messages.length ;i++){
                     
@@ -68,7 +67,7 @@ function sortTrafficMessages(){
                     msg.appendChild(header);
 
                     var button = document.createElement("BUTTON");
-                    var id = i;
+                    var id = "b"+j;
                     button.setAttribute("id", id);
                     button.onclick = function() {toggleButton(this.id)};
                     var buttonText = document.createTextNode("Info");
@@ -88,7 +87,7 @@ function sortTrafficMessages(){
                     msgText.appendChild(info);
                     msgText.appendChild(location);
                     msgText.setAttribute("class", "Hide");
-                    id = "t"+i;
+                    id = "t"+j;
                     msgText.setAttribute("id", id);
 
 //                    button.addEventListener("click", toggleButton(msgText));
@@ -100,7 +99,7 @@ function sortTrafficMessages(){
                     
                     msgArea.appendChild(msg);
                
-
+                    j++;
            
                 }
          }                
