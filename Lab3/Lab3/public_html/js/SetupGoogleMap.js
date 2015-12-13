@@ -1,5 +1,7 @@
 "use strict";
 
+var markers = [];
+
 function initMap() {
     var map;
     var uluru = {lat: 58.7, lng: 16}; 
@@ -28,9 +30,33 @@ function addMarker(pos, map, heading, text){
       var marker = new google.maps.Marker({
         position: pos,
         map: map,
-        title: 'Uluru (Ayers Rock)'
+        title: heading
       });
+      markers.push(marker);
+      
       marker.addListener('click', function() {
         infowindow.open(map, marker);
       });     
 } 
+
+// Sets the map on all markers in the array.
+function setMapOnAll(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+  setMapOnAll(null);
+}
+
+// Shows any markers currently in the array.
+function showMarkers() {
+  setMapOnAll(map);
+}
+
+// Deletes all markers in the array by removing references to them.
+function deleteMarkers() {
+  clearMarkers();
+  markers = [];
+}
