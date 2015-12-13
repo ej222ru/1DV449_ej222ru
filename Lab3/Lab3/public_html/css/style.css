@@ -13,6 +13,19 @@ html, body { height: 100%; margin: 0; padding: 0; }
     border-width:1px;
     min-height:40px;
 }
+.Subcategory 
+{
+    font-weight: bold;
+}
+
+.Hide 
+{
+    display:none;
+}
+.Show 
+{
+    display:block;
+}
 button{
     float: right;
 }

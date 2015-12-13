@@ -25,7 +25,23 @@ and open the template in the editor.
 
         <div  id="trafficMessages">
             <h2>Trafikmeddelanden</h2>
-            <div class="textArea" ></div>
+            
+<form action="#" method="post" class="categoryForm" id="categoryForm">
+    <fieldset>
+        <legend>Filtrera på kategori</legend>
+        
+        <div id="toppings">
+            <label><input type="checkbox" name="Halkvarning" checked /> Halkvarning</label>
+            <label><input type="checkbox" name="Trafikolycka" checked/> Trafikolycka</label>
+            <label><input type="checkbox" name="Trafikstörning" checked/> Trafikstörning</label>
+            <label><input type="checkbox" name="Vägarbete"      checked/> Vägarbete</label>
+            <label><input type="checkbox" name="Övrigt"    checked/> Övrigt</label>
+        </div>
+    
+    </fieldset>
+    
+</form>            
+            
         </div>
 
         <div id="map"></div>
