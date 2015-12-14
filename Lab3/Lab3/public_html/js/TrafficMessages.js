@@ -1,6 +1,6 @@
 "use strict";
 
-var messages = "";
+//var messages = "";
 var map;
 
 function parseJsonDate(jsonDateString){
@@ -43,8 +43,10 @@ function toggleButton(id){
 };
       
 
-function renderTrafficMessages(){
-  
+function renderTrafficMessages(cachedMessages){
+    var messages = "";
+    messages = cachedMessages;
+    
     var msgArea = document.getElementById("trafficMessages");  
     var i;
     var j=0;
@@ -135,26 +137,39 @@ function checkCategory(category){
 
 function TrafficMessages(url) {
 
-        
+        var messages = "";
         var reply;
         var i;
         var xmlhttp = new XMLHttpRequest();
         var msgArea = document.getElementById("trafficMessages");  
-        
+        var date = new Date();
+        var now = date.getTime();
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                localStorage["response"] = xmlhttp.responseText;
+                localStorage.setItem("lastDataRead", now);
                 reply = JSON.parse(xmlhttp.responseText);
                 messages = reply["messages"];
                 messages.sort(sort_by('createddate', true, function(a){return parseJsonDateToInt(a)}));
+                renderTrafficMessages(messages); 
                 
-                renderTrafficMessages();                
             }
         };
         
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
-
-        
+        var lastDataRead = localStorage.getItem("lastDataRead");
+        var test = now - localStorage.getItem("lastDataRead") - 60000;
+        if ((localStorage["response"] === null) || (localStorage.getItem("lastDataRead") === null) || (test > 0)){
+            console.log("read from SR    now:" + now + "---" + "last read from SR:" + localStorage.getItem("lastDataRead") + "  diff:" + test);   
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }
+        else{
+            console.log("read from cache   now:" + now + "---" + "last read from SR:" + localStorage.getItem("lastDataRead") + "  diff:" + test);   
+            reply = JSON.parse(localStorage["response"]);
+            messages = reply["messages"];
+            messages.sort(sort_by('createddate', true, function(a){return parseJsonDateToInt(a)}));
+            renderTrafficMessages(messages);
+        }
 };
 
 var myTrafficMessages = {
@@ -164,4 +179,4 @@ var myTrafficMessages = {
         attachCheckboxHandlers();
     }      
 };
-window.addEventListener("load", myTrafficMessages.init("http://api.sr.se/api/v2/traffic/messages?format=json&size=100"));
+window.addEventListener("load", myTrafficMessages.init("http://api.sr.se/api/v2/traffic/messages?format=json&size=200"));
