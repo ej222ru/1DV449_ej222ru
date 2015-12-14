@@ -36,10 +36,10 @@ function addMarker(pos, map, heading, text){
       markers.push(marker);
       
       marker.addListener('click', function() {
-        infowindow.open(map, marker);
         if (openInfoWindow != ""){
             openInfoWindow.close();
         }
+        infowindow.open(map, marker);
         openInfoWindow = infowindow;
       });
       marker.setAnimation(null);
