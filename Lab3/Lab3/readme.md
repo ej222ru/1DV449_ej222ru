@@ -6,7 +6,5 @@ Sveriges Radio har en rad en rad om användarvillkor väldigt generellt hållen 
 Det är ingen affärskritisk applikation eller data som ska cachas så jag valde den enkla lösningen med "local storage". Den medför inga extra anrop till servern om man hade valt en sådan lösning. Nu har jag satt cachningen till en minut för att det matchar förväntad uppdateringsfrekvens någorlunda, eller i alla fall at tman inte missar ny information med onödigt lång tid. En minut kommer heller aldrig innebära ett massivt frågande mot SR.
 ### Vad finns det för risker kring säkerhet och stabilitet i din applikation?
 Som det är nu validerar jag inte det data som hämtas utan litar på att de källor som anropas är pålitliga. I detta fall stora pålitiliga organisationer risken är inte så dramatisk. Jag har inga inmatningsfält förutom checkboxar så det borde inte gå att hacka av användaren direkt. 
-### Hur har du tänkt kring säkerheten i din applikation?
-Jag har minifierat javascripten och css-filen.
 ### Hur har du tänkt kring optimeringen i din applikation?
-
+Jag har minifierat javascripten och css-filen.
