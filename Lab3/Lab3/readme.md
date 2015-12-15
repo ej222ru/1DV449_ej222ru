@@ -1,3 +1,7 @@
+
+ http://ej.3space.info/1DV449/Lab3/index.html
+ 
+
 # Reflektionsfrågor
 ### Vad finns det för krav du måste anpassa dig efter i de olika API:erna?
 Sveriges Radio har en rad en rad om användarvillkor väldigt generellt hållen anmodan om att inte skada Sveriges Radios oberoende eller trovärdighet medans Google har sedvanligt amerikanskt utformat avtal för att klara alla tänkbara och ännu inte möjliga skäl för stämningar. De har många sidor och dessutom länkar till additional terms och andra dokument som exempelvis "privacy policy". Generellt får man inte använda Google maps affärsmässigt utan licens och du får inte på olika sätt använda det så att det kan skada Google.Båda stöder ett antal vanlig format. Sveriges Radio har inga begränsningar på antal anrop. För att använda Google Maps måste man registrera sig och få ut en nyckel.
