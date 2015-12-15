@@ -4,3 +4,4 @@
 * Vad finns det för risker kring säkerhet och stabilitet i din applikation?
 * Hur har du tänkt kring säkerheten i din applikation?
 * Hur har du tänkt kring optimeringen i din applikation?
+s
