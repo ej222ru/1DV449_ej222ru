@@ -43,9 +43,11 @@ function toggleButton(id){
 };
       
 
-function renderTrafficMessages(cachedMessages){
-    var messages = "";
-    messages = cachedMessages;
+function renderTrafficMessages(){
+
+    var reply = JSON.parse(localStorage["response"]);
+    var messages = reply["messages"];
+    messages.sort(sort_by('createddate', true, function(a){return parseJsonDateToInt(a)}));
     
     var msgArea = document.getElementById("trafficMessages");  
     var i;
@@ -102,6 +104,8 @@ function renderTrafficMessages(cachedMessages){
         }
     }                
 }
+
+
 function attachCheckboxHandlers() {
     // get reference to element containing toppings checkboxes
     var el = document.getElementById('categoryForm');
@@ -148,10 +152,7 @@ function TrafficMessages(url) {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 localStorage["response"] = xmlhttp.responseText;
                 localStorage.setItem("lastDataRead", now);
-                reply = JSON.parse(xmlhttp.responseText);
-                messages = reply["messages"];
-                messages.sort(sort_by('createddate', true, function(a){return parseJsonDateToInt(a)}));
-                renderTrafficMessages(messages); 
+                renderTrafficMessages(); 
                 
             }
         };
@@ -165,9 +166,6 @@ function TrafficMessages(url) {
         }
         else{
             console.log("read from cache   now:" + now + "---" + "last read from SR:" + localStorage.getItem("lastDataRead") + "  diff:" + test);   
-            reply = JSON.parse(localStorage["response"]);
-            messages = reply["messages"];
-            messages.sort(sort_by('createddate', true, function(a){return parseJsonDateToInt(a)}));
             renderTrafficMessages(messages);
         }
 };
