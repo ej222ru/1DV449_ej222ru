@@ -1,0 +1,45 @@
+html, body { height: 100%; margin: 0; padding: 0; }
+#map { height: 100%; }
+#trafficMessages 
+{
+    max-width: 400px;
+    float : left;
+}
+
+#form1
+{
+    float:left;
+}
+.Message 
+{
+    border-style:dotted;
+    border-width:1px;
+    min-height:40px;
+}
+.Subcategory 
+{
+    font-weight: bold;
+}
+#categories
+{
+    font-weight: bold;
+    color: red;
+}
+#categories label
+{
+    font-weight: bold;
+    color: black;
+}
+
+
+.Hide 
+{
+    display:none;
+}
+.Show 
+{
+    display:block;
+}
+button{
+    float: right;
+}

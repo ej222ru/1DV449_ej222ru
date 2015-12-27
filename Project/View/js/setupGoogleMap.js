@@ -1,16 +1,24 @@
 "use strict";
-
+var map;
 var markers = [];
 var openInfoWindow = "";
 
 function initMap() {
-    var map;
-    var uluru = {lat: 58.7, lng: 16}; 
-    map = new google.maps.Map(document.getElementById('map'), {
-       center: uluru,
-       zoom: 7
-    });
+    var uluru = {lat: 59.3, lng: 18}; 
+    map = localStorage["map"];
+//    if ((map === null) || (map === undefined)) {
+        map = new google.maps.Map(document.getElementById('map'), {
+           center: uluru,
+           zoom: 10
+        });
+        localStorage["map"] = map;
+        console.log("New map:" + map);   
+  /*  }
+    else {
+            console.log("Kept map");   
+    }
     
+  */  
   return map;  
 }
 
@@ -44,30 +52,6 @@ function addMarker(pos, map, heading, text){
       });
       marker.setAnimation(null);
 } 
-/*
-{
-    "glossary": {
-        "title": "example glossary",
-	"GlossDiv": {
-            "title": "S",
-            "GlossList": {
-                "GlossEntry": {
-                    "ID": "SGML",
-                    "SortAs": "SGML",
-                    "GlossTerm": "Standard Generalized Markup Language",
-                    "Acronym": "SGML",
-                    "Abbrev": "ISO 8879:1986",
-                    "GlossDef": {
-                                    "para": "A meta-markup language, used to create markup languages such as DocBook.",
-                                    "GlossSeeAlso": ["GML", "XML"]
-                    },
-                    "GlossSee": "markup"
-                }
-            }
-        }
-    }
-}
-*/
 
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
@@ -98,3 +82,12 @@ function toggleBounce(marker) {
     marker.setAnimation(google.maps.Animation.BOUNCE);
   }
 }
+
+var myTrafficMessages = {
+    init: function(url){
+        map = initMap();
+//        var TrafficMessagesFunc = new TrafficMessages(url);
+//        attachCheckboxHandlers();
+    }      
+};
+window.addEventListener("load", myTrafficMessages.init("http://api.sr.se/api/v2/traffic/messages?format=json&size=200"));
