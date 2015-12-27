@@ -49,7 +49,7 @@ class RegionView {
                 <label for="CriteriaForm">Välj två kriterier att jämföra:</label><br>
                 <select name="Criteria[]" size="3" multiple>
                   <option value="Income">Inkomst hushåll</option>
-                  <option value="Internet">Tillgång internet</option>
+                  <option value="IllHealth">Ohälsotal</option>
                 </select>
             </div>
         

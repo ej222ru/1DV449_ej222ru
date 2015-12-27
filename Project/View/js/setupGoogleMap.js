@@ -83,11 +83,3 @@ function toggleBounce(marker) {
   }
 }
 
-var myTrafficMessages = {
-    init: function(url){
-        map = initMap();
-//        var TrafficMessagesFunc = new TrafficMessages(url);
-//        attachCheckboxHandlers();
-    }      
-};
-window.addEventListener("load", myTrafficMessages.init("http://api.sr.se/api/v2/traffic/messages?format=json&size=200"));
