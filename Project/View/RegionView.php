@@ -53,10 +53,11 @@ class RegionView {
                 </select>
             </div>
         
-        
+
 
             <input type="submit" name="submit" value="Submit" />    
-        </form>';
+        </form>
+        <canvas id="myChart" width="400" height="400" style="border:1px solid #000000"></canvas>';
         
    }
 }

@@ -35,6 +35,7 @@ class LayoutView {
                 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>            
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvsiVcOe7SvxeLOYG0e_5bwO2V6Pvml4"></script>                
                 
+                <script src="View/js/Chart.js"  type="text/javascript"></script> 
                 <script src="View/js/setupGoogleMap.js" type="text/javascript"></script> 
                 <script src="View/js/regionInfo.js" type="text/javascript"></script> 
             </body>
