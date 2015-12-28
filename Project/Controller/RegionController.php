@@ -42,26 +42,32 @@ class RegionController {
             
 //            $this->gameView->setSessionMessage("A game is started, good luck!");
             // $this->gameModel->renderGameSetup();
-                 
+        $arrRegion;
+        $arrCriteria;
+        $json;
         if(isset($_POST['Region'])){   
             $return = "";
-            $index = 0;
+            $indexR = 0;
+            $indexC = 0;
+            
             foreach ($_POST['Region'] as $selectedRegion){
-                if ($index++ < 2){
-//                    echo ("Kommun: " . $selectedRegion. "<br />\n");  
-                    
-                    
+                if ($indexR++ < 2){
                     if(isset($_POST['Criteria'])){     
                         foreach ($_POST['Criteria'] as $selectedCriteria){
-  //                          echo ("Jämförelsekriteria: " . $selectedCriteria. "<br />\n");  
-                            
                             $response = $this->curl_post_request($this->regionModel->getRequestUrl($selectedCriteria), $this->regionModel->getRequestQuery($selectedCriteria, $selectedRegion));
                             $responseObject = json_decode($response );
 
                             foreach($responseObject->data as $data) {
                                 $value = floatval($data->values[0]);
-                                $return =  "{$selectedRegion}:{$selectedCriteria}:{$value}:";
+                                if ($indexC++ == 0){
+                                    $arrCriteria = array($selectedCriteria => $value);
+                                }
+                                else{
+                                  $arrCriteria[$selectedCriteria] = $value;
+                                }
+//                                $return =  "{$selectedRegion}:{$selectedCriteria}:{$value}:";
                             }
+                            $json = json_encode($arrCriteria);
                         }
 
                     }
@@ -69,7 +75,7 @@ class RegionController {
                 }
             }
                                 
-            echo $return;
+            echo $json;
             
             
         }

@@ -6,6 +6,10 @@ html, body { height: 100%; margin: 0; padding: 0; }
     float : left;
 }
 
+#myChart{
+   max-width: 600px;
+}
+
 #form1
 {
     float:left;

@@ -3,21 +3,31 @@
  function getSCBData() {
     var xhr;
     var  formData="";
-    
+    var test="";
     var regionData = document.getElementsByName("Region[]");
     var criteriaData = document.getElementsByName("Criteria[]");
-
-    for(var x=0;x<regionData.length;x++){
-        if (x>0){
-           formData += "&"; 
+    var first = true;
+     
+    for(var x=0;x<regionData[0].childElementCount;x++){    
+        if (regionData[0][x].selected){
+            if (!first){
+               first = true; 
+            }
+            else
+            {
+               formData += "&"; 
+            }
+            
+            formData += "Region[]="; 
+            formData += regionData[0][x].value;
         }
-        formData += "Region[]="; 
-        formData += regionData[x].value;
     }
-    for(var x=0;x<criteriaData.length;x++){
-        formData += "&"; 
-        formData += "Criteria[]="; 
-        formData += criteriaData[x].value;
+    for(var x=0;x<criteriaData[0].childElementCount;x++){
+        if (criteriaData[0][x].selected){
+            formData += "&"; 
+            formData += "Criteria[]="; 
+            formData += criteriaData[0][x].value;
+        }
     }
 
     $.ajax({
@@ -28,7 +38,6 @@
         {
             localStorage["response"] = data;
             myRegionInfo.init();
-            //data - response from server
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
@@ -36,40 +45,21 @@
         }
     });
 
-/*
-    xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if((xhr.readyState === 4) && (xhr.status === 200)) {
-            	localStorage["response"] = xhr.responseText; 
-        }
-    };
-    xhr.open("POST", "Model/GetSCBData.php", true);
-    xhr.send();
-     */
     
 };
-
-
-
 
 
 var myRegionInfo = {
     init: function(){
         
-        document.getElementById("kalle").addEventListener("click",getSCBData);
-        
+        document.getElementById("getSCB").addEventListener("click",getSCBData);
         
         map = initMap();
-//        getSCBData();
-        var randomScalingFactor = function() {
-           return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
-       };
        
         var getRegion = function() {
            var value = localStorage["response"]; 
            return value;
-       };
-       
+        };
 
      var barChartData = {
         labels: ["Income", "Health"],
@@ -97,8 +87,7 @@ var myRegionInfo = {
 
     };
     
-    
-    
+        
         var ctx = document.getElementById('myChart').getContext('2d');
         
        var myNewChart = Chart.Bar(ctx, {
@@ -127,41 +116,6 @@ var myRegionInfo = {
             }
         });
 
-        
-/*
-var data = {
-    labels: ["2009", "2010", "2011", "2012", "2013", "2014"],
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [28, 48, 40, 19, 86, 127, 90]
-        }
-    ]
-};
-
-
-
-
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myNewChart = new Chart(ctx).Line(data);
-*/
-   
 //        var TrafficMessagesFunc = new TrafficMessages(url);
 //        attachCheckboxHandlers();
 

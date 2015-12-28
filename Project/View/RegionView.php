@@ -55,9 +55,9 @@ class RegionView {
         
 
 
-            <button id="kalle">Skicka</button>  
+            <button id="getSCB">Skicka</button>  
 
-        <canvas id="myChart" width="400" height="400"></canvas>';
+        <canvas id="myChart"></canvas>';
         
    }
 }
