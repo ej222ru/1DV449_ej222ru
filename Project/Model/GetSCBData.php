@@ -6,7 +6,5 @@
  * and open the template in the editor.
  */
 
-function GetSCBData() {
-    echo "Danderyd";
-}
+    echo "Otto";
 

@@ -24,7 +24,7 @@ class RegionView {
         echo "<h2>" . "createSelectionForm()" . "</h2>" 
        
                 
-        .' <form method="post" name="RegionForm">
+        .' 
             
             <div id="form1">
                 <label for="RegionForm">Välj två kommuner du vill jämföra:</label><br>
@@ -55,9 +55,9 @@ class RegionView {
         
 
 
-            <input type="submit" name="submit" value="Submit" />    
-        </form>
-        <canvas id="myChart" width="400" height="400" style="border:1px solid #000000"></canvas>';
+            <button id="kalle">Skicka</button>  
+
+        <canvas id="myChart" width="400" height="400"></canvas>';
         
    }
 }

@@ -43,7 +43,8 @@ class RegionController {
 //            $this->gameView->setSessionMessage("A game is started, good luck!");
             // $this->gameModel->renderGameSetup();
                  
-        if(isset($_POST['Region'])){     
+        if(isset($_POST['Region'])){   
+            $return = "";
             $index = 0;
             foreach ($_POST['Region'] as $selectedRegion){
                 if ($index++ < 2){
@@ -58,8 +59,8 @@ class RegionController {
                             $responseObject = json_decode($response );
 
                             foreach($responseObject->data as $data) {
-                                $value = floatval($data->values[0] );
-                                echo("<br />\n" . "VALUE: " . $value);
+                                $value = floatval($data->values[0]);
+                                $return =  "{$selectedRegion}:{$selectedCriteria}:{$value}:";
                             }
                         }
 
@@ -67,13 +68,15 @@ class RegionController {
             
                 }
             }
+                                
+            echo $return;
             
             
         }
         else {
             echo("Ingen POST . ");
-        }
         
-        $layoutView->renderLayout($this->regionView, $this->mapView);
+            $layoutView->renderLayout($this->regionView, $this->mapView);
+        }
     }    
 }    

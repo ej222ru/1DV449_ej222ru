@@ -1,17 +1,52 @@
 "use strict";
 
  function getSCBData() {
-    var xhr, regionData;
-    regionData = [];
+    var xhr;
+    var  formData="";
+    
+    var regionData = document.getElementsByName("Region[]");
+    var criteriaData = document.getElementsByName("Criteria[]");
 
+    for(var x=0;x<regionData.length;x++){
+        if (x>0){
+           formData += "&"; 
+        }
+        formData += "Region[]="; 
+        formData += regionData[x].value;
+    }
+    for(var x=0;x<criteriaData.length;x++){
+        formData += "&"; 
+        formData += "Criteria[]="; 
+        formData += criteriaData[x].value;
+    }
+
+    $.ajax({
+        url : "index.php",
+        type: "POST",
+        data : formData,
+        success: function(data, textStatus, jqXHR)
+        {
+            localStorage["response"] = data;
+            myRegionInfo.init();
+            //data - response from server
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+
+        }
+    });
+
+/*
     xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if((xhr.readyState === 4) && (xhr.status === 200)) {
             	localStorage["response"] = xhr.responseText; 
         }
     };
-    xhr.open("GET", "Model/GetSCBData.php", true);
+    xhr.open("POST", "Model/GetSCBData.php", true);
     xhr.send();
+     */
+    
 };
 
 
@@ -21,8 +56,11 @@
 var myRegionInfo = {
     init: function(){
         
+        document.getElementById("kalle").addEventListener("click",getSCBData);
+        
+        
         map = initMap();
-        getSCBData();
+//        getSCBData();
         var randomScalingFactor = function() {
            return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
        };
@@ -39,12 +77,22 @@ var myRegionInfo = {
             label: getRegion(),
             backgroundColor: "rgba(220,220,220,0.5)",
             yAxisID: "y-axis-1",
-            data: [113, 14]
+            data: [113]
+        }, {
+            label: getRegion(),
+            backgroundColor: "rgba(220,220,220,0.5)",
+            yAxisID: "y-axis-2",
+            data: [0,14]
+        }, {
+            label: 'Dataset 2',
+            backgroundColor: "rgba(151,187,205,0.5)",
+            yAxisID: "y-axis-1",
+            data: [85]
         }, {
             label: 'Dataset 2',
             backgroundColor: "rgba(151,187,205,0.5)",
             yAxisID: "y-axis-2",
-            data: [85, 28]
+            data: [0,18]
         }]
 
     };
