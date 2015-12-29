@@ -13,14 +13,13 @@ class LayoutView {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link rel="stylesheet" type="text/css" href="View/css/style.css">
                 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+                <link rel="stylesheet" href="View/css/bootstrap-multiselect.css" type="text/css">
 
                 <title>Kommun info</title>
             </head>
             <body>
                 <h1>Region social data</h1>
-                <?php 
-                    echo "<h2>" . "Region info" . "</h2>";
-                ?>
+
                 <div class="container" >
                     <?php 
                       echo $regionView->createSelectionForm();
@@ -35,6 +34,7 @@ class LayoutView {
                 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>            
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvsiVcOe7SvxeLOYG0e_5bwO2V6Pvml4"></script>                
                 
+                <script src="View/js/bootstrap-multiselect.js" type="text/javascript" ></script>                
                 <script src="View/js/Chart.js"  type="text/javascript"></script> 
                 <script src="View/js/setupGoogleMap.js" type="text/javascript"></script> 
                 <script src="View/js/regionInfo.js" type="text/javascript"></script> 

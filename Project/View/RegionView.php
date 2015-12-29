@@ -22,13 +22,9 @@ class RegionView {
     public function createSelectionForm(){
 
         echo "<h2>" . "createSelectionForm()" . "</h2>" 
-       
-                
         .' 
-            
             <div id="form1">
-                <label for="RegionForm">Välj två kommuner du vill jämföra:</label><br>
-                <select name="Region[]" size="3" multiple>
+                <select id="RegionId" name="Region[]" size="3" multiple>
                     <option value="Botkyrka">Botkyrka</option>
                     <option value="Danderyd">Danderyd</option>
                     <option value="Sollentuna">Sollentuna</option>
@@ -45,19 +41,15 @@ class RegionView {
                 </select>
             </div>
             
-            <div id="form2">
-                <label for="CriteriaForm">Välj två kriterier att jämföra:</label><br>
-                <select name="Criteria[]" size="3" multiple>
-                  <option value="Income">Inkomst hushåll</option>
-                  <option value="IllHealth">Ohälsotal</option>
+            <div id="form1">
+                <select id="CriteriaId" name="Criteria[]" size="3" multiple>
+                  <option value="Inkomst">Inkomst hushåll</option>
+                  <option value="Ohälsotal">Ohälsotal</option>
                 </select>
             </div>
-        
+           <button id="getSCB">Skicka</button>  
 
-
-            <button id="getSCB">Skicka</button>  
-
-        <canvas id="myChart"></canvas>';
+        <canvas id="myChart" class="Hide"></canvas>';
         
    }
 }

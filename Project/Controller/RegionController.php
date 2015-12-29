@@ -42,8 +42,10 @@ class RegionController {
             
 //            $this->gameView->setSessionMessage("A game is started, good luck!");
             // $this->gameModel->renderGameSetup();
+        $arrTotal;
         $arrRegion;
         $arrCriteria;
+        $arrValue;
         $json;
         if(isset($_POST['Region'])){   
             $return = "";
@@ -51,7 +53,7 @@ class RegionController {
             $indexC = 0;
             
             foreach ($_POST['Region'] as $selectedRegion){
-                if ($indexR++ < 2){
+                if ($indexR < 4){
                     if(isset($_POST['Criteria'])){     
                         foreach ($_POST['Criteria'] as $selectedCriteria){
                             $response = $this->curl_post_request($this->regionModel->getRequestUrl($selectedCriteria), $this->regionModel->getRequestQuery($selectedCriteria, $selectedRegion));
@@ -60,28 +62,43 @@ class RegionController {
                             foreach($responseObject->data as $data) {
                                 $value = floatval($data->values[0]);
                                 if ($indexC++ == 0){
-                                    $arrCriteria = array($selectedCriteria => $value);
+                                    $arrValue = array("type" => $selectedCriteria);
+                                    $arrValue["value"] = $value;
                                 }
                                 else{
-                                  $arrCriteria[$selectedCriteria] = $value;
+                                  $arrValue["type"] = $selectedCriteria;
+                                  $arrValue["value"] = $value;
                                 }
-//                                $return =  "{$selectedRegion}:{$selectedCriteria}:{$value}:";
+                                if ($indexC == 0){
+                                    $arrCriteria = array("Criteria" => $arrValue);
+                                }
+                                else{
+                                    $arrCriteria["Criteria"] = $arrValue;
+                                }
+                            
+                                if ($indexR == 0){
+                                    $arrRegion = array("Region" => $selectedRegion);
+                                    $arrRegion["Criteria"] = $selectedCriteria;
+                                    $arrRegion["Value"] = $value;
+                                }
+                                else{
+                                    $arrRegion["Region"] = $selectedRegion;
+                                    $arrRegion["Criteria"] = $selectedCriteria;
+                                    $arrRegion["Value"] = $value;
+                                }
                             }
-                            $json = json_encode($arrCriteria);
+                            $arrTotal[$indexR++] = $arrRegion;
                         }
-
                     }
-            
                 }
+
             }
+            $jsonData = json_encode($arrTotal);
                                 
-            echo $json;
-            
+            echo $jsonData;
             
         }
         else {
-            echo("Ingen POST . ");
-        
             $layoutView->renderLayout($this->regionView, $this->mapView);
         }
     }    

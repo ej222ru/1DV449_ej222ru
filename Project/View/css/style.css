@@ -1,19 +1,33 @@
 html, body { height: 100%; margin: 0; padding: 0; }
-#map { height: 100%; }
+#map {height: 500px;max-width: 100%;/* width: 100%; */}
 #trafficMessages 
 {
     max-width: 400px;
     float : left;
 }
+#map{
+   max-width: 400px;
+}
 
 #myChart{
-   max-width: 600px;
+   max-width: 400px;
+   margin-top: 10px;
+   border-width: 1px;
+   border-style: solid;
 }
 
 #form1
 {
     float:left;
+    margin-right: 10px;
 }
+
+#getSCB
+{
+  display: block;
+  height: 34px;
+}
+
 .Message 
 {
     border-style:dotted;
@@ -43,7 +57,4 @@ html, body { height: 100%; margin: 0; padding: 0; }
 .Show 
 {
     display:block;
-}
-button{
-    float: right;
 }

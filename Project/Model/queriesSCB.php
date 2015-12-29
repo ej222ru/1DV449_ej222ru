@@ -6,11 +6,11 @@ class QueriesSCB {
     
     
     public function getUrl($query){
-        $url;
-         if ($query == "Income"){
+        $url = "index.php";
+         if ($query == "Inkomst"){
             $url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/HE/HE0110/HE0110G/Tab4bDispInkN";
          }
-         else if ($query == "IllHealth"){
+         else if ($query == "Ohälsotal"){
             $url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/AA/AA0003/AA0003I/IntGr10Kom";
          }
         return $url;
@@ -42,7 +42,7 @@ class QueriesSCB {
 
     public function getQuery($query, $regionCode){
 
-    if ($query == "Income"){    
+    if ($query == "Inkomst"){    
         $q = '{
           "query": [
             {
@@ -96,7 +96,7 @@ class QueriesSCB {
           }
         }';
     }
-    else if ($query = "IllHealth"){
+    else if ($query = "Ohälsa"){
          $q = '{
           "query": [
             {
