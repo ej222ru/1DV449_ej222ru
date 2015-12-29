@@ -45,6 +45,8 @@ class RegionView {
                 <select id="CriteriaId" name="Criteria[]" size="3" multiple>
                   <option value="Inkomst">Inkomst hushåll</option>
                   <option value="Ohälsotal">Ohälsotal</option>
+                  <option value="TEST">TEST</option>
+                  <option value="TEST2">TEST2</option>
                 </select>
             </div>
            <button id="getSCB">Skicka</button>  

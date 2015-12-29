@@ -3,25 +3,11 @@
  function getSCBData() {
     var xhr;
     var  formData="";
-    var test="";
     var regionData = document.getElementsByName("Region[]");
     var criteriaData = document.getElementsByName("Criteria[]");
     var first = true;
 
-     /*
-    var example = document.getElementById("example-getting-started");
-    var ex_sel = example.selectedIndex;
-    var ex_selOpt = example.selectedOptions;
-    var v;
-    for(var x=0;x<ex_sel;x++){    
-        v = ex_selOpt[x].value;
-    }
-    for(var x=0;x<ex_selOpt.length;x++){    
-        v = ex_selOpt[x].value;
-    }
-    
-    
-*/    
+
     for(var x=0;x<regionData[0].childElementCount;x++){    
         if (regionData[0][x].selected){
             if (!first){
@@ -31,7 +17,6 @@
             {
                formData += "&"; 
             }
-            
             formData += "Region[]="; 
             formData += regionData[0][x].value;
         }
@@ -75,46 +60,84 @@ var myRegionInfo = {
                     if (options.length === 0) {
                         return 'Välj kommuner ';
                     }
-                    else if (options.length > 3) {
-                        return 'Mer än tre 3 valda!';
+                    else if (options.length > 2) {
+                          // Disable all other checkboxes.
+                          var nonSelectedOptions = $('#RegionId option').filter(function() {
+                              return !$(this).is(':selected');
+                          });
+
+                          var dropdown = $('#RegionId').siblings('.multiselect-container');
+                          nonSelectedOptions.each(function() {
+                              var input = $('input[value="' + $(this).val() + '"]');
+                              input.prop('disabled', true);
+                              input.parent('li').addClass('disabled');
+                          });                        
+                        
                     }
-                     else {
-                         var labels = [];
-                         options.each(function() {
-                             if ($(this).attr('label') !== undefined) {
-                                 labels.push($(this).attr('label'));
-                             }
-                             else {
-                                 labels.push($(this).html());
-                             }
+                    else {
+                        // Enable all checkboxes.
+                         var dropdown = $('#RegionId').siblings('.multiselect-container');
+                         $('#RegionId option').each(function() {
+                             var input = $('input[value="' + $(this).val() + '"]');
+                             input.prop('disabled', false);
+                             input.parent('li').addClass('disabled');
                          });
-                         return labels.join(', ') + '';
-                     }
+
+                    }
+                    var labels = [];
+                    options.each(function() {
+                        if ($(this).attr('label') !== undefined) {
+                            labels.push($(this).attr('label'));
+                        }
+                        else {
+                            labels.push($(this).html());
+                        }
+                    });
+                    return labels.join(', ') + '';
                 }
             });
         });
-            
+     
         $(document).ready(function() {
             $('#CriteriaId').multiselect({
                 buttonText: function(options, select) {
                     if (options.length === 0) {
                         return 'Välj jämförelsetal ';
                     }
-                    else if (options.length > 3) {
-                        return 'Mer än tre 3 valda!';
+                    else if (options.length > 1) {
+                          // Disable all other checkboxes.
+                          var nonSelectedOptions = $('#CriteriaId option').filter(function() {
+                              return !$(this).is(':selected');
+                          });
+
+                          var dropdown = $('#CriteriaId').siblings('.multiselect-container');
+                          nonSelectedOptions.each(function() {
+                              var input = $('input[value="' + $(this).val() + '"]');
+                              input.prop('disabled', true);
+                              input.parent('li').addClass('disabled');
+                          });                        
+                        
                     }
-                     else {
-                         var labels = [];
-                         options.each(function() {
-                             if ($(this).attr('label') !== undefined) {
-                                 labels.push($(this).attr('label'));
-                             }
-                             else {
-                                 labels.push($(this).html());
-                             }
+                    else {
+                        // Enable all checkboxes.
+                         var dropdown = $('#CriteriaId').siblings('.multiselect-container');
+                         $('#CriteriaId option').each(function() {
+                             var input = $('input[value="' + $(this).val() + '"]');
+                             input.prop('disabled', false);
+                             input.parent('li').addClass('disabled');
                          });
-                         return labels.join(', ') + '';
-                     }
+
+                    }
+                    var labels = [];
+                    options.each(function() {
+                        if ($(this).attr('label') !== undefined) {
+                            labels.push($(this).attr('label'));
+                        }
+                        else {
+                            labels.push($(this).html());
+                        }
+                    });
+                    return labels.join(', ') + '';
                 }
             });
         });            
