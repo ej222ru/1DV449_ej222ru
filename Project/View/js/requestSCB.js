@@ -37,6 +37,7 @@
         {
             localStorage["response"] = data;
             myRegionInfo.init();
+            document.getElementById('chartContainer').className = "Show";
         },
         error: function (jqXHR, textStatus, errorThrown)
         {

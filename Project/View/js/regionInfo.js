@@ -92,49 +92,147 @@ function setupCriteriaSelectBox(){
 
 function setupBarChart(){
     
-    
+        document.getElementById('chartContainer').className = "Hide";
+
         var getBarChartInfo = function(type, index) {
            var value = localStorage["response"]; 
            var json = JSON.parse(value);
-           var region = json[index-1];
-           if (region !== undefined)
-                return region[type];
-           else 
-                return "";
+           var jsonL = json.length;
+           
+            if (type == "Labels"){
+                if (jsonL % 2 == 0){
+                    if (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2)){
+                        return [getBarChartInfo("Criteria", 1)];
+                    }
+                    else {
+                        return [getBarChartInfo("Criteria", 1), getBarChartInfo("Criteria",2)];
+                    }
+                }
+                else {
+                    return [getBarChartInfo("Criteria", 1)];
+                }
+            }
+            if (type == "YAxis"){
+                if (jsonL % 2 == 0){
+                    if ((index % 2) != 0){
+                        return "y-axis-1";
+                    }
+                    else{
+                        return "y-axis-2";
+                    }
+                }
+                else {
+                    return "y-axis-1";
+                }
+            }
+            if (type == "bgColor"){
+                if (index > jsonL){
+                    return ""; 
+                }
+                else {
+                    if (jsonL % 2 == 0){
+                        // Special condition to decide if two region values are for two regions and one criteria
+                        // or one region for two criteria
+                        if ((jsonL == 2) && (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2))){
+                            if (index == 1){
+                                return "rgba(255,0,0,0.5)";
+                            }
+                            else {
+                                return "rgba(86,66,232,0.5)";
+                            }
+                        }                        
+                        else if ((index == 1) || (index ==2)){
+                            return "rgba(255,0,0,0.5)";
+                        }
+                        else if ((index == 3) || (index ==4)){
+                            return "rgba(86,66,232,0.5)";
+                        }
+                        else {
+                            return "rgba(20,255,0,0.5)";
+                        }
+                    }
+                    else{
+                        if ((index == 1) || (index == 4)){
+                            return "rgba(20,255,0,0.5)";
+                        }
+                        else if ((index == 2)|| (index == 5)){
+                            return "rgba(255,0,0,0.5)";
+                        }
+                        else if ((index == 3)|| (index == 6)){
+                            return "rgba(86,66,232,0.5)";
+                        }
+                    }
+                }
+            }
+            if (type == "Value"){
+                if (index > jsonL){
+                    return ""; 
+                }
+                else{
+                    var region = json[index-1];
+                    // Special condition to decide if two region values are for two regions and one criteria
+                    // or one region for two criteria
+                    if ((jsonL == 2) && (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2))){
+                            return [region[type], 0];
+                    }
+                    else if (jsonL % 2 == 0){
+                        if ((index % 2) != 0){
+                            return [region[type], 0];
+                        }
+                        else{
+                            return [0, region[type]];
+                        }
+                    }
+                    else {
+                        var check = [region[type], 0];
+                        return [region[type], 0];
+                    }
+                }
+            }
+            else {
+                if (index > jsonL){
+                    return ""; 
+                }
+                else
+                {
+                 var region = json[index-1];
+                 return region[type];
+                }               
+            }
         };
-
+        
         var barChartData = {
-            labels: [getBarChartInfo("Criteria", 1), getBarChartInfo("Criteria",2)],
+            labels: getBarChartInfo("Labels", 0),
             datasets: [{
                 label: getBarChartInfo("Region", 1),
-                backgroundColor: "rgba(220,220,220,0.5)",
-                yAxisID: "y-axis-1",
-                data: [getBarChartInfo("Value", 1)]
+                backgroundColor: getBarChartInfo("bgColor", 1),
+                yAxisID: getBarChartInfo("YAxis", 1),
+                data: getBarChartInfo("Value", 1)
                 }, {
                 label: getBarChartInfo("Region", 2),
-                backgroundColor: "rgba(220,220,220,0.5)",
-                yAxisID: "y-axis-2",
-                data: [0,getBarChartInfo("Value", 2)]
+                backgroundColor: getBarChartInfo("bgColor", 2),
+                yAxisID: getBarChartInfo("YAxis", 2),
+                data: getBarChartInfo("Value", 2)
                 }, {
                 label: getBarChartInfo("Region", 3),
-                backgroundColor: "rgba(151,187,205,0.5)",
-                yAxisID: "y-axis-1",
-                data: [getBarChartInfo("Value", 3)]
+                backgroundColor: getBarChartInfo("bgColor", 3),
+                yAxisID: getBarChartInfo("YAxis", 3),
+                data: getBarChartInfo("Value", 3)
                 }, {
                 label: getBarChartInfo("Region", 4),
-                backgroundColor: "rgba(151,187,205,0.5)",
-                yAxisID: "y-axis-2",
-                data: [0,getBarChartInfo("Value", 4)]
+                backgroundColor: getBarChartInfo("bgColor", 4),
+                yAxisID: getBarChartInfo("YAxis", 4),
+                data: getBarChartInfo("Value", 4)
                 }, {
                 label: getBarChartInfo("Region", 5),
-                backgroundColor: "rgba(101,107,205,0.5)",
-                yAxisID: "y-axis-1",
-                data: [getBarChartInfo("Value", 5)]
+                backgroundColor: getBarChartInfo("bgColor", 5),
+                yAxisID: getBarChartInfo("YAxis", 5),
+                data: getBarChartInfo("Value", 5)
                 }, {
                 label: getBarChartInfo("Region", 6),
-                backgroundColor: "rgba(101,107,205,0.5)",
-                yAxisID: "y-axis-2",
-                data: [0,getBarChartInfo("Value", 6)]
+                backgroundColor: getBarChartInfo("bgColor", 6),
+                yAxisID: getBarChartInfo("YAxis", 6),
+                data: getBarChartInfo("Value", 6)
                 }]
         };
     
@@ -142,7 +240,6 @@ function setupBarChart(){
         document.getElementById("chartContainer").innerHTML = '&nbsp;';
         document.getElementById("chartContainer").innerHTML = '<canvas id="myChart"></canvas>';
         var ctx = document.getElementById("myChart").getContext("2d");            
-        document.getElementById('myChart').className = "Show";
         
         var newChart = Chart.Bar(ctx, {
             data: barChartData, 
@@ -169,6 +266,8 @@ function setupBarChart(){
                 }
             }
         });
+        newChart.update();
+        //newChart.addData([112,0], "Inkomst");
     
 }
 

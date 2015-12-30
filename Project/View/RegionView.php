@@ -51,8 +51,8 @@ class RegionView {
             </div>
            <button id="getSCB">Skicka</button>  
         
-        <div id="chartContainer">   
-            <canvas id="myChart" class="Hide"></canvas>
+        <div id="chartContainer" class="Hide">   
+            <canvas id="myChart"></canvas>
         </div>';
         
    }
