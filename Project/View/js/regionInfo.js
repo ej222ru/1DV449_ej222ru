@@ -45,6 +45,9 @@ function setupRegionSelectBox(){
     });
 }
 
+
+
+
 function setupCriteriaSelectBox(){
     $(document).ready(function() {
         $('#CriteriaId').multiselect({
@@ -90,117 +93,146 @@ function setupCriteriaSelectBox(){
 }
 
 
+function getBarChartTypeInfo(json, items, type, index){
+    var ret="";
+    
+    if (index > items){
+        ret = ""; 
+    }
+    else
+    {
+        var region = json[index-1];
+        ret = region[type];
+    } 
+    return ret;
+}
+
+function getBarChartLabels(items){
+    var ret="";
+    
+    if (items % 2 == 0){
+        if (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2)){
+            ret = [getBarChartInfo("Criteria", 1)];
+        }
+        else {
+            ret = [getBarChartInfo("Criteria", 1), getBarChartInfo("Criteria",2)];
+        }
+    }
+    else {
+        ret = [getBarChartInfo("Criteria", 1)];
+    }
+    return ret;
+}
+function getBarChartYAxis(items, index){
+    var ret="";    
+    if (items % 2 == 0){
+        if ((index % 2) != 0){
+            ret = "y-axis-1";
+        }
+        else{
+            ret = "y-axis-2";
+        }
+    }
+    else {
+        ret = "y-axis-1";
+    }
+    return ret;
+}
+function getBarChartColor(items, index){
+    if (index > items){
+        return ""; 
+    }
+    else {
+        if (items % 2 == 0){
+            // Special condition to decide if two region values are for two regions and one criteria
+            // or one region for two criteria
+            if ((items == 2) && (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2))){
+                if (index == 1){
+                    return "rgba(255,0,0,0.5)";
+                }
+                else {
+                    return "rgba(86,66,232,0.5)";
+                }
+            }                        
+            else if ((index == 1) || (index ==2)){
+                return "rgba(255,0,0,0.5)";
+            }
+            else if ((index == 3) || (index ==4)){
+                return "rgba(86,66,232,0.5)";
+            }
+            else {
+                return "rgba(20,255,0,0.5)";
+            }
+        }
+        else{
+            if ((index == 1) || (index == 4)){
+                return "rgba(20,255,0,0.5)";
+            }
+            else if ((index == 2)|| (index == 5)){
+                return "rgba(255,0,0,0.5)";
+            }
+            else if ((index == 3)|| (index == 6)){
+                return "rgba(86,66,232,0.5)";
+            }
+        }
+    }    
+}
+
+function getBarChartValue(json, items, type, index){
+    var ret = "";
+    if (index > items){
+        ret = ""; 
+    }
+    else{
+        var region = json[index-1];
+        // Special condition to decide if two region values are for two regions and one criteria
+        // or one region for two criteria
+        if ((items == 2) && (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2))){
+                return [region[type], 0];
+        }
+        else if (items % 2 == 0){
+            if ((index % 2) != 0){
+                ret = [region[type], 0];
+            }
+            else{
+                ret = [0, region[type]];
+            }
+        }
+        else {
+            var check = [region[type], 0];
+            ret = [region[type], 0];
+        }
+    }    
+    return ret;
+}
+function getBarChartInfo(type, index) {
+    var value = localStorage["response"]; 
+    var json = JSON.parse(value);
+    var items = json.length;
+
+    if (type == "Labels"){
+        return getBarChartLabels(items);                
+    }
+    else if (type == "YAxis"){
+        return getBarChartYAxis(items, index);                
+    }
+    else if (type == "bgColor"){
+        return getBarChartColor(items, index);
+    }
+    else if (type == "Value"){
+
+        return getBarChartValue(json, items, type, index);
+    }
+    else {
+        return getBarChartTypeInfo(json, items, type, index);    
+    }
+ };
+
+
 function setupBarChart(){
     
         document.getElementById('chartContainer').className = "Hide";
 
-        var getBarChartInfo = function(type, index) {
-           var value = localStorage["response"]; 
-           var json = JSON.parse(value);
-           var jsonL = json.length;
-           
-            if (type == "Labels"){
-                if (jsonL % 2 == 0){
-                    if (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2)){
-                        return [getBarChartInfo("Criteria", 1)];
-                    }
-                    else {
-                        return [getBarChartInfo("Criteria", 1), getBarChartInfo("Criteria",2)];
-                    }
-                }
-                else {
-                    return [getBarChartInfo("Criteria", 1)];
-                }
-            }
-            if (type == "YAxis"){
-                if (jsonL % 2 == 0){
-                    if ((index % 2) != 0){
-                        return "y-axis-1";
-                    }
-                    else{
-                        return "y-axis-2";
-                    }
-                }
-                else {
-                    return "y-axis-1";
-                }
-            }
-            if (type == "bgColor"){
-                if (index > jsonL){
-                    return ""; 
-                }
-                else {
-                    if (jsonL % 2 == 0){
-                        // Special condition to decide if two region values are for two regions and one criteria
-                        // or one region for two criteria
-                        if ((jsonL == 2) && (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2))){
-                            if (index == 1){
-                                return "rgba(255,0,0,0.5)";
-                            }
-                            else {
-                                return "rgba(86,66,232,0.5)";
-                            }
-                        }                        
-                        else if ((index == 1) || (index ==2)){
-                            return "rgba(255,0,0,0.5)";
-                        }
-                        else if ((index == 3) || (index ==4)){
-                            return "rgba(86,66,232,0.5)";
-                        }
-                        else {
-                            return "rgba(20,255,0,0.5)";
-                        }
-                    }
-                    else{
-                        if ((index == 1) || (index == 4)){
-                            return "rgba(20,255,0,0.5)";
-                        }
-                        else if ((index == 2)|| (index == 5)){
-                            return "rgba(255,0,0,0.5)";
-                        }
-                        else if ((index == 3)|| (index == 6)){
-                            return "rgba(86,66,232,0.5)";
-                        }
-                    }
-                }
-            }
-            if (type == "Value"){
-                if (index > jsonL){
-                    return ""; 
-                }
-                else{
-                    var region = json[index-1];
-                    // Special condition to decide if two region values are for two regions and one criteria
-                    // or one region for two criteria
-                    if ((jsonL == 2) && (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2))){
-                            return [region[type], 0];
-                    }
-                    else if (jsonL % 2 == 0){
-                        if ((index % 2) != 0){
-                            return [region[type], 0];
-                        }
-                        else{
-                            return [0, region[type]];
-                        }
-                    }
-                    else {
-                        var check = [region[type], 0];
-                        return [region[type], 0];
-                    }
-                }
-            }
-            else {
-                if (index > jsonL){
-                    return ""; 
-                }
-                else
-                {
-                 var region = json[index-1];
-                 return region[type];
-                }               
-            }
-        };
-        
         var barChartData = {
             labels: getBarChartInfo("Labels", 0),
             datasets: [{
@@ -266,9 +298,6 @@ function setupBarChart(){
                 }
             }
         });
-        newChart.update();
-        //newChart.addData([112,0], "Inkomst");
-    
 }
 
 var myRegionInfo = {
@@ -276,7 +305,7 @@ var myRegionInfo = {
         
         document.getElementById("getSCB").addEventListener("click",getSCBData);
         
-        var ret = setupRegionSelectBox();
+        setupRegionSelectBox();
         setupCriteriaSelectBox();
         
         var value = localStorage["response"];

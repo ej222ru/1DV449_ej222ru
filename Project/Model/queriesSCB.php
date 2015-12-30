@@ -7,11 +7,17 @@ class QueriesSCB {
     
     public function getUrl($query){
         $url = "index.php";
-         if ($query == "Inkomst"){
+         if ($query == "Inkomst rel riket"){
             $url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/HE/HE0110/HE0110G/Tab4bDispInkN";
          }
-         else if ($query == "Ohälsotal"){
+         else if ($query == "Ohälsotal dagar"){
             $url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/AA/AA0003/AA0003I/IntGr10Kom";
+         }
+         else if ($query == "Röstdeltagande"){
+            $url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/AA/AA0003/AA0003J/IntGr9Kom1";
+         }
+         else if ($query == "Andel egna hem"){
+            $url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/AA/AA0003/AA0003D/IntGr6Kom";
          }
         return $url;
     }
@@ -42,7 +48,7 @@ class QueriesSCB {
 
     public function getQuery($query, $regionCode){
 
-    if ($query == "Inkomst"){    
+    if ($query == "Inkomst rel riket"){    
         $q = '{
           "query": [
             {
@@ -96,9 +102,9 @@ class QueriesSCB {
           }
         }';
     }
-    else if ($query = "Ohälsa"){
-         $q = '{
-          "query": [
+    else if ($query == "Ohälsotal dagar"){
+        $q = '{
+            "query": [
             {
               "code": "Region",
               "selection": {
@@ -123,6 +129,87 @@ class QueriesSCB {
                 "filter": "item",
                 "values": [
                   "AA00038G"
+                ]
+              }
+            },
+            {
+              "code": "Tid",
+              "selection": {
+                "filter": "item",
+                "values": [
+                  "2013"
+                ]
+              }
+            }
+          ],
+          "response": {
+            "format": "json"
+          }
+        }';   
+    }         
+    else if ($query == "Röstdeltagande"){
+        $q = '{
+            "query": [
+              {
+                "code": "Region",
+                "selection": {
+                  "filter": "item",
+                  "values": [
+                     ' . $regionCode . '
+                  ]
+                }
+              },
+              {
+                "code": "Bakgrund",
+                "selection": {
+                  "filter": "item",
+                  "values": [
+                    "300"
+                  ]
+                }
+              },
+              {
+                "code": "Tid",
+                "selection": {
+                  "filter": "item",
+                  "values": [
+                    "2014"
+                  ]
+                }
+              }
+            ],
+            "response": {
+              "format": "json"
+            }
+        }';   
+    }        
+    else if ($query == "Andel egna hem"){
+        $q = '{
+          "query": [
+            {
+              "code": "Region",
+              "selection": {
+                "filter": "item",
+                "values": [
+                  ' . $regionCode . '
+                ]
+              }
+            },
+            {
+              "code": "Bakgrund",
+              "selection": {
+                "filter": "vs:ÅlderInt3KL0-65+Ag",
+                "values": [
+                  "totalt"
+                ]
+              }
+            },
+            {
+              "code": "ContentsCode",
+              "selection": {
+                "filter": "item",
+                "values": [
+                  "AA0003M1"
                 ]
               }
             },
