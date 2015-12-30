@@ -50,8 +50,10 @@ class RegionView {
                 </select>
             </div>
            <button id="getSCB">Skicka</button>  
-
-        <canvas id="myChart" class="Hide"></canvas>';
+        
+        <div id="chartContainer">   
+            <canvas id="myChart" class="Hide"></canvas>
+        </div>';
         
    }
 }

@@ -53,7 +53,7 @@ class RegionController {
             $indexC = 0;
             
             foreach ($_POST['Region'] as $selectedRegion){
-                if ($indexR < 4){
+                if ($indexR < 6){
                     if(isset($_POST['Criteria'])){     
                         foreach ($_POST['Criteria'] as $selectedCriteria){
                             $response = $this->curl_post_request($this->regionModel->getRequestUrl($selectedCriteria), $this->regionModel->getRequestQuery($selectedCriteria, $selectedRegion));

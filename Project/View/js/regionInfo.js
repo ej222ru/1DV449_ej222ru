@@ -92,11 +92,15 @@ function setupCriteriaSelectBox(){
 
 function setupBarChart(){
     
+    
         var getBarChartInfo = function(type, index) {
            var value = localStorage["response"]; 
            var json = JSON.parse(value);
            var region = json[index-1];
-           return region[type];
+           if (region !== undefined)
+                return region[type];
+           else 
+                return "";
         };
 
         var barChartData = {
@@ -121,13 +125,26 @@ function setupBarChart(){
                 backgroundColor: "rgba(151,187,205,0.5)",
                 yAxisID: "y-axis-2",
                 data: [0,getBarChartInfo("Value", 4)]
+                }, {
+                label: getBarChartInfo("Region", 5),
+                backgroundColor: "rgba(101,107,205,0.5)",
+                yAxisID: "y-axis-1",
+                data: [getBarChartInfo("Value", 5)]
+                }, {
+                label: getBarChartInfo("Region", 6),
+                backgroundColor: "rgba(101,107,205,0.5)",
+                yAxisID: "y-axis-2",
+                data: [0,getBarChartInfo("Value", 6)]
                 }]
         };
     
+        // Clear out old canvas charts
+        document.getElementById("chartContainer").innerHTML = '&nbsp;';
+        document.getElementById("chartContainer").innerHTML = '<canvas id="myChart"></canvas>';
+        var ctx = document.getElementById("myChart").getContext("2d");            
         document.getElementById('myChart').className = "Show";
-        var ctx = document.getElementById('myChart').getContext('2d');
         
-        Chart.Bar(ctx, {
+        var newChart = Chart.Bar(ctx, {
             data: barChartData, 
             options: {
                 responsive: true,
@@ -164,7 +181,8 @@ var myRegionInfo = {
         setupCriteriaSelectBox();
         
         var value = localStorage["response"];
-        if ((value == 'Undefined') || (value == 'undefined')) {
+        console.log(value);
+        if (value === undefined) {
             alert(value);
         }
         else {    
