@@ -1,9 +1,10 @@
-<?php
+<?php 
 
 /**
  * @author Erland Jönsson
  */
 namespace controller;
+
 
 require_once("model/RegionModel.php");
 require_once("view/RegionView.php");
@@ -38,10 +39,60 @@ class RegionController {
     }
     
     
+    public function logDebug($text){
+        $filename = "debug.txt";
+        $file;
+        $file = fopen($filename, "a");
+        $ch = fwrite($file, $text);
+        fclose($file);        
+    }
+    
+    public function saveToCache($region, $criteria, $value) {
+        $filename = "cache/" . $region . $criteria . ".txt";
+        $file;
+        $exist = file_exists($filename);
+        if (!$exist){
+            $file = fopen($filename, "x+");
+            $ch = fwrite($file, $value);
+        }
+        else{
+            $file = fopen($filename, "w");
+            $ch = fwrite($file, $value);
+        }
+        fclose($file);        
+    }
+
+    public function getFromCache($region, $criteria) {
+        $value = "";
+        
+        
+        $filename = "cache/" . $region . $criteria . ".txt";
+        $file;
+        $exist = file_exists($filename);
+        if ($exist){
+            
+            $dateChanged = date("ymd",filemtime($filename));
+            $today = date ( "ymd",time());
+            if ($today > $dateChanged){
+                $this->logDebug("File exist but content old " . $filename . PHP_EOL);
+               // return $value = ""  to signal a new get from source    
+            }
+            else{
+                $this->logDebug("File exist content fresh " . $filename . PHP_EOL);
+                $file = fopen($filename, "r");
+                $value = fread($file, filesize($filename));
+            }
+            fclose($file);        
+        }
+        else{
+            $this->logDebug("File does not exist " . $filename . PHP_EOL);
+        }
+        return $value;
+    }
+    
+    
     public function startApplikation($layoutView) {
             
-//            $this->gameView->setSessionMessage("A game is started, good luck!");
-            // $this->gameModel->renderGameSetup();
         $arrTotal;
         $arrRegion;
         $arrCriteria;
@@ -56,36 +107,47 @@ class RegionController {
                 if ($indexR < 6){
                     if(isset($_POST['Criteria'])){     
                         foreach ($_POST['Criteria'] as $selectedCriteria){
-                            $response = $this->curl_post_request($this->regionModel->getRequestUrl($selectedCriteria), $this->regionModel->getRequestQuery($selectedCriteria, $selectedRegion));
-                            $responseObject = json_decode($response );
-
-                            foreach($responseObject->data as $data) {
-                                $value = floatval($data->values[0]);
-                                if ($indexC++ == 0){
-                                    $arrValue = array("type" => $selectedCriteria);
-                                    $arrValue["value"] = $value;
-                                }
-                                else{
-                                  $arrValue["type"] = $selectedCriteria;
-                                  $arrValue["value"] = $value;
-                                }
-                                if ($indexC == 0){
-                                    $arrCriteria = array("Criteria" => $arrValue);
-                                }
-                                else{
-                                    $arrCriteria["Criteria"] = $arrValue;
-                                }
+                            $valueFromCache = $this->getFromCache($selectedRegion, $selectedCriteria);
+                            if ($valueFromCache === ""){
                             
-                                if ($indexR == 0){
-                                    $arrRegion = array("Region" => $selectedRegion);
-                                    $arrRegion["Criteria"] = $selectedCriteria;
-                                    $arrRegion["Value"] = $value;
+                                $response = $this->curl_post_request($this->regionModel->getRequestUrl($selectedCriteria), $this->regionModel->getRequestQuery($selectedCriteria, $selectedRegion));
+                                $responseObject = json_decode($response );
+
+                                foreach($responseObject->data as $data) {
+                                    $value = floatval($data->values[0]);
+                                    if ($indexC++ == 0){
+                                        $arrValue = array("type" => $selectedCriteria);
+                                        $arrValue["value"] = $value;
+                                    }
+                                    else{
+                                      $arrValue["type"] = $selectedCriteria;
+                                      $arrValue["value"] = $value;
+                                    }
+                                    if ($indexC == 0){
+                                        $arrCriteria = array("Criteria" => $arrValue);
+                                    }
+                                    else{
+                                        $arrCriteria["Criteria"] = $arrValue;
+                                    }
+
+                                    if ($indexR == 0){
+                                        $arrRegion = array("Region" => $selectedRegion);
+                                        $arrRegion["Criteria"] = $selectedCriteria;
+                                        $arrRegion["Value"] = $value;
+                                    }
+                                    else{
+                                        $arrRegion["Region"] = $selectedRegion;
+                                        $arrRegion["Criteria"] = $selectedCriteria;
+                                        $arrRegion["Value"] = $value;
+                                    }
+                                    $this->saveToCache($selectedRegion, $selectedCriteria, $data->values[0]);    
                                 }
-                                else{
-                                    $arrRegion["Region"] = $selectedRegion;
-                                    $arrRegion["Criteria"] = $selectedCriteria;
-                                    $arrRegion["Value"] = $value;
-                                }
+                            }
+                            else{
+                                $value = floatval($valueFromCache);
+                                $arrRegion["Region"] = $selectedRegion;
+                                $arrRegion["Criteria"] = $selectedCriteria;
+                                $arrRegion["Value"] = $value;
                             }
                             $arrTotal[$indexR++] = $arrRegion;
                         }
@@ -94,7 +156,7 @@ class RegionController {
 
             }
             $jsonData = json_encode($arrTotal);
-                                
+          
             echo $jsonData;
             
         }

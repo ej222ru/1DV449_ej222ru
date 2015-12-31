@@ -1,0 +1,90 @@
+File does not exist cache/BotkyrkaInkomst rel riket.txt
+File does not exist cache/BotkyrkaOhälsotal dagar.txt
+File does not exist cache/EkeröInkomst rel riket.txt
+File does not exist cache/EkeröOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/EkeröInkomst rel riket.txt
+File exist content fresh cache/EkeröOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/EkeröInkomst rel riket.txt
+File exist content fresh cache/EkeröOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/EkeröInkomst rel riket.txt
+File exist content fresh cache/EkeröOhälsotal dagar.txt
+File does not exist cache/HaningeInkomst rel riket.txt
+File does not exist cache/HaningeOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/EkeröInkomst rel riket.txt
+File exist content fresh cache/EkeröOhälsotal dagar.txt
+File exist content fresh cache/HaningeInkomst rel riket.txt
+File exist content fresh cache/HaningeOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File does not exist cache/DanderydInkomst rel riket.txt
+File does not exist cache/DanderydOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/DanderydInkomst rel riket.txt
+File exist content fresh cache/DanderydOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File does not exist cache/SundbybergInkomst rel riket.txt
+File does not exist cache/SundbybergOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/DanderydInkomst rel riket.txt
+File exist content fresh cache/DanderydOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/DanderydInkomst rel riket.txt
+File exist content fresh cache/DanderydOhälsotal dagar.txt
+File exist content fresh cache/HaningeInkomst rel riket.txt
+File exist content fresh cache/HaningeOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/DanderydInkomst rel riket.txt
+File exist content fresh cache/DanderydOhälsotal dagar.txt
+File does not exist cache/SolnaInkomst rel riket.txt
+File does not exist cache/SolnaOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/DanderydInkomst rel riket.txt
+File exist content fresh cache/DanderydOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/DanderydInkomst rel riket.txt
+File exist content fresh cache/DanderydOhälsotal dagar.txt
+File does not exist cache/TyresöInkomst rel riket.txt
+File does not exist cache/TyresöOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/DanderydInkomst rel riket.txt
+File exist content fresh cache/DanderydOhälsotal dagar.txt
+File exist content fresh cache/TyresöInkomst rel riket.txt
+File exist content fresh cache/TyresöOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/DanderydInkomst rel riket.txt
+File exist content fresh cache/DanderydOhälsotal dagar.txt
+File does not exist cache/TäbyInkomst rel riket.txt
+File does not exist cache/TäbyOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/DanderydInkomst rel riket.txt
+File exist content fresh cache/DanderydOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/DanderydInkomst rel riket.txt
+File exist content fresh cache/DanderydOhälsotal dagar.txt
+File does not exist cache/VärmdöInkomst rel riket.txt
+File does not exist cache/VärmdöOhälsotal dagar.txt
+File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+File exist content fresh cache/DanderydInkomst rel riket.txt
+File exist content fresh cache/DanderydOhälsotal dagar.txt
+File exist content fresh cache/VärmdöInkomst rel riket.txt
+File exist content fresh cache/VärmdöOhälsotal dagar.txt

@@ -1,3 +1,5 @@
+/* global getSCBData */
+
 "use strict";
 
 
@@ -231,7 +233,7 @@ function getBarChartInfo(type, index) {
 
 function setupBarChart(){
     
-        document.getElementById('chartContainer').className = "Hide";
+
 
         var barChartData = {
             labels: getBarChartInfo("Labels", 0),
@@ -302,18 +304,19 @@ function setupBarChart(){
 
 var myRegionInfo = {
     init: function(){
-        
+//        localStorage.clear("response");
         document.getElementById("getSCB").addEventListener("click",getSCBData);
         
         setupRegionSelectBox();
         setupCriteriaSelectBox();
         
         var value = localStorage["response"];
-        console.log(value);
         if (value === undefined) {
-            alert(value);
+            console.log("localstorage undefined");
+            document.getElementById('chartContainer').className = "Hide";            
         }
         else {    
+            console.log(value);
             setupBarChart()
         }
         
