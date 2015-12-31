@@ -40,7 +40,9 @@ class QueriesSCB {
             case "Tyresö"           : $regionCode = '"0138"'; break;
             case "Täby"             : $regionCode = '"0160"'; break;
             case "Upplands Väsby"   : $regionCode = '"0114"'; break;
+            case "Vallentuna"       : $regionCode = '"0115"'; break;
             case "Värmdö"           : $regionCode = '"0120"'; break;
+            case "Österåker"        : $regionCode = '"0117"'; break;
             default:break;
         }
         return $regionCode;

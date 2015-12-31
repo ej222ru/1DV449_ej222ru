@@ -36,8 +36,8 @@
         success: function(data, textStatus, jqXHR)
         {
             localStorage["response"] = data;
-            myRegionInfo.init();
             document.getElementById('chartContainer').className = "Show";
+            myRegionInfo.init();
         },
         error: function (jqXHR, textStatus, errorThrown)
         {

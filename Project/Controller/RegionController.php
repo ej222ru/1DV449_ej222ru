@@ -40,10 +40,11 @@ class RegionController {
     
     
     public function logDebug($text){
-        $filename = "debug.txt";
         $file;
+        $filename = "cache/log.txt";
+        $today = date ( "ymd",time());
         $file = fopen($filename, "a");
-        $ch = fwrite($file, $text);
+        $ch = fwrite($file, $today . "--" . $text);
         fclose($file);        
     }
     

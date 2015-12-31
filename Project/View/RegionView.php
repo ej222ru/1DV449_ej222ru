@@ -36,6 +36,7 @@ class RegionView {
                     <option value="Tyresö">Tyresö</option>
                     <option value="Täby">Täby</option>
                     <option value="Upplands Väsby">Upplands Väsby</option>
+                    <option value="Vallentuna">Vallentuna</option>
                     <option value="Värmdö">Värmdö</option>
                     <option value="Österåker">Österåker</option>
                 </select>

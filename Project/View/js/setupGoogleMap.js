@@ -4,21 +4,14 @@ var markers = [];
 var openInfoWindow = "";
 
 function initMap() {
-    var uluru = {lat: 59.3, lng: 18}; 
+    var startPos = {lat: 59.35, lng: 18.1}; 
     map = localStorage["map"];
-//    if ((map === null) || (map === undefined)) {
-        map = new google.maps.Map(document.getElementById('map'), {
-           center: uluru,
-           zoom: 10
-        });
-        localStorage["map"] = map;
-        console.log("New map:" + map);   
-  /*  }
-    else {
-            console.log("Kept map");   
-    }
-    
-  */  
+    map = new google.maps.Map(document.getElementById('map'), {
+       center: startPos,
+       zoom: 11
+    });
+    localStorage["map"] = map;
+    console.log("New map:" + map);   
   return map;  
 }
 
