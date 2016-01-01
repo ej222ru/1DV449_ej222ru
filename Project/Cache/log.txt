@@ -75,3 +75,178 @@
 160101--File exist content fresh cache/DanderydOhälsotal dagar.txt
 160101--File exist content fresh cache/DanderydInkomst rel riket.txt
 160101--File exist content fresh cache/DanderydOhälsotal dagar.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydOhälsotal dagar.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydOhälsotal dagar.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File does not exist cache/EkeröOhälsotal dagar.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydOhälsotal dagar.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröOhälsotal dagar.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File does not exist cache/BotkyrkaAndel egna hem.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File does not exist cache/DanderydAndel egna hem.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File does not exist cache/EkeröAndel egna hem.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaAndel egna hem.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröAndel egna hem.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaAndel egna hem.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydAndel egna hem.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröAndel egna hem.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+160101--File does not exist cache/SolnaInkomst rel riket.txt
+160101--File does not exist cache/SolnaOhälsotal dagar.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+160101--File exist content fresh cache/SolnaInkomst rel riket.txt
+160101--File exist content fresh cache/SolnaOhälsotal dagar.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+160101--File exist content fresh cache/SolnaInkomst rel riket.txt
+160101--File exist content fresh cache/SolnaOhälsotal dagar.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+160101--File exist content fresh cache/SolnaInkomst rel riket.txt
+160101--File exist content fresh cache/SolnaOhälsotal dagar.txt
+160101--File does not exist cache/StockholmInkomst rel riket.txt
+160101--File does not exist cache/StockholmOhälsotal dagar.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/HaningeInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydOhälsotal dagar.txt
+160101--File exist content fresh cache/HaningeInkomst rel riket.txt
+160101--File does not exist cache/HaningeOhälsotal dagar.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydOhälsotal dagar.txt
+160101--File does not exist cache/Upplands VäsbyInkomst rel riket.txt
+160101--File does not exist cache/Upplands VäsbyOhälsotal dagar.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydOhälsotal dagar.txt
+160101--File exist content fresh cache/Upplands VäsbyInkomst rel riket.txt
+160101--File exist content fresh cache/Upplands VäsbyOhälsotal dagar.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydOhälsotal dagar.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröOhälsotal dagar.txt
+160101--File exist content fresh cache/Upplands VäsbyInkomst rel riket.txt
+160101--File exist content fresh cache/Upplands VäsbyOhälsotal dagar.txt
+160101--File exist content fresh cache/Upplands VäsbyInkomst rel riket.txt
+160101--File exist content fresh cache/Upplands VäsbyOhälsotal dagar.txt
+160101--File does not exist cache/SollentunaInkomst rel riket.txt
+160101--File does not exist cache/SollentunaOhälsotal dagar.txt
+160101--File exist content fresh cache/SolnaInkomst rel riket.txt
+160101--File exist content fresh cache/SolnaOhälsotal dagar.txt
+160101--File exist content fresh cache/Upplands VäsbyInkomst rel riket.txt
+160101--File exist content fresh cache/Upplands VäsbyOhälsotal dagar.txt
+160101--File exist content fresh cache/Upplands VäsbyInkomst rel riket.txt
+160101--File exist content fresh cache/Upplands VäsbyOhälsotal dagar.txt
+160101--File does not exist cache/VallentunaInkomst rel riket.txt
+160101--File does not exist cache/VallentunaOhälsotal dagar.txt
+160101--File does not exist cache/VärmdöInkomst rel riket.txt
+160101--File does not exist cache/VärmdöOhälsotal dagar.txt
+160101--File exist content fresh cache/Upplands VäsbyInkomst rel riket.txt
+160101--File exist content fresh cache/Upplands VäsbyOhälsotal dagar.txt
+160101--File exist content fresh cache/VallentunaInkomst rel riket.txt
+160101--File exist content fresh cache/VallentunaOhälsotal dagar.txt
+160101--File exist content fresh cache/VärmdöInkomst rel riket.txt
+160101--File exist content fresh cache/VärmdöOhälsotal dagar.txt
+160101--File exist content fresh cache/Upplands VäsbyInkomst rel riket.txt
+160101--File exist content fresh cache/Upplands VäsbyOhälsotal dagar.txt
+160101--File exist content fresh cache/VallentunaInkomst rel riket.txt
+160101--File exist content fresh cache/VallentunaOhälsotal dagar.txt
+160101--File exist content fresh cache/VärmdöInkomst rel riket.txt
+160101--File exist content fresh cache/VärmdöOhälsotal dagar.txt
+160101--File exist content fresh cache/Upplands VäsbyInkomst rel riket.txt
+160101--File exist content fresh cache/Upplands VäsbyOhälsotal dagar.txt
+160101--File exist content fresh cache/VallentunaInkomst rel riket.txt
+160101--File exist content fresh cache/VallentunaOhälsotal dagar.txt
+160101--File exist content fresh cache/VärmdöInkomst rel riket.txt
+160101--File exist content fresh cache/VärmdöOhälsotal dagar.txt
+160101--File exist content fresh cache/Upplands VäsbyInkomst rel riket.txt
+160101--File exist content fresh cache/Upplands VäsbyOhälsotal dagar.txt
+160101--File exist content fresh cache/VallentunaInkomst rel riket.txt
+160101--File exist content fresh cache/VallentunaOhälsotal dagar.txt
+160101--File exist content fresh cache/VärmdöInkomst rel riket.txt
+160101--File exist content fresh cache/VärmdöOhälsotal dagar.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydOhälsotal dagar.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröOhälsotal dagar.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydOhälsotal dagar.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröOhälsotal dagar.txt
+160101--File exist content fresh cache/BotkyrkaInkomst rel riket.txt
+160101--File exist content fresh cache/BotkyrkaOhälsotal dagar.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydOhälsotal dagar.txt
+160101--File exist content fresh cache/EkeröInkomst rel riket.txt
+160101--File exist content fresh cache/EkeröOhälsotal dagar.txt
+160101--File exist content fresh cache/DanderydInkomst rel riket.txt
+160101--File exist content fresh cache/DanderydOhälsotal dagar.txt
+160101--File does not exist cache/NackaInkomst rel riket.txt
+160101--File does not exist cache/NackaOhälsotal dagar.txt
+160101--File exist content fresh cache/SollentunaInkomst rel riket.txt
+160101--File exist content fresh cache/SollentunaOhälsotal dagar.txt

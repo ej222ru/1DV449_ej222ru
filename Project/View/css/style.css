@@ -39,9 +39,10 @@ html, body { height: 100%; margin: 0; padding: 0; background-color: #DEE9FF;}
 
 #error 
 {
-    border-style:dotted;
-    border-width:1px;
+    border-style:solid;
+    border-width:2px;
     min-height:40px;
+    font-style: bold;
     color:red;
 }
 

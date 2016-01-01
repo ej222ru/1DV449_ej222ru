@@ -58,7 +58,7 @@ class RegionView {
         Välj jämförelsetal i den andra drop down menyn. Du kan som mest jämföra 
         två egenskaper samtidigt \br Hovra över staplarna för attse vad de reprenterar.
         </div>
-        <div id="error" class="Hide">   
+            <div id="error" class="Hide">   
         </div>
         
         <div id="chartContainer" class="Hide">   

@@ -218,7 +218,10 @@ function getBarChartInfo(type, index) {
     var json = JSON.parse(value);
     var items = json.length;
 
-    if (type == "Labels"){
+    if (type == "Items"){
+        return items;                
+    }
+    else if (type == "Labels"){
         return getBarChartLabels(items);                
     }
     else if (type == "YAxis"){
@@ -361,9 +364,21 @@ function calcCenterPosition(pos1, pos2, pos3){
  * Add markers to the map for the choosen regions in the drop down menu
  */
 function markRegionOnMap(){
-    var region1 = getBarChartInfo("Region", 1)
-    var region2 = getBarChartInfo("Region", 2)
-    var region3 = getBarChartInfo("Region", 3)
+    var region1;
+    var region2;
+    var region3;
+    
+    var items = getBarChartInfo("Items", 0);
+    if (items > 3){
+        region1 = getBarChartInfo("Region", 1)
+        region2 = getBarChartInfo("Region", 3)
+        region3 = getBarChartInfo("Region", 5)
+    }
+    else {
+        region1 = getBarChartInfo("Region", 1)
+        region2 = getBarChartInfo("Region", 2)
+        region3 = getBarChartInfo("Region", 3)
+    }
     
     var pos1 = getRegionPosition(region1);     
     var pos2 = getRegionPosition(region2);     

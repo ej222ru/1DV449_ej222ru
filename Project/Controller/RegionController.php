@@ -100,7 +100,6 @@ class RegionController {
         $arrValue;
         $json;
         
-        
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             if((isset($_POST['Region'])) && (isset($_POST['Criteria']))){   
                 $return = "";
@@ -153,17 +152,14 @@ class RegionController {
                             }
                         }
                     }
-
                 }
                 $jsonData = json_encode($arrTotal);
 
                 echo $jsonData;
-
             }
             else {
                 echo '[{"error":"true"}, {"errorText":"Kommun eller egenskap att jämföra inte vald"}]';
             }
-            
         }
         else {
             $layoutView->renderLayout($this->regionView, $this->mapView);
