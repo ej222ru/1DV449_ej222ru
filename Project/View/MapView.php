@@ -19,9 +19,7 @@ class MapView {
     
     public function createMap(){
     
-        echo "<h2>" . "createMap()" . "</h2>"
-        
-        . '<div id="map"></div>';
+        echo '<div id="map"></div>';
       
     }
     

@@ -18,8 +18,7 @@ class RegionView {
     
     public function createSelectionForm(){
 
-        echo "<h2>" . "createSelectionForm()" . "</h2>" 
-        .' 
+        echo '
             <div id="form1">
                 <select id="RegionId" name="Region[]" size="3" multiple>
                     <option value="Botkyrka">Botkyrka</option>
@@ -50,7 +49,17 @@ class RegionView {
                   <option value="Röstdeltagande">Röstdeltagande</option>
                 </select>
             </div>
-           <button id="getSCB">Skicka</button>  
+           <button type="button" id="getSCB" class="btn btn-info">Skicka</button>  
+           <button type="button" id="displayInfo" class="btn btn-info">Info</button>
+
+        <div id="Info" class="Hide">   
+        Välj mellan en till tre kommuner i drop down menyn. Har du redan valt tre 
+        och vill välja om måste du först avmarkera någon av de du redan valt. 
+        Välj jämförelsetal i den andra drop down menyn. Du kan som mest jämföra 
+        två egenskaper samtidigt \br Hovra över staplarna för attse vad de reprenterar.
+        </div>
+        <div id="error" class="Hide">   
+        </div>
         
         <div id="chartContainer" class="Hide">   
             <canvas id="myChart"></canvas>

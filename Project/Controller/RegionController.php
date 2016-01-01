@@ -99,66 +99,70 @@ class RegionController {
         $arrCriteria;
         $arrValue;
         $json;
-        if(isset($_POST['Region'])){   
-            $return = "";
-            $indexR = 0;
-            $indexC = 0;
-            
-            foreach ($_POST['Region'] as $selectedRegion){
-                if ($indexR < 6){
-                    if(isset($_POST['Criteria'])){     
-                        foreach ($_POST['Criteria'] as $selectedCriteria){
-                            $valueFromCache = $this->getFromCache($selectedRegion, $selectedCriteria);
-                            if ($valueFromCache === ""){
-                            
-                                $response = $this->curl_post_request($this->regionModel->getRequestUrl($selectedCriteria), $this->regionModel->getRequestQuery($selectedCriteria, $selectedRegion));
-                                $responseObject = json_decode($response );
+        
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if((isset($_POST['Region'])) && (isset($_POST['Criteria']))){   
+                $return = "";
+                $indexR = 0;
+                $indexC = 0;
 
-                                foreach($responseObject->data as $data) {
-                                    $value = floatval($data->values[0]);
-                                    if ($indexC++ == 0){
-                                        $arrValue = array("type" => $selectedCriteria);
-                                        $arrValue["value"] = $value;
-                                    }
-                                    else{
-                                      $arrValue["type"] = $selectedCriteria;
-                                      $arrValue["value"] = $value;
-                                    }
-                                    if ($indexC == 0){
-                                        $arrCriteria = array("Criteria" => $arrValue);
-                                    }
-                                    else{
-                                        $arrCriteria["Criteria"] = $arrValue;
-                                    }
+                foreach ($_POST['Region'] as $selectedRegion){
+                    if ($indexR < 6){
+                        if(isset($_POST['Criteria'])){     
+                            foreach ($_POST['Criteria'] as $selectedCriteria){
+                                $valueFromCache = $this->getFromCache($selectedRegion, $selectedCriteria);
+                                if ($valueFromCache === ""){
 
-                                    if ($indexR == 0){
-                                        $arrRegion = array("Region" => $selectedRegion);
-                                        $arrRegion["Criteria"] = $selectedCriteria;
-                                        $arrRegion["Value"] = $value;
+                                    $response = $this->curl_post_request($this->regionModel->getRequestUrl($selectedCriteria), $this->regionModel->getRequestQuery($selectedCriteria, $selectedRegion));
+                                    $responseObject = json_decode($response );
+
+                                    foreach($responseObject->data as $data) {
+                                        $value = floatval($data->values[0]);
+                                        if ($indexC == 0){
+                                            $arrValue = array("type" => $selectedCriteria);
+                                            $arrValue["value"] = $value;
+                                            $arrCriteria = array("Criteria" => $arrValue);
+                                        }
+                                        else{
+                                            $arrValue["type"] = $selectedCriteria;
+                                            $arrValue["value"] = $value;
+                                            $arrCriteria["Criteria"] = $arrValue;
+                                        }
+
+                                        if ($indexR == 0){
+                                            $arrRegion = array("Region" => $selectedRegion);
+                                            $arrRegion["Criteria"] = $selectedCriteria;
+                                            $arrRegion["Value"] = $value;
+                                        }
+                                        else{
+                                            $arrRegion["Region"] = $selectedRegion;
+                                            $arrRegion["Criteria"] = $selectedCriteria;
+                                            $arrRegion["Value"] = $value;
+                                        }
+                                        $this->saveToCache($selectedRegion, $selectedCriteria, $data->values[0]);    
                                     }
-                                    else{
-                                        $arrRegion["Region"] = $selectedRegion;
-                                        $arrRegion["Criteria"] = $selectedCriteria;
-                                        $arrRegion["Value"] = $value;
-                                    }
-                                    $this->saveToCache($selectedRegion, $selectedCriteria, $data->values[0]);    
                                 }
+                                else{
+                                    $value = floatval($valueFromCache);
+                                    $arrRegion["Region"] = $selectedRegion;
+                                    $arrRegion["Criteria"] = $selectedCriteria;
+                                    $arrRegion["Value"] = $value;
+                                }
+                                $arrTotal[$indexR++] = $arrRegion;
                             }
-                            else{
-                                $value = floatval($valueFromCache);
-                                $arrRegion["Region"] = $selectedRegion;
-                                $arrRegion["Criteria"] = $selectedCriteria;
-                                $arrRegion["Value"] = $value;
-                            }
-                            $arrTotal[$indexR++] = $arrRegion;
                         }
                     }
+
                 }
+                $jsonData = json_encode($arrTotal);
+
+                echo $jsonData;
 
             }
-            $jsonData = json_encode($arrTotal);
-          
-            echo $jsonData;
+            else {
+                echo '[{"error":"true"}, {"errorText":"Kommun eller egenskap att jämföra inte vald"}]';
+            }
             
         }
         else {

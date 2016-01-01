@@ -331,8 +331,36 @@ function getRegionPosition(region){
     return position;
 }
 
-function markRegionOnMap(){
+/*
+ * Caluclates the map center position for one to three positions 
+ */
+function calcCenterPosition(pos1, pos2, pos3){
+    var posLat=0;
+    var posLng=0;
+    var nbrPos=0;
+    var posCenter = 0;
     
+    var addPos = function(pos){
+        if (pos != undefined){
+            posLat += pos["lat"];
+            posLng += pos["lng"];
+            nbrPos++;
+        }
+    } 
+    addPos(pos1);
+    addPos(pos2);
+    addPos(pos3);
+    
+    var posLat = posLat /  nbrPos;
+    var posLng = posLng /  nbrPos;
+    posCenter = '{ "lat":' + posLat + ',"lng":' + posLng + '}';
+    return JSON.parse(posCenter);
+}
+
+/*
+ * Add markers to the map for the choosen regions in the drop down menu
+ */
+function markRegionOnMap(){
     var region1 = getBarChartInfo("Region", 1)
     var region2 = getBarChartInfo("Region", 2)
     var region3 = getBarChartInfo("Region", 3)
@@ -340,23 +368,37 @@ function markRegionOnMap(){
     var pos1 = getRegionPosition(region1);     
     var pos2 = getRegionPosition(region2);     
     var pos3 = getRegionPosition(region3);     
-//    var pos = {lat: messages[i].latitude, lng:  messages[i].longitude};
-    var header1 = region1 ;
-    var header2 = region2 ;
-    var header3 = region3 ;
-    var description = 'Kommun';
-    addMarker(pos1, map, header1, description);
-    addMarker(pos2, map, header2, description);
-    addMarker(pos3, map, header3, description);
+    addMarker(pos1, map, region1, "");
+    addMarker(pos2, map, region2, "");
+    addMarker(pos3, map, region3, "");
+    map.setCenter(calcCenterPosition(pos1, pos2, pos3));
 }
 
+/*
+ * Toggle info for the drop down menu when clicking Info button
+ */
+ function displayInfo() {
+    var infoId = document.getElementById("displayInfo"); 
+    var info = document.getElementById("Info").className; 
+    if (info == "Hide"){
+        document.getElementById("Info").className = "Show";
+        document.getElementById("displayInfo").innerHTML = "Stäng info";
+    }
+    else {
+        document.getElementById("Info").className = "Hide";
+        document.getElementById("displayInfo").innerHTML = "Info";
+    }
+ }
 var myRegionInfo = {
     init: function(){
 //        localStorage.clear("response");
         document.getElementById("getSCB").addEventListener("click",getSCBData);
+        document.getElementById("displayInfo").addEventListener("click",displayInfo);
         
         setupRegionSelectBox();
         setupCriteriaSelectBox();
+        
+        console.log("myRegionInfo:init()");
         
         var value = localStorage["response"];
         if (value === undefined) {
@@ -367,17 +409,13 @@ var myRegionInfo = {
             console.log(value);
             setupBarChart()
         }
-        
+   
         map = initMap();
       
-//        var cl = document.getElementById('chartContainer').className;
+        var cl = document.getElementById('chartContainer').className;
         if (document.getElementById('chartContainer').className == "Show"){
             markRegionOnMap();
         }
-   
-//        attachCheckboxHandlers();
-
-
     }      
 };
 window.addEventListener("load", myRegionInfo.init());

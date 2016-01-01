@@ -11,16 +11,18 @@ class LayoutView {
             <head>
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <link rel="stylesheet" type="text/css" href="View/css/style.css">
                 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
                 <link rel="stylesheet" href="View/css/bootstrap-multiselect.css" type="text/css">
+                <link rel="stylesheet" type="text/css" href="View/css/style.css">
 
                 <title>Kommun info</title>
             </head>
             <body>
-                <h1>Region social data</h1>
-
                 <div class="container" >
+                    <div id="header">
+                        <h1>Kommunjämförelsen</h1> 
+                        
+                    </div>
                     <?php 
                       echo $regionView->createSelectionForm();
                       echo $mapView->createMap();

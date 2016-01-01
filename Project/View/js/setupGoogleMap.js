@@ -42,6 +42,7 @@ function addMarker(pos, map, heading, text){
         }
         infowindow.open(map, marker);
         openInfoWindow = infowindow;
+
       });
       marker.setAnimation(null);
 } 
