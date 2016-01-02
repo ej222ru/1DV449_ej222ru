@@ -153,7 +153,6 @@ function TrafficMessages(url) {
                 localStorage["response"] = xmlhttp.responseText;
                 localStorage.setItem("lastDataRead", now);
                 renderTrafficMessages(); 
-                
             }
         };
         

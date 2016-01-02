@@ -4,7 +4,7 @@ namespace model;
 
 class QueriesSCB {
     
-    
+    // Url to query differnt tables from SCB
     public function getUrl($query){
         $url = "index.php";
          if ($query == "Inkomst rel riket"){
@@ -19,10 +19,13 @@ class QueriesSCB {
          else if ($query == "Andel egna hem"){
             $url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/AA/AA0003/AA0003D/IntGr6Kom";
          }
+         
+        // TEST err code $url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/AA/BB0003/AA0003D/IntGr6Kom";
+          
         return $url;
     }
     
-    
+    // Translate to offcial "kommunkoder" used by SCB API
     public function translateRegion2Code($region){
         $regionCode;
         switch($region){
@@ -48,191 +51,189 @@ class QueriesSCB {
         return $regionCode;
     }
 
-    public function getQuery($query, $regionCode){
-
-    if ($query == "Inkomst rel riket"){    
-        $q = '{
-          "query": [
-            {
-              "code": "Region",
-              "selection": {
-                "filter": "vs:RegionKommun07EjAggr",
-                "values": [
-                  ' . $regionCode . '
-                ]
+    // Specific queries described by SCB API 
+    public function getQuery($query, $region){
+        $regionCode = $this->translateRegion2Code($region);
+        if ($query == "Inkomst rel riket"){    
+            $q = '{
+              "query": [
+                {
+                  "code": "Region",
+                  "selection": {
+                    "filter": "vs:RegionKommun07EjAggr",
+                    "values": [
+                      ' . $regionCode . '
+                    ]
+                  }
+                },
+                {
+                  "code": "Hushallstyp",
+                  "selection": {
+                    "filter": "item",
+                    "values": [
+                      "E90"
+                    ]
+                  }
+                },
+                {
+                  "code": "Alder",
+                  "selection": {
+                    "filter": "item",
+                    "values": [
+                      "18+"
+                    ]
+                  }
+                },
+                {
+                  "code": "ContentsCode",
+                  "selection": {
+                    "filter": "item",
+                    "values": [
+                      "000000KF"
+                    ]
+                  }
+                },
+                {
+                  "code": "Tid",
+                  "selection": {
+                    "filter": "item",
+                    "values": [
+                      "2013"
+                    ]
+                  }
+                }
+              ],
+              "response": {
+                "format": "json"
               }
-            },
-            {
-              "code": "Hushallstyp",
-              "selection": {
-                "filter": "item",
-                "values": [
-                  "E90"
-                ]
+            }';
+        }
+        else if ($query == "Ohälsotal dagar"){
+            $q = '{
+                "query": [
+                {
+                  "code": "Region",
+                  "selection": {
+                    "filter": "item",
+                    "values": [
+                      ' . $regionCode . '
+                    ]
+                  }
+                },
+                {
+                  "code": "Bakgrund",
+                  "selection": {
+                    "filter": "vs:IntegrationBakgrundFödelseland",
+                    "values": [
+                      "TOT"
+                    ]
+                  }
+                },
+                {
+                  "code": "ContentsCode",
+                  "selection": {
+                    "filter": "item",
+                    "values": [
+                      "AA00038G"
+                    ]
+                  }
+                },
+                {
+                  "code": "Tid",
+                  "selection": {
+                    "filter": "item",
+                    "values": [
+                      "2013"
+                    ]
+                  }
+                }
+              ],
+              "response": {
+                "format": "json"
               }
-            },
-            {
-              "code": "Alder",
-              "selection": {
-                "filter": "item",
-                "values": [
-                  "18+"
-                ]
+            }';   
+        }         
+        else if ($query == "Röstdeltagande"){
+            $q = '{
+                "query": [
+                  {
+                    "code": "Region",
+                    "selection": {
+                      "filter": "item",
+                      "values": [
+                         ' . $regionCode . '
+                      ]
+                    }
+                  },
+                  {
+                    "code": "Bakgrund",
+                    "selection": {
+                      "filter": "item",
+                      "values": [
+                        "300"
+                      ]
+                    }
+                  },
+                  {
+                    "code": "Tid",
+                    "selection": {
+                      "filter": "item",
+                      "values": [
+                        "2014"
+                      ]
+                    }
+                  }
+                ],
+                "response": {
+                  "format": "json"
+                }
+            }';   
+        }        
+        else if ($query == "Andel egna hem"){
+            $q = '{
+              "query": [
+                {
+                  "code": "Region",
+                  "selection": {
+                    "filter": "item",
+                    "values": [
+                      ' . $regionCode . '
+                    ]
+                  }
+                },
+                {
+                  "code": "Bakgrund",
+                  "selection": {
+                    "filter": "vs:ÅlderInt3KL0-65+Ag",
+                    "values": [
+                      "totalt"
+                    ]
+                  }
+                },
+                {
+                  "code": "ContentsCode",
+                  "selection": {
+                    "filter": "item",
+                    "values": [
+                      "AA0003M1"
+                    ]
+                  }
+                },
+                {
+                  "code": "Tid",
+                  "selection": {
+                    "filter": "item",
+                    "values": [
+                      "2013"
+                    ]
+                  }
+                }
+              ],
+              "response": {
+                "format": "json"
               }
-            },
-            {
-              "code": "ContentsCode",
-              "selection": {
-                "filter": "item",
-                "values": [
-                  "000000KF"
-                ]
-              }
-            },
-            {
-              "code": "Tid",
-              "selection": {
-                "filter": "item",
-                "values": [
-                  "2013"
-                ]
-              }
-            }
-          ],
-          "response": {
-            "format": "json"
-          }
-        }';
+            }';        
+        };
+        return $q;
     }
-    else if ($query == "Ohälsotal dagar"){
-        $q = '{
-            "query": [
-            {
-              "code": "Region",
-              "selection": {
-                "filter": "item",
-                "values": [
-                  ' . $regionCode . '
-                ]
-              }
-            },
-            {
-              "code": "Bakgrund",
-              "selection": {
-                "filter": "vs:IntegrationBakgrundFödelseland",
-                "values": [
-                  "TOT"
-                ]
-              }
-            },
-            {
-              "code": "ContentsCode",
-              "selection": {
-                "filter": "item",
-                "values": [
-                  "AA00038G"
-                ]
-              }
-            },
-            {
-              "code": "Tid",
-              "selection": {
-                "filter": "item",
-                "values": [
-                  "2013"
-                ]
-              }
-            }
-          ],
-          "response": {
-            "format": "json"
-          }
-        }';   
-    }         
-    else if ($query == "Röstdeltagande"){
-        $q = '{
-            "query": [
-              {
-                "code": "Region",
-                "selection": {
-                  "filter": "item",
-                  "values": [
-                     ' . $regionCode . '
-                  ]
-                }
-              },
-              {
-                "code": "Bakgrund",
-                "selection": {
-                  "filter": "item",
-                  "values": [
-                    "300"
-                  ]
-                }
-              },
-              {
-                "code": "Tid",
-                "selection": {
-                  "filter": "item",
-                  "values": [
-                    "2014"
-                  ]
-                }
-              }
-            ],
-            "response": {
-              "format": "json"
-            }
-        }';   
-    }        
-    else if ($query == "Andel egna hem"){
-        $q = '{
-          "query": [
-            {
-              "code": "Region",
-              "selection": {
-                "filter": "item",
-                "values": [
-                  ' . $regionCode . '
-                ]
-              }
-            },
-            {
-              "code": "Bakgrund",
-              "selection": {
-                "filter": "vs:ÅlderInt3KL0-65+Ag",
-                "values": [
-                  "totalt"
-                ]
-              }
-            },
-            {
-              "code": "ContentsCode",
-              "selection": {
-                "filter": "item",
-                "values": [
-                  "AA0003M1"
-                ]
-              }
-            },
-            {
-              "code": "Tid",
-              "selection": {
-                "filter": "item",
-                "values": [
-                  "2013"
-                ]
-              }
-            }
-          ],
-          "response": {
-            "format": "json"
-          }
-        }';        
-    };
-    return $q;
-}
-    
-    
-    
 }

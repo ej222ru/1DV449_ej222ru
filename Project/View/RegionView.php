@@ -1,23 +1,11 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of RegionView
- *
- * @author User
- */
-
 namespace view;
 
 class RegionView {
     
     public function createSelectionForm(){
-
+        
         echo '
             <div id="form1">
                 <select id="RegionId" name="Region[]" size="3" multiple>
@@ -53,17 +41,14 @@ class RegionView {
            <button type="button" id="displayInfo" class="btn btn-info">Info</button>
 
         <div id="Info" class="Hide">   
-        Välj mellan en till tre kommuner i drop down menyn. Har du redan valt tre 
-        och vill välja om måste du först avmarkera någon av de du redan valt. 
-        Välj jämförelsetal i den andra drop down menyn. Du kan som mest jämföra 
-        två egenskaper samtidigt \br Hovra över staplarna för attse vad de reprenterar.
-        </div>
-            <div id="error" class="Hide">   
-        </div>
-        
+            Välj mellan en till tre kommuner i drop down menyn. Har du redan valt tre 
+            och vill välja om måste du först avmarkera någon av de du redan valt. 
+            <br>Välj jämförelsetal i den andra drop down menyn. Du kan som mest jämföra 
+            två egenskaper samtidigt <br> Hovra över staplarna för att se vad de representerar.
+        </div>  
+       <div id="error" class="Hide"> </div>
         <div id="chartContainer" class="Hide">   
             <canvas id="myChart"></canvas>
         </div>';
-        
    }
 }
