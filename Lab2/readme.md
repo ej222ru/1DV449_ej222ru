@@ -1,3 +1,5 @@
+# Lab2 - messy labbage, Erland Jönsson ej222ru
+
 # Säkerhetsproblem
 
 ## SQL-injection
