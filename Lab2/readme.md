@@ -101,6 +101,7 @@ Fel rättas
 * CSS styling direkt i html filer (admin.html, index.html)
 * Javascript direkt i html filer (default.html)
 * Javascript laddas inte konsekvant i slutet utan finns i <head>
+
 #### Konsekvenser
 Onödig trafik när inte CSS och Javascript inte samlas i filer som laddas.
 Sidan ser ut att laddas onödigt långsamt när scripten inte laddas sist.
