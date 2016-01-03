@@ -15,111 +15,110 @@ Separarer osäker data från kommandon och databasfrågor. Ett säkert API är a
 Parametriserade frågor och Stored Procedures använda på rätt sätt, alltså med en sriös validering. [1]
 
 ## Autentisering och session management
-Problembeskrivning
+
+#### Problembeskrivning
 Sessionen finns kvar och om någon annan kommer över datorn, ex vis om man använt en dator på ett webb cafe, så kan dom genom historiken direkt plocka upp sidan igen.
-Konsekvenser
+#### Konsekvenser
 Beror ju helt på applikationen. Förlust av känslig information eller att någon i största allmänhet utger sig för att vara en annan person.
 #### Åtgärd
 Förstöra sessionen vid utloggning.[2]
 
-Cross-Site scripting (XSS)
-Problembeskrivning
+## Cross-Site scripting (XSS)
+
+#### Problembeskrivning
 Inskickad HTML kod och javascriptkod i formuläret tolkades som det. 
-Konsekvenser
+#### Konsekvenser
 Användares sessioner kan stjälas och därigenom kunna logga in som den personen. 
 #### Åtgärd
 Förstöra sessionen vid utloggning.[3]
 
-Problembeskrivning
+#### Problembeskrivning
 HttpOnly är false. Därigenom kan cookie kommas åt med javascript. 
-Konsekvenser
+#### Konsekvenser
 Om man hittar en sida som är öppen för XSS så kan då cookie kommas åt och öppnas för hijacking av konto eller session.
 #### Åtgärd
 Sätt HttpOnly = true.[4]
 
+## Känslig data
 
-Känslig data
-Problembeskrivning
+#### Problembeskrivning
 Känslig data skyddas inte på erforderligt vis. I detta fall handlar det om att password inte är hashat när man tittar i 
 databasfilen. 
-
- 
-
-Konsekvenser
+#### Konsekvenser
 Efersom siten är öppen för sql-injection kan denna data kommas åt. Dels så kan användaren senare logga in med denna info, dessutom med kännedom 
 om hur vanligt det är att användare har samma lösenord på många siter så blir problemet extra stort.
 #### Åtgärd
 Lösenord som sparas i databaser ska hashas.[5]
 
-Problembeskrivning
+#### Problembeskrivning
 Data skickas okrypterat, bl a password vid inloggning.
-   
-Konsekvenser
+#### Konsekvenser
 Allt är läsbart för de som har möjlighet att lyssna av kommunikationen. 
 #### Åtgärd
 Använd SSL (HTTPS).[7]
 
 
+## Cross-Site Request Forgery (CSRF)
 
-Cross-Site Request Forgery (CSRF)
-Problembeskrivning
+#### Problembeskrivning
 Genom en säkerhetsbrist så kan man med HTML eller js kan posta data som en annan användare. Det bygger på att en webbapplikation har
 autentiserat en användares webbläsare men den är sedan hijackad och postningarna sker från en annan site men genom den. Vanligt är att gömma länkar i bildtaggar då de laddas automatiskt.
-Konsekvenser
+#### Konsekvenser
 Genom att komma över en annan inloggning kan man göra allt det som ursprungliga användaren kan göra.
 #### Åtgärd
 Använd en session token i form för validering som ligger gömd i själva sidan. Denna ändras vid varje sidladdning och är inte åtkomlig av kaparen.[6]
 
-Prestandaproblem 
+# Prestandaproblem 
 
-Cache
-Problembeskrivning
+## Cache
+
+#### Problembeskrivning
 Ingenting cachas
-Konsekvenser
+#### Konsekvenser
 Onödig trafik vid varje postning 
 #### Åtgärd
 Använd lokal cache i klienten[8]
 
-Felaktig laddning
-Problembeskrivning
+## Felaktig laddning
+
+#### Problembeskrivning
 Inläsning av meddelanden redan vid inloggningssidan
 Buggar, ”Uncaught TypeError”
 Inläsning av länkar fungerar som inte
 http://localhost:3000/assets/js/ie10-viewport-bug-workaround.js
 http://localhost:3000/static/css/materialize.min.css
 http://localhost:3000/static/js/materialize.js
-
-Konsekvenser
+#### Konsekvenser
 Onödig trafik 
 #### Åtgärd
 Behöver inte läsa upp meddelande vid login sidan.
 Fel rättas
 
-Problembeskrivning
+#### Problembeskrivning
 CSS styling direkt i html filer (admin.html, index.html)
 Javascript direkt i html filer (default.html)
 Javascript laddas inte konsekvant i slutet utan finns i <head>
-Konsekvenser
+#### Konsekvenser
 Onödig trafik när inte CSS och Javascript inte samlas i filer som laddas.
 Sidan ser ut att laddas onödigt långsamt när scripten inte laddas sist.
 #### Åtgärd
 Samla all Javascript i js-filer och styling i CSS-filer
 
-Problembeskrivning
+#### Problembeskrivning
 Filer som laddas är onödigt stora
-Konsekvenser
+#### Konsekvenser
 Mer åtgång av bandbredd
 #### Åtgärd
 Minifiera javascriptfiler och CSS-filer.[8]
 
-Problembeskrivning
+#### Problembeskrivning
 Onödigt många filer som laddas 
-Konsekvenser
+#### Konsekvenser
 Fler anrop
 #### Åtgärd
 Slå ihop flera javascript-filer i en och samma sak med CSS-filer.[8]
 
-Egna övergripande reflektioner
+# Egna övergripande reflektioner
 Här har det brutits mot det mesta. Jag tror det är väldigt lätt att det också blir så om man är alltför fokuserad på att lösa funktionella uppgifter, och det är ju också det som brukar vara det primära kravet från beställare.
 Ska man jobba professionellt med webbutveckling kan man naturligtvis inte leverera något som liknar detta. Säkerhet kommer alltmer i fokus i takt med att viktiga sidor hackas. Kostnaden för miljontals förlorade kortuppgifter eller användaruppgifter är oerhörda. Det är då viktigt att kunskap om säkerhet också når beställarna och att dom accepterar att betala för det vid utvecklingen. Som utvecklare får man hålla det i minnet och dels kunna förklara varför det behövs och måste kosta i utvecklingsskedet. Det gäller också att fortsätta följa utvecklingen inom området. Själv tror jag att en del av problematiken med autentisering kommer försvinna i och med intåget av biometrisk identifiering som jag tror kommer kraftfullt de närmsta åren. Bra automatiserade verktyg för att testa webbsidor/applikationer borde kunna hitta en marknad. 
 
