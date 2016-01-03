@@ -103,7 +103,7 @@ Fel rättas
 * Javascript laddas inte konsekvant i slutet utan finns i <head>
 
 #### Konsekvenser
-Onödig trafik när inte CSS och Javascript inte samlas i filer som laddas.
+Onödig trafik när CSS och Javascript inte samlas i filer som laddas.
 Sidan ser ut att laddas onödigt långsamt när scripten inte laddas sist.
 #### Åtgärd
 Samla all Javascript i js-filer och styling i CSS-filer
