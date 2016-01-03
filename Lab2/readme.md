@@ -2,15 +2,15 @@
 
 ## SQL-injection
 
-### Problembeskrivning
+#### Problembeskrivning
 Öppen för sql-injektions. Det gick att logga in med password ' OR '1'='1 som alltid evaluerar true oavsett användarnamn bara det ser ut som en emailadress.
 Man blir då även inloggad som admin.
 Man skickar in sql-queryn tillsammans med username och password från browsern. Ingen klientvalidering av inmatade värden sker.
 Man får även reda på att tabellnamnet är ”user” direkt genom att läsa koden.
 
-Konsekvenser
+#### Konsekvenser
 Databasen kan manipuleras och även i extremfall att hela servern tas över. Kopierad eller ändrad data kan leda till i stort sett obegränsad skada för ägaren.
-Åtgärd
+#### Åtgärd
 Separarer osäker data från kommandon och databasfrågor. Ett säkert API är att föredra och om man inte har det se till att ta bort specialtecken från inmatad data. 
 Parametriserade frågor och Stored Procedures använda på rätt sätt, alltså med en sriös validering. [1]
 
