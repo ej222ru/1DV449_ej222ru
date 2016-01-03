@@ -125,15 +125,14 @@ Här har det brutits mot det mesta. Jag tror det är väldigt lätt att det ocks
 Ska man jobba professionellt med webbutveckling kan man naturligtvis inte leverera något som liknar detta. Säkerhet kommer alltmer i fokus i takt med att viktiga sidor hackas. Kostnaden för miljontals förlorade kortuppgifter eller användaruppgifter är oerhörda. Det är då viktigt att kunskap om säkerhet också når beställarna och att dom accepterar att betala för det vid utvecklingen. Som utvecklare får man hålla det i minnet och dels kunna förklara varför det behövs och måste kosta i utvecklingsskedet. Det gäller också att fortsätta följa utvecklingen inom området. Själv tror jag att en del av problematiken med autentisering kommer försvinna i och med intåget av biometrisk identifiering som jag tror kommer kraftfullt de närmsta åren. Bra automatiserade verktyg för att testa webbsidor/applikationer borde kunna hitta en marknad. 
 
 
-Referenser
-[1] ”OWASP Top 10 2013-A1-Injection", OWASP, 23 Juni 2013 [Online] Tillgänglig:https://www.owasp.org/index.php/Top_10_2013-A1-Injection [Hämtad: 3 januari, 2016].
-[2] “OWASP Top 10 2013-A2-Broken Authentication and Session Management", OWASP 3 February 2015 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A2-Broken_Authentication_and_Session_Management  [Hämtad: 3 januari, 2016].
-[3] “OWASP Top 10 2013-A3-Cross-Site Scripting", OWASP, 3 February 2014 [Online] Tillgänglig:https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS) [Hämtad: 3 januari, 2016].
-[4] “OWASP HttpOnly", OWASP, 12 November 2014 [Online] Tillgänglig: https://www.owasp.org/index.php/HttpOnly  [Hämtad: 3 januari, 2016].
-[5] “OWASP Password Storage Cheat Sheet", OWASP, 16 November 2015, [Online] Tillgänglig: https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet [Hämtad: 3 januari, 2016].
-[6] “OWASP Top 10 2013-A8-Cross-Site Request Forgery (CSRF)", OWASP, 18 September 2013 [Online]https://www.owasp.org/index.php/Top_10_2013-A8-Cross-Site_Request_Forgery_(CSRF) [Hämtad: 3 januari, 2016].
-[7] “OWASP Top 10 2013-A6- Sensitive_Data_Exposure ", 23 Juni 2013 [Online] Tillgänglig:https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure  [Hämtad:3 december, 2015]
-
-[8] Steve Souders, High Performance Web Sites: Combined Scripts and Stylesheets, O'Reilly, 2007. [Online] Tillgänglig:http://www.it.iitb.ac.in/frg/wiki/images/4/44/Oreilly.Seve.Suoders.High.Performance.Web.Sites.Sep.2007.pdf [Hämtad: 3 januari, 2016].
+# Referenser
+* [1] ”OWASP Top 10 2013-A1-Injection", OWASP, 23 Juni 2013 [Online] Tillgänglig:https://www.owasp.org/index.php/Top_10_2013-A1-Injection [Hämtad: 3 januari, 2016].
+* [2] “OWASP Top 10 2013-A2-Broken Authentication and Session Management", OWASP 3 February 2015 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A2-Broken_Authentication_and_Session_Management  [Hämtad: 3 januari, 2016].
+* [3] “OWASP Top 10 2013-A3-Cross-Site Scripting", OWASP, 3 February 2014 [Online] Tillgänglig:https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS) [Hämtad: 3 januari, 2016].
+* [4] “OWASP HttpOnly", OWASP, 12 November 2014 [Online] Tillgänglig: https://www.owasp.org/index.php/HttpOnly  [Hämtad: 3 januari, 2016].
+* [5] “OWASP Password Storage Cheat Sheet", OWASP, 16 November 2015, [Online] Tillgänglig: https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet [Hämtad: 3 januari, 2016].
+* [6] “OWASP Top 10 2013-A8-Cross-Site Request Forgery (CSRF)", OWASP, 18 September 2013 [Online]https://www.owasp.org/index.php/Top_10_2013-A8-Cross-Site_Request_Forgery_(CSRF) [Hämtad: 3 januari, 2016].
+* [7] “OWASP Top 10 2013-A6- Sensitive_Data_Exposure ", 23 Juni 2013 [Online] Tillgänglig:https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure  [Hämtad:3 december, 2015]
+* [8] Steve Souders, High Performance Web Sites: Combined Scripts and Stylesheets, O'Reilly, 2007. [Online] Tillgänglig:http://www.it.iitb.ac.in/frg/wiki/images/4/44/Oreilly.Seve.Suoders.High.Performance.Web.Sites.Sep.2007.pdf [Hämtad: 3 januari, 2016].
 
 
