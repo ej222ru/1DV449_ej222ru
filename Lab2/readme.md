@@ -90,6 +90,7 @@ Använd lokal cache i klienten[8]
 * http://localhost:3000/assets/js/ie10-viewport-bug-workaround.js
 * http://localhost:3000/static/css/materialize.min.css
 * http://localhost:3000/static/js/materialize.js
+
 #### Konsekvenser
 Onödig trafik 
 #### Åtgärd
