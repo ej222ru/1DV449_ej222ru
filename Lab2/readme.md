@@ -14,12 +14,12 @@ Databasen kan manipuleras och även i extremfall att hela servern tas över. Kop
 Separarer osäker data från kommandon och databasfrågor. Ett säkert API är att föredra och om man inte har det se till att ta bort specialtecken från inmatad data. 
 Parametriserade frågor och Stored Procedures använda på rätt sätt, alltså med en sriös validering. [1]
 
-Autentisering och session management
+## Autentisering och session management
 Problembeskrivning
 Sessionen finns kvar och om någon annan kommer över datorn, ex vis om man använt en dator på ett webb cafe, så kan dom genom historiken direkt plocka upp sidan igen.
 Konsekvenser
 Beror ju helt på applikationen. Förlust av känslig information eller att någon i största allmänhet utger sig för att vara en annan person.
-Åtgärd
+#### Åtgärd
 Förstöra sessionen vid utloggning.[2]
 
 Cross-Site scripting (XSS)
@@ -27,14 +27,14 @@ Problembeskrivning
 Inskickad HTML kod och javascriptkod i formuläret tolkades som det. 
 Konsekvenser
 Användares sessioner kan stjälas och därigenom kunna logga in som den personen. 
-Åtgärd
+#### Åtgärd
 Förstöra sessionen vid utloggning.[3]
 
 Problembeskrivning
 HttpOnly är false. Därigenom kan cookie kommas åt med javascript. 
 Konsekvenser
 Om man hittar en sida som är öppen för XSS så kan då cookie kommas åt och öppnas för hijacking av konto eller session.
-Åtgärd
+#### Åtgärd
 Sätt HttpOnly = true.[4]
 
 
@@ -48,7 +48,7 @@ databasfilen.
 Konsekvenser
 Efersom siten är öppen för sql-injection kan denna data kommas åt. Dels så kan användaren senare logga in med denna info, dessutom med kännedom 
 om hur vanligt det är att användare har samma lösenord på många siter så blir problemet extra stort.
-Åtgärd
+#### Åtgärd
 Lösenord som sparas i databaser ska hashas.[5]
 
 Problembeskrivning
@@ -56,7 +56,7 @@ Data skickas okrypterat, bl a password vid inloggning.
    
 Konsekvenser
 Allt är läsbart för de som har möjlighet att lyssna av kommunikationen. 
-Åtgärd
+#### Åtgärd
 Använd SSL (HTTPS).[7]
 
 
@@ -67,7 +67,7 @@ Genom en säkerhetsbrist så kan man med HTML eller js kan posta data som en ann
 autentiserat en användares webbläsare men den är sedan hijackad och postningarna sker från en annan site men genom den. Vanligt är att gömma länkar i bildtaggar då de laddas automatiskt.
 Konsekvenser
 Genom att komma över en annan inloggning kan man göra allt det som ursprungliga användaren kan göra.
-Åtgärd
+#### Åtgärd
 Använd en session token i form för validering som ligger gömd i själva sidan. Denna ändras vid varje sidladdning och är inte åtkomlig av kaparen.[6]
 
 Prestandaproblem 
@@ -77,7 +77,7 @@ Problembeskrivning
 Ingenting cachas
 Konsekvenser
 Onödig trafik vid varje postning 
-Åtgärd
+#### Åtgärd
 Använd lokal cache i klienten[8]
 
 Felaktig laddning
@@ -91,7 +91,7 @@ http://localhost:3000/static/js/materialize.js
 
 Konsekvenser
 Onödig trafik 
-Åtgärd
+#### Åtgärd
 Behöver inte läsa upp meddelande vid login sidan.
 Fel rättas
 
@@ -102,21 +102,21 @@ Javascript laddas inte konsekvant i slutet utan finns i <head>
 Konsekvenser
 Onödig trafik när inte CSS och Javascript inte samlas i filer som laddas.
 Sidan ser ut att laddas onödigt långsamt när scripten inte laddas sist.
-Åtgärd
+#### Åtgärd
 Samla all Javascript i js-filer och styling i CSS-filer
 
 Problembeskrivning
 Filer som laddas är onödigt stora
 Konsekvenser
 Mer åtgång av bandbredd
-Åtgärd
+#### Åtgärd
 Minifiera javascriptfiler och CSS-filer.[8]
 
 Problembeskrivning
 Onödigt många filer som laddas 
 Konsekvenser
 Fler anrop
-Åtgärd
+#### Åtgärd
 Slå ihop flera javascript-filer i en och samma sak med CSS-filer.[8]
 
 Egna övergripande reflektioner
