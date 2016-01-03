@@ -33,9 +33,7 @@ html, body { height: 100%; margin: 0; padding: 0; background-color: #DEE9FF;}
   height: 34px;
   margin-right: 10px;   
 }
-.container{
-    width : 1000px;
-}
+
 
 #error 
 {

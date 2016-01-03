@@ -39,7 +39,7 @@ class LayoutView {
                 <script src="View/js/bootstrap-multiselect.js" type="text/javascript" ></script>                
                 <script src="View/js/Chart.js"  type="text/javascript"></script> 
                 <script src="View/js/setupGoogleMap.js" type="text/javascript"></script> 
-                <script src="View/js/requestSCB.js" type="text/javascript"></script> 
+                <script src="View/js/requestSCB2.js" type="text/javascript"></script> 
                 <script src="View/js/regionInfo.js" type="text/javascript"></script> 
             </body>
         </html>

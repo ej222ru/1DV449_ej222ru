@@ -145,7 +145,6 @@ class RegionController {
                                         $responseObject = json_decode($response );
 
                                         foreach($responseObject->data as $data) {
-//                                            $value = floatval($data->values[0]);
                                             $value = $data->values[0];
                                             
                                             if ($indexC == 0){
@@ -182,7 +181,6 @@ class RegionController {
                                     }                                   
                                 }
                                 else{
-//                                    $value = floatval($valueFromCache);
                                     $value = $valueFromCache;                                    
                                     $arrRegion["Region"] = $selectedRegion;
                                     $arrRegion["Criteria"] = $selectedCriteria;

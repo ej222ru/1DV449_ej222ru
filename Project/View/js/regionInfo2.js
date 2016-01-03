@@ -1,3 +1,4 @@
+/* global getSCBData */
 
 "use strict";
 
@@ -16,6 +17,7 @@ function setupRegionSelectBox(){
                           return !$(this).is(':selected');
                       });
 
+                      var dropdown = $('#RegionId').siblings('.multiselect-container');
                       nonSelectedOptions.each(function() {
                           var input = $('input[value="' + $(this).val() + '"]');
                           input.prop('disabled', true);
@@ -24,6 +26,7 @@ function setupRegionSelectBox(){
                 }
                 else {
                     // Enable all checkboxes.
+                    var dropdown = $('#RegionId').siblings('.multiselect-container');
                     $('#RegionId option').each(function() {
                         var input = $('input[value="' + $(this).val() + '"]');
                         input.prop('disabled', false);
@@ -44,6 +47,9 @@ function setupRegionSelectBox(){
         });
     });
 }
+
+
+
 
 function setupCriteriaSelectBox(){
     $(document).ready(function() {
@@ -67,6 +73,7 @@ function setupCriteriaSelectBox(){
                 }
                 else {
                     // Enable all checkboxes.
+                     var dropdown = $('#CriteriaId').siblings('.multiselect-container');
                      $('#CriteriaId option').each(function() {
                          var input = $('input[value="' + $(this).val() + '"]');
                          input.prop('disabled', false);
@@ -89,81 +96,7 @@ function setupCriteriaSelectBox(){
 }
 
 
-function getItem(type, index){
-    var regionData = document.getElementsByName("Region[]");
-    var criteriaData = document.getElementsByName("Criteria[]"); 
-    var ret = "";
-    var count = 0;
-    if (type == "Region"){
-        for(var x=0;x<regionData[0].childElementCount;x++){  
-            if (regionData[0][x].selected){
-                count++;
-                if (count == index){
-                    ret = regionData[0][x].value;
-                }
-            }
-        }
-    }
-    else if (type == "Criteria"){
-        for(var x=0;x<criteriaData[0].childElementCount;x++){  
-            if (criteriaData[0][x].selected){
-                count++;
-                if (count == index){
-                    ret = criteriaData[0][x].value;
-                }
-            }
-        }        
-    }
-    return ret;
-}
-
-function getSelectedItems(type){
-    var regionData = document.getElementsByName("Region[]");
-    var criteriaData = document.getElementsByName("Criteria[]"); 
-    var ret = 0;
-    if (type == "Region"){
-        for(var x=0;x<regionData[0].childElementCount;x++){  
-            if (regionData[0][x].selected){
-                ret++;
-            }
-        }
-    }
-    else if (type == "Criteria"){
-        for(var x=0;x<criteriaData[0].childElementCount;x++){  
-            if (criteriaData[0][x].selected){
-                ret++;
-            }
-        }        
-    }
-    return ret;
-}
-
-
-function getBarChartTypeInfo(type, index){
-
-    var regionData = document.getElementsByName("Region[]");
-    var criteriaData = document.getElementsByName("Criteria[]"); 
-    var ret = "";
-    if (type == "Region"){
-        if (index <= getSelectedItems("Region"))
-            ret = getItem("Region", index);
-    }
-    else if (type == "Criteria"){
-        if (index <= getSelectedItems("Criteria"))
-            ret = getItem("Criteria", index);
-    }
-    return ret;
-    
-/*    
-    var regionData = document.getElementsByName("Region[]");
-    var criteriaData = document.getElementsByName("Criteria[]"); 
-    for(var y=0;y<criteriaData[0].childElementCount;y++){
-        for(var x=0;x<regionData[0].childElementCount;x++){        
-           newChart.datasets[0].bars[0].value = localStorage[regionData[0][x].value+criteriaData[0][y].value];
-           newChart.datasets[0].bars[0].value = localStorage[regionData[0][x].value+criteriaData[0][y].value];
-        }
-    }
-    
+function getBarChartTypeInfo(json, items, type, index){
     var ret="";
     
     if (index > items){
@@ -175,26 +108,12 @@ function getBarChartTypeInfo(type, index){
         ret = region[type];
     } 
     return ret;
- */   
-    
 }
 
-function getBarChartLabels(){
-    var ret="";
-    var criteriaData = document.getElementsByName("Criteria[]"); 
-    if (getSelectedItems("Criteria") == 1){
-        ret = [getBarChartTypeInfo("Criteria", 1)];
-    }
-    else{
-        ret = [getBarChartTypeInfo("Criteria", 1), getBarChartTypeInfo("Criteria", 2)];
-    }
-    return ret;
-/*    
+function getBarChartLabels(items){
     var ret="";
     
     if (items % 2 == 0){
-        // Special condition to decide if two region values are for two regions and one criteria
-        // or one region for two criteria        
         if (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2)){
             ret = [getBarChartInfo("Criteria", 1)];
         }
@@ -206,22 +125,10 @@ function getBarChartLabels(){
         ret = [getBarChartInfo("Criteria", 1)];
     }
     return ret;
-    
-*/    
 }
-function getBarChartYAxis(index){
-    
-    if ((index < 4) || (getSelectedItems("Criteria") == 1)){
-        return "y-axis-1";
-    }
-    else {
-        return "y-axis-2";
-    }
-/*    
+function getBarChartYAxis(items, index){
     var ret="";    
     if (items % 2 == 0){
-        // Special condition to decide if two region values are for two regions and one criteria
-        // or one region for two criteria        
         if (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2)){
             ret = "y-axis-1";
         }
@@ -238,21 +145,8 @@ function getBarChartYAxis(index){
         ret = "y-axis-1";
     }
     return ret;
-    
-*/    
 }
-function getBarChartColor(index){
-    if (index == 1){
-        return "rgba(255,0,0,0.5)";
-    }
-    else if (index == 2){
-        return "rgba(86,66,232,0.5)";
-    }
-    else if (index == 3){
-        return "rgba(20,255,0,0.5)";
-    }
-    
-    /*
+function getBarChartColor(items, index){
     if (index > items){
         return ""; 
     }
@@ -289,28 +183,10 @@ function getBarChartColor(index){
                 return "rgba(86,66,232,0.5)";
             }
         }
-    }   
-    */
+    }    
 }
 
-function getBarChartValue(regionIndex, criteriaIndex){
-    var regionData = document.getElementsByName("Region[]");
-    var criteriaData = document.getElementsByName("Criteria[]"); 
-    var ret = "";
-    if ((regionIndex <= getSelectedItems("Region"))
-        &&
-        (criteriaIndex <= getSelectedItems("Criteria"))){
-        if (criteriaIndex == 1){
-            ret = [localStorage[getItem("Region", regionIndex)+getItem("Criteria", criteriaIndex)], 0];
-        }
-        else{
-            ret = [0,localStorage[getItem("Region", regionIndex)+getItem("Criteria", criteriaIndex)]];
-        }
-    }
-    return ret;
-    
-/*    
-    
+function getBarChartValue(json, items, type, index){
     var ret = "";
     if (index > items){
         ret = ""; 
@@ -336,147 +212,33 @@ function getBarChartValue(regionIndex, criteriaIndex){
         }
     }    
     return ret;
-    
-*/    
 }
 function getBarChartInfo(type, index) {
+    var value = localStorage["response"]; 
+    var json = JSON.parse(value);
+    var items = json.length;
 
     if (type == "Labels"){
-        return getBarChartLabels();                
+        return getBarChartLabels(items);                
     }
     else if (type == "YAxis"){
-        return getBarChartYAxis(index);                
+        return getBarChartYAxis(items, index);                
     }
     else if (type == "bgColor"){
-        return getBarChartColor(index);
+        return getBarChartColor(items, index);
     }
     else if (type == "Value"){
 
-        return getBarChartValue(type, index);
+        return getBarChartValue(json, items, type, index);
     }
     else {
-        return getBarChartTypeInfo(type, index);    
+        return getBarChartTypeInfo(json, items, type, index);    
     }
  };
 
 
 function setupBarChart(){
     
-    // Setup for a bar chart specified by chartjs
-    // Setup at most six datasets - three regions times two criteria each
-    // Values from getBarChartInfo() 
-    
-    var barChartData = {
-    labels: getBarChartInfo("Labels", 0),
-    datasets: [{
-        label: getBarChartInfo("Region", 1),
-        backgroundColor: getBarChartInfo("bgColor", 1),
-        yAxisID: getBarChartInfo("YAxis", 1),
-        data: getBarChartValue(1,1)
-        }, {
-        label: getBarChartInfo("Region", 2),
-        backgroundColor: getBarChartInfo("bgColor", 2),
-        yAxisID: getBarChartInfo("YAxis", 2),
-//        data: getBarChartValue(2,1)
-        data: getBarChartValue(2,1)
-        }, {
-        label: getBarChartInfo("Region", 3),
-        backgroundColor: getBarChartInfo("bgColor", 3),
-        yAxisID: getBarChartInfo("YAxis", 3),
-        data: getBarChartValue(3,1)
-        }, {
-        label: getBarChartInfo("Region", 1),
-        backgroundColor: getBarChartInfo("bgColor", 1),
-        yAxisID: getBarChartInfo("YAxis", 4),
-        data: getBarChartValue(1,2)
-        }, {
-        label: getBarChartInfo("Region", 2),
-        backgroundColor: getBarChartInfo("bgColor", 2),
-        yAxisID: getBarChartInfo("YAxis", 5),
-        data: getBarChartValue(2,2)
-        }, {
-        label: getBarChartInfo("Region", 3),
-        backgroundColor: getBarChartInfo("bgColor", 3),
-        yAxisID: getBarChartInfo("YAxis", 6),
-        data: getBarChartValue(3,2)
-        }]
-     };
-     
-     
-     
-    // Clear out old canvas charts
-    document.getElementById("chartContainer").innerHTML = '&nbsp;';
-    document.getElementById("chartContainer").innerHTML = '<canvas id="myChart"></canvas>';
-    var ctx = document.getElementById("myChart").getContext("2d");            
-
-    // Create a bar chart object with two y-axis, one for each possible criteria
-    var newChart = Chart.Bar(ctx, {
-        data: barChartData, 
-        options: {
-            responsive: true,
-            hoverMode: 'label',
-            hoverAnimationDuration: 400,
-            stacked: false,
-            scales: {
-                yAxes: [{
-                    type: "linear",
-                    display: true,
-                    position: "left",
-                    id: "y-axis-1",
-                }, {
-                    type: "linear",
-                    display: true,
-                    position: "right",
-                    id: "y-axis-2",
-                    gridLines: {
-                        drawOnChartArea: false
-                    }
-                }],
-            }
-        }
-    });     
-     
-     
-     /*     
-     
-    var regionData = document.getElementsByName("Region[]");
-    var criteriaData = document.getElementsByName("Criteria[]"); 
-    for(var y=0;y<criteriaData[0].childElementCount;y++){
-        for(var x=0;x<regionData[0].childElementCount;x++){        
-           newChart.datasets[0].bars[0].value = localStorage[regionData[0][x].value+criteriaData[0][y].value];
-           newChart.datasets[0].bars[0].value = localStorage[regionData[0][x].value+criteriaData[0][y].value];
-           
-        }
-    }
-    
-    
-    
-
-
-    for(var x=0;x<regionData[0].childElementCount;x++){    
-        if (regionData[0][x].selected){
-            formData += "&"; 
-            formData += "Region[]="; 
-            formData += regionData[0][x].value;
-        }
-    }
-    for(var y=0;y<criteriaData[0].childElementCount;y++){
-        if (criteriaData[0][y].selected){
-            formData += "&"; 
-            formData += "Criteria[]="; 
-            formData += criteriaData[0][y].value;
-        }
-    }
-    
-                        arr = {
-                            "Region":regionData[0][x].value,
-                            "Criteria":criteriaData[0][y].value,
-                            "Value":localStorage[regionData[0][x].value+criteriaData[0][y].value]
-                        };    
-    
-*/
-    
-/*    
     var barChartData = {
         labels: getBarChartInfo("Labels", 0),
         datasets: [{
@@ -517,7 +279,6 @@ function setupBarChart(){
     document.getElementById("chartContainer").innerHTML = '<canvas id="myChart"></canvas>';
     var ctx = document.getElementById("myChart").getContext("2d");            
 
-    // Create a bar chart object with two y-axis, one for each possible criteria
     var newChart = Chart.Bar(ctx, {
         data: barChartData, 
         options: {
@@ -543,9 +304,6 @@ function setupBarChart(){
             }
         }
     });
-    
-*/    
-    
 }
 
 function getRegionPosition(region){
@@ -603,34 +361,9 @@ function calcCenterPosition(pos1, pos2, pos3){
  * Add markers to the map for the choosen regions in the drop down menu
  */
 function markRegionOnMap(){
-    var region1;
-    var region2;
-    var region3;
-    
-    // If two criteria selected for each region then they are stored as
-    // index 1:  region1-criteria1
-    // index 2:  region1-criteria2
-    // index 3:  region2-criteria1
-    // index 4:  region2-criteria2
-    // index 5:  region3-criteria1
-    // index 6:  region3-criteria2
-    // If one criteria selected for each region then they are stored as
-    // index 1:  region1-criteria1
-    // index 2:  region2-criteria1
-    // index 3:  region3-criteria1
-    
-    
-    var items = getBarChartInfo("Items", 0);
-    if (items > 3){
-        region1 = getBarChartInfo("Region", 1)
-        region2 = getBarChartInfo("Region", 3)
-        region3 = getBarChartInfo("Region", 5)
-    }
-    else {
-        region1 = getBarChartInfo("Region", 1)
-        region2 = getBarChartInfo("Region", 2)
-        region3 = getBarChartInfo("Region", 3)
-    }
+    var region1 = getBarChartInfo("Region", 1)
+    var region2 = getBarChartInfo("Region", 2)
+    var region3 = getBarChartInfo("Region", 3)
     
     var pos1 = getRegionPosition(region1);     
     var pos2 = getRegionPosition(region2);     
@@ -646,38 +379,40 @@ function markRegionOnMap(){
  */
  function displayInfo() {
     var infoId = document.getElementById("displayInfo"); 
-    var info = document.getElementById("Info"); 
-    if (info.className == "Hide"){
-        info.className = "Show";
-        infoId.innerHTML = "Stäng info";
+    var info = document.getElementById("Info").className; 
+    if (info == "Hide"){
+        document.getElementById("Info").className = "Show";
+        document.getElementById("displayInfo").innerHTML = "Stäng info";
     }
     else {
-        info.className = "Hide";
-        infoId.innerHTML = "Info";
+        document.getElementById("Info").className = "Hide";
+        document.getElementById("displayInfo").innerHTML = "Info";
     }
  }
 var myRegionInfo = {
     init: function(){
+//        localStorage.clear("response");
         document.getElementById("getSCB").addEventListener("click",getSCBData);
         document.getElementById("displayInfo").addEventListener("click",displayInfo);
         
         setupRegionSelectBox();
         setupCriteriaSelectBox();
         
-//        console.log("myRegionInfo:init()");
+        console.log("myRegionInfo:init()");
         
         var value = localStorage["response"];
         if (value === undefined) {
-//            console.log("localstorage undefined");
+            console.log("localstorage undefined");
             document.getElementById('chartContainer').className = "Hide";            
         }
         else {    
-//            console.log(value);
+            console.log(value);
             setupBarChart()
         }
    
         map = initMap();
       
+        var cl = document.getElementById('chartContainer').className;
         if (document.getElementById('chartContainer').className == "Show"){
             markRegionOnMap();
         }

@@ -2,40 +2,6 @@
 
 
 
-
-
-function sortLocalAndRemote(local, respons){
-
-    dataComb += data.substr(1, data.length-1);
-    var responsSplit = respons.substr(1, respons.length-1);
-    responsSplit = responsSplit.split(","); 
-    
-    
-    var jsonL = JSON.parse(local);
-    var itemsL = json.length;   
-    var arrL;
-    for (var i=0; i<itemsL; i++){
-        arrL[jsonL[i]["Region"]] = jsonL[i]["Criteria"];
-    }
-
-
-    function exist(regionR, criteriaR){
-        for (var i=0; i<itemsL; i++){
-            if (arrL[regionR] == criteriaR)
-                return true;
-        }        
-        return false;
-    }
-
-    var jsonR = JSON.parse(respons);
-    var itemsR = json.length;                
-    for (var i=0; i<itemsR; i++){
-        exist(jsonR[i]["Region"], jsonR[i]["Criteria"]);
-    }
-    
-    
-}
-
  function getSCBData() {
     var  formData="";
     var regionData = document.getElementsByName("Region[]");
@@ -64,13 +30,11 @@ function sortLocalAndRemote(local, respons){
     
     var arr={};
     var first = true;
-    var missing = false;
-    var lastMissingRegion = 999;  // "random init value > 2. Cant initiate to 0 since that will match the first in check below
-    var lastMissingCriteria = 999;  // "random init value > 1. Cant initiate to 0 since that will match the first in check below
     localStorage.removeItem("responsePart");
     for(var x=0;x<regionData[0].childElementCount;x++){
         if (regionData[0][x].selected){
             for(var y=0;y<criteriaData[0].childElementCount;y++){
+                 formData="";
                  if (criteriaData[0][y].selected){
                     // check if value for requested region/criteria combination exist in localStorage 
                     var test = localStorage[regionData[0][x].value+criteriaData[0][y].value];
@@ -90,28 +54,54 @@ function sortLocalAndRemote(local, respons){
                         
                     }
                     else{
-                        missing = true; 
-                        if (lastMissingRegion != x){
-                            formData += "&"; 
-                            formData += "Region[]="; 
-                            formData += regionData[0][x].value;
-                            lastMissingRegion = x;
-                        }
-                        if (lastMissingCriteria != y){
-                            formData += "&"; 
-                            formData += "Criteria[]="; 
-                            formData += criteriaData[0][y].value;    
-                            lastMissingCriteria = y;
-                        }
+                        formData += "&"; 
+                        formData += "Region[]="; 
+                        formData += regionData[0][x].value;
+                        formData += "&"; 
+                        formData += "Criteria[]="; 
+                        formData += criteriaData[0][y].value;    
+                        
+                        $.ajax({
+                             url : "index.php",
+                             type: "POST",
+                             async:false,
+                             data : formData,
+                             success: function(data, textStatus, jqXHR)
+                             {
+                                 var json = JSON.parse(data);
+                                 if (json["error"] == "true"){
+                                     localStorage.removeItem("response");
+                                     var text = json["errorText"];
+                                     document.getElementById('error').innerHTML = text;
+                                     document.getElementById('error').className = "Show";
+                                 }
+                                 else{
+                                    localStorage["response"] = data;
+                                    var value = localStorage["response"]; 
+                                    var json = JSON.parse(value);
+                                    var items = json.length;                
+                                    for (var i=0; i<items; i++){
+                                        localStorage[json[i]["Region"]+json[i]["Criteria"]] = json[i]["Value"];
+                                    }
+                                 }
+                             },
+                             error: function (jqXHR, textStatus, errorThrown)
+                             {
+                                 localStorage.removeItem("response");
+                             }
+                         });
                     }
                 }
             }
         }
     }
-    json +=']';
 
-    localStorage["response"] = json;
-    localStorage["responsePart"] = jsonPartReply;
+    document.getElementById('chartContainer').className = "Show";
+    document.getElementById('error').className = "Hide";
+    myRegionInfo.init();        
+     
+  /*  
+
     
 
     if (missing){
@@ -171,6 +161,10 @@ function sortLocalAndRemote(local, respons){
         document.getElementById('error').className = "Hide";
         myRegionInfo.init();        
     }
+*/    
+    
+    
+    
 };
 
 
