@@ -87,9 +87,9 @@ Använd lokal cache i klienten[8]
 * Inläsning av meddelanden redan vid inloggningssidan
 * Buggar, ”Uncaught TypeError”
 * Inläsning av länkar fungerar som inte
-http://localhost:3000/assets/js/ie10-viewport-bug-workaround.js
-http://localhost:3000/static/css/materialize.min.css
-http://localhost:3000/static/js/materialize.js
+* http://localhost:3000/assets/js/ie10-viewport-bug-workaround.js
+* http://localhost:3000/static/css/materialize.min.css
+* http://localhost:3000/static/js/materialize.js
 #### Konsekvenser
 Onödig trafik 
 #### Åtgärd
