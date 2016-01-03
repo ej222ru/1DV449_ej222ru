@@ -1,8 +1,8 @@
 # Säkerhetsproblem
 
-SQL-injection
+## SQL-injection
 
-Problembeskrivning
+### Problembeskrivning
 Öppen för sql-injektions. Det gick att logga in med password ' OR '1'='1 som alltid evaluerar true oavsett användarnamn bara det ser ut som en emailadress.
 Man blir då även inloggad som admin.
 Man skickar in sql-queryn tillsammans med username och password från browsern. Ingen klientvalidering av inmatade värden sker.
