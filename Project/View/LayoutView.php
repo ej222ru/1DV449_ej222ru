@@ -15,7 +15,7 @@ class LayoutView {
                 <link rel="stylesheet" href="View/css/bootstrap-multiselect.css" type="text/css">
                 <link rel="stylesheet" type="text/css" href="View/css/style.css">
 
-                <title>Kommun info</title>
+                <title>Kommunjämförelsen</title>
             </head>
             <body>
                 <div class="container" >

@@ -1,28 +1,59 @@
-160102--File does not exist cache/BotkyrkaOhälsotal dagar.txt
-160102--File does not exist cache/VallentunaOhälsotal dagar.txt
-160102--File does not exist cache/BotkyrkaRöstdeltagande.txt
-160102--File does not exist cache/SundbybergInkomst rel riket.txt
-160102--File does not exist cache/SundbybergRöstdeltagande.txt
-160102--File does not exist cache/TyresöInkomst rel riket.txt
-160102--File does not exist cache/TyresöRöstdeltagande.txt
-160102--File does not exist cache/HaningeOhälsotal dagar.txt
-160102--File does not exist cache/HaningeAndel egna hem.txt
-160102--File exist content fresh cache/HaningeOhälsotal dagar.txt
-160102--File exist content fresh cache/HaningeAndel egna hem.txt
-160102--File exist content fresh cache/HaningeOhälsotal dagar.txt
-160102--File exist content fresh cache/HaningeAndel egna hem.txt
-160103--File does not exist cache/SundbybergAndel egna hem.txt
-160103--File does not exist cache/TäbyOhälsotal dagar.txt
-160103--File does not exist cache/TäbyAndel egna hem.txt
-160103--File does not exist cache/Upplands VäsbyOhälsotal dagar.txt
-160103--File does not exist cache/Upplands VäsbyAndel egna hem.txt
-160103--File does not exist cache/VärmdöAndel egna hem.txt
-160103--File does not exist cache/DanderydOhälsotal dagar.txt
-160103--File does not exist cache/StockholmInkomst rel riket.txt
-160103--File does not exist cache/StockholmRöstdeltagande.txt
-160103--File does not exist cache/EkeröOhälsotal dagar.txt
-160103--File exist content fresh cache/EkeröOhälsotal dagar.txt
-160103--File does not exist cache/BotkyrkaAndel egna hem.txt
-160103--File does not exist cache/DanderydRöstdeltagande.txt
-160103--File does not exist cache/EkeröRöstdeltagande.txt
-160103--File does not exist cache/Upplands VäsbyRöstdeltagande.txt
+160104--File does not exist cache/DanderydOhälsotal dagar.txt
+160104--File does not exist cache/DanderydAndel egna hem.txt
+160104--File does not exist cache/HuddingeOhälsotal dagar.txt
+160104--File does not exist cache/HuddingeAndel egna hem.txt
+160104--File does not exist cache/ÖsteråkerOhälsotal dagar.txt
+160104--File does not exist cache/ÖsteråkerAndel egna hem.txt
+160104--File does not exist cache/NackaOhälsotal dagar.txt
+160104--File does not exist cache/NackaAndel egna hem.txt
+160104--File does not exist cache/SolnaOhälsotal dagar.txt
+160104--File does not exist cache/SolnaAndel egna hem.txt
+160104--File does not exist cache/StockholmOhälsotal dagar.txt
+160104--File does not exist cache/StockholmAndel egna hem.txt
+160104--File does not exist cache/SundbybergOhälsotal dagar.txt
+160104--File does not exist cache/SundbybergAndel egna hem.txt
+160104--File does not exist cache/SolnaRöstdeltagande.txt
+160104--File does not exist cache/StockholmRöstdeltagande.txt
+160104--File does not exist cache/SundbybergRöstdeltagande.txt
+160104--File does not exist cache/TyresöOhälsotal dagar.txt
+160104--File does not exist cache/TyresöAndel egna hem.txt
+160104--File does not exist cache/SolnaInkomst rel riket.txt
+160104--File does not exist cache/StockholmInkomst rel riket.txt
+160104--File does not exist cache/TyresöInkomst rel riket.txt
+160104--File does not exist cache/SundbybergInkomst rel riket.txt
+160104--File does not exist cache/SollentunaInkomst rel riket.txt
+160104--File does not exist cache/SollentunaAndel egna hem.txt
+160104--File does not exist cache/TäbyInkomst rel riket.txt
+160104--File does not exist cache/TäbyAndel egna hem.txt
+160104--File does not exist cache/Upplands VäsbyInkomst rel riket.txt
+160104--File does not exist cache/Upplands VäsbyAndel egna hem.txt
+160104--File does not exist cache/NackaInkomst rel riket.txt
+160105--File does not exist cache/DanderydInkomst rel riket.txt
+160105--File does not exist cache/SollentunaOhälsotal dagar.txt
+160105--File does not exist cache/DanderydMedelålder.txt
+160105--File does not exist cache/EkeröInkomst rel riket.txt
+160105--File does not exist cache/EkeröMedelålder.txt
+160105--File does not exist cache/DanderydRöstdeltagande.txt
+160105--File does not exist cache/EkeröRöstdeltagande.txt
+160105--File does not exist cache/DanderydMedelålder.txt
+160105--File does not exist cache/EkeröMedelålder.txt
+160105--File does not exist cache/DanderydMedelålder.txt
+160105--File does not exist cache/DanderydMedelålder.txt
+160105--File does not exist cache/BotkyrkaInkomst rel riket.txt
+160105--File does not exist cache/BotkyrkaMedelålder.txt
+160105--File does not exist cache/DanderydMedelålder.txt
+160105--File does not exist cache/BotkyrkaAndel egna hem.txt
+160105--File does not exist cache/SollentunaMedelålder.txt
+160105--File does not exist cache/NackaAndel egna hem,utlandsfödda exkl EU.txt
+160105--File does not exist cache/SollentunaAndel egna hem,utlandsfödda exkl EU.txt
+160105--File does not exist cache/BotkyrkaAndel egna hem,utlandsfödda exkl EU.txt
+160105--File does not exist cache/DanderydAndel egna hem,utlandsfödda exkl EU.txt
+160105--File does not exist cache/TyresöAndel egna hem,utlandsfödda exkl EU.txt
+160105--File does not exist cache/TäbyAndel egna hem,utlandsfödda exkl EU.txt
+160105--File does not exist cache/BotkyrkaKommunal skattesats.txt
+160105--File does not exist cache/BotkyrkaKommunal skattesats.txt
+160105--File does not exist cache/BotkyrkaOhälsotal dagar.txt
+160105--File does not exist cache/DanderydKommunal skattesats.txt
+160105--File does not exist cache/DanderydKommunal skattesats.txt
+160105--File does not exist cache/BotkyrkaKommunal skattesats.txt
+160105--File does not exist cache/DanderydKommunal skattesats.txt

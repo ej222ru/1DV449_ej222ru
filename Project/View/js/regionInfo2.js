@@ -394,6 +394,7 @@ var myRegionInfo = {
 //        localStorage.clear("response");
         document.getElementById("getSCB").addEventListener("click",getSCBData);
         document.getElementById("displayInfo").addEventListener("click",displayInfo);
+        document.getElementById("refreshLocalStorage").addEventListener("click",refreshLocalStorage);
         
         setupRegionSelectBox();
         setupCriteriaSelectBox();

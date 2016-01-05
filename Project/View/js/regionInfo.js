@@ -642,6 +642,24 @@ function markRegionOnMap(){
 }
 
 /*
+ * Clear localStorage
+ */
+
+function refreshLocalStorage(){
+    
+    var regionData = document.getElementsByName("Region[]");
+    var criteriaData = document.getElementsByName("Criteria[]"); 
+    // Loop over region & criteria
+    for(var y=0;y<criteriaData[0].childElementCount;y++){
+        for(var x=0;x<regionData[0].childElementCount;x++){  
+            localStorage.clear(regionData[0][x].value+criteriaData[0][y].value);            
+        }
+    }    
+    
+//    localStorage.clear();
+}
+
+/*
  * Toggle info for the drop down menu when clicking Info button
  */
  function displayInfo() {
@@ -658,8 +676,11 @@ function markRegionOnMap(){
  }
 var myRegionInfo = {
     init: function(){
+        
+        
         document.getElementById("getSCB").addEventListener("click",getSCBData);
         document.getElementById("displayInfo").addEventListener("click",displayInfo);
+        document.getElementById("refreshLocalStorage").addEventListener("click",refreshLocalStorage);
         
         setupRegionSelectBox();
         setupCriteriaSelectBox();

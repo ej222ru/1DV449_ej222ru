@@ -32,19 +32,26 @@ class RegionView {
             <div id="form1">
                 <select id="CriteriaId" name="Criteria[]" size="3" multiple>
                   <option value="Inkomst rel riket">Inkomst hushåll</option>
+                  <option value="Kommunal skattesats">Kommunal skattesats</option>
                   <option value="Ohälsotal dagar">Ohälsotal</option>
                   <option value="Andel egna hem">Egna hem</option>
+                  <option value="Andel egna hem,utlandsfödda exkl EU">Egna hem utlandsfödda exkl EU</option>
                   <option value="Röstdeltagande">Röstdeltagande</option>
+                  <option value="Medelålder">Medelålder</option>
                 </select>
             </div>
-           <button type="button" id="getSCB" class="btn btn-info">Skicka</button>  
+           <button type="button" id="getSCB" class="btn btn-info">Visa</button>  
            <button type="button" id="displayInfo" class="btn btn-info">Info</button>
+           <button type="button" id="refreshLocalStorage" class="btn btn-info">Hämta</button>
 
         <div id="Info" class="Hide">   
             Välj mellan en till tre kommuner i drop down menyn. Har du redan valt tre 
             och vill välja om måste du först avmarkera någon av de du redan valt. 
             <br>Välj jämförelsetal i den andra drop down menyn. Du kan som mest jämföra 
-            två egenskaper samtidigt <br> Hovra över staplarna för att se vad de representerar.
+            två egenskaper samtidigt. Klicka på knappen <Visa> för att visa vald information
+            <br> Klicka på <Hämta> för att rensa lokalt sparad data och istället hämta data från 
+            informationskällan.
+            <br> Hovra över staplarna för att se vad de representerar.
         </div>  
        <div id="error" class="Hide"> </div>
         <div id="chartContainer" class="Hide">   
