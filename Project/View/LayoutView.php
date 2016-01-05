@@ -27,6 +27,7 @@ class LayoutView {
                       echo $regionView->createSelectionForm();
                       echo $mapView->createMap();
                 ?>
+                    
                 </div>
                 <div>
                     <em>This site uses cookies to improve user experience. By continuing to browse the site you are agreeing to our use of cookies.</em>

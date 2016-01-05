@@ -45,11 +45,12 @@ class RegionView {
            <button type="button" id="refreshLocalStorage" class="btn btn-info">Hämta</button>
 
         <div id="Info" class="Hide">   
-            Välj mellan en till tre kommuner i drop down menyn. Har du redan valt tre 
+            Välj mellan en till fyra kommuner i drop down menyn. Har du redan valt fyra 
             och vill välja om måste du först avmarkera någon av de du redan valt. 
             <br>Välj jämförelsetal i den andra drop down menyn. Du kan som mest jämföra 
-            två egenskaper samtidigt. Klicka på knappen <Visa> för att visa vald information
-            <br> Klicka på <Hämta> för att rensa lokalt sparad data och istället hämta data från 
+            fyra egenskaper samtidigt.
+            <br> Klicka på knappen < <b>Visa</b> > för att visa vald information
+            <br> Klicka på < <b>Hämta</b> > för att rensa lokalt sparad data och istället hämta data från 
             informationskällan.
             <br> Hovra över staplarna för att se vad de representerar.
         </div>  
