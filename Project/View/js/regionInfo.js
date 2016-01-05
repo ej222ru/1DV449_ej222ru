@@ -161,8 +161,7 @@ function getBarChartTypeInfo(type, index){
 function getBarChartLabels(chartIndex){
     var ret="";
     
-    chartIndex
-    if ((chartIndex*2 - getSelectedItems("Criteria") ) == 1){
+    if (((chartIndex+1)*2 - getSelectedItems("Criteria") ) == 1){
         ret = [getBarChartTypeInfo("Criteria", 1+(chartIndex*2))];
     }
     else{
@@ -265,20 +264,30 @@ function setupBarChart(){
             yAxisID: getBarChartInfo("YAxis", 3),
             data: getBarChartValue(3,1+(chartIndex*2))
             }, {
+            label: getBarChartInfo("Region", 4),
+            backgroundColor: getBarChartInfo("bgColor", 4),
+            yAxisID: getBarChartInfo("YAxis", 4),
+            data: getBarChartValue(4,1+(chartIndex*2))
+            }, {
             label: getBarChartInfo("Region", 1),
             backgroundColor: getBarChartInfo("bgColor", 1),
-            yAxisID: getBarChartInfo("YAxis", 4),
+            yAxisID: getBarChartInfo("YAxis", 5),
             data: getBarChartValue(1,2+(chartIndex*2))
             }, {
             label: getBarChartInfo("Region", 2),
             backgroundColor: getBarChartInfo("bgColor", 2),
-            yAxisID: getBarChartInfo("YAxis", 5),
+            yAxisID: getBarChartInfo("YAxis", 6),
             data: getBarChartValue(2,2+(chartIndex*2))
             }, {
             label: getBarChartInfo("Region", 3),
             backgroundColor: getBarChartInfo("bgColor", 3),
-            yAxisID: getBarChartInfo("YAxis", 6),
+            yAxisID: getBarChartInfo("YAxis", 7),
             data: getBarChartValue(3,2+(chartIndex*2))
+            }, {
+            label: getBarChartInfo("Region", 4),
+            backgroundColor: getBarChartInfo("bgColor", 4),
+            yAxisID: getBarChartInfo("YAxis", 8),
+            data: getBarChartValue(4,2+(chartIndex*2))
             }]
          };
 
@@ -293,7 +302,37 @@ function setupBarChart(){
             var ctx = document.getElementById("myChart2").getContext("2d");            
         }
 
-        // Create a bar chart object with two y-axis, one for each possible criteria
+        // decide if one or two y-axis for this chart
+        var myScales;
+        if (((chartIndex+1)*2 - getSelectedItems("Criteria") ) == 1){
+            myScales =   {
+                        yAxes: [{
+                            type: "linear",
+                            display: true,
+                            position: "left",
+                            id: "y-axis-1",
+                        }],
+                    };
+        }
+        else {
+            myScales = {
+                        yAxes: [{
+                            type: "linear",
+                            display: true,
+                            position: "left",
+                            id: "y-axis-1",
+                        }, {
+                            type: "linear",
+                            display: true,
+                            position: "right",
+                            id: "y-axis-2",
+                            gridLines: {
+                                drawOnChartArea: false
+                            }
+                        }],
+                    };
+        }
+        // Create a bar chart object 
         var newChart = Chart.Bar(ctx, {
             data: barChartData, 
             options: {
@@ -301,26 +340,10 @@ function setupBarChart(){
                 hoverMode: 'label',
                 hoverAnimationDuration: 400,
                 stacked: false,
-                scales: {
-                    yAxes: [{
-                        type: "linear",
-                        display: true,
-                        position: "left",
-                        id: "y-axis-1",
-                    }, {
-                        type: "linear",
-                        display: true,
-                        position: "right",
-                        id: "y-axis-2",
-                        gridLines: {
-                            drawOnChartArea: false
-                        }
-                    }],
-                }
+                scales: myScales,
             }
-        });     
+        });   
     }
-    
 }
 
 function getRegionPosition(region){

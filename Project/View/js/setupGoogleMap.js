@@ -8,7 +8,7 @@ function initMap() {
     map = localStorage["map"];
     map = new google.maps.Map(document.getElementById('map'), {
        center: startPos,
-       zoom: 11
+       zoom: 10
     });
     localStorage["map"] = map;
     console.log("New map:" + map);   
