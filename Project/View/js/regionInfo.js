@@ -10,7 +10,7 @@ function setupRegionSelectBox(){
                 if (options.length === 0) {
                     return 'Välj kommuner ';
                 }
-                else if (options.length > 2) {
+                else if (options.length > 3) {
                       // Disable all other checkboxes.
                       var nonSelectedOptions = $('#RegionId option').filter(function() {
                           return !$(this).is(':selected');
@@ -52,7 +52,7 @@ function setupCriteriaSelectBox(){
                 if (options.length === 0) {
                     return 'Välj jämförelsetal ';
                 }
-                else if (options.length > 1) {
+                else if (options.length > 3) {
                       // Disable all other checkboxes.
                       var nonSelectedOptions = $('#CriteriaId option').filter(function() {
                           return !$(this).is(':selected');
@@ -117,6 +117,9 @@ function getItem(type, index){
     return ret;
 }
 
+
+
+
 function getSelectedItems(type){
     var regionData = document.getElementsByName("Region[]");
     var criteriaData = document.getElementsByName("Criteria[]"); 
@@ -153,61 +156,19 @@ function getBarChartTypeInfo(type, index){
             ret = getItem("Criteria", index);
     }
     return ret;
-    
-/*    
-    var regionData = document.getElementsByName("Region[]");
-    var criteriaData = document.getElementsByName("Criteria[]"); 
-    for(var y=0;y<criteriaData[0].childElementCount;y++){
-        for(var x=0;x<regionData[0].childElementCount;x++){        
-           newChart.datasets[0].bars[0].value = localStorage[regionData[0][x].value+criteriaData[0][y].value];
-           newChart.datasets[0].bars[0].value = localStorage[regionData[0][x].value+criteriaData[0][y].value];
-        }
-    }
-    
-    var ret="";
-    
-    if (index > items){
-        ret = ""; 
-    }
-    else
-    {
-        var region = json[index-1];
-        ret = region[type];
-    } 
-    return ret;
- */   
-    
 }
 
-function getBarChartLabels(){
+function getBarChartLabels(chartIndex){
     var ret="";
-    var criteriaData = document.getElementsByName("Criteria[]"); 
-    if (getSelectedItems("Criteria") == 1){
-        ret = [getBarChartTypeInfo("Criteria", 1)];
+    
+    chartIndex
+    if ((chartIndex*2 - getSelectedItems("Criteria") ) == 1){
+        ret = [getBarChartTypeInfo("Criteria", 1+(chartIndex*2))];
     }
     else{
-        ret = [getBarChartTypeInfo("Criteria", 1), getBarChartTypeInfo("Criteria", 2)];
+        ret = [getBarChartTypeInfo("Criteria", 1+(chartIndex*2)), getBarChartTypeInfo("Criteria", 2+(chartIndex*2))];
     }
     return ret;
-/*    
-    var ret="";
-    
-    if (items % 2 == 0){
-        // Special condition to decide if two region values are for two regions and one criteria
-        // or one region for two criteria        
-        if (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2)){
-            ret = [getBarChartInfo("Criteria", 1)];
-        }
-        else {
-            ret = [getBarChartInfo("Criteria", 1), getBarChartInfo("Criteria",2)];
-        }
-    }
-    else {
-        ret = [getBarChartInfo("Criteria", 1)];
-    }
-    return ret;
-    
-*/    
 }
 function getBarChartYAxis(index){
     
@@ -217,29 +178,6 @@ function getBarChartYAxis(index){
     else {
         return "y-axis-2";
     }
-/*    
-    var ret="";    
-    if (items % 2 == 0){
-        // Special condition to decide if two region values are for two regions and one criteria
-        // or one region for two criteria        
-        if (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2)){
-            ret = "y-axis-1";
-        }
-        else {
-            if ((index % 2) != 0){
-                ret = "y-axis-1";
-            }
-            else{
-                ret = "y-axis-2";
-            }
-        }
-    }
-    else {
-        ret = "y-axis-1";
-    }
-    return ret;
-    
-*/    
 }
 function getBarChartColor(index){
     if (index == 1){
@@ -251,46 +189,6 @@ function getBarChartColor(index){
     else if (index == 3){
         return "rgba(20,255,0,0.5)";
     }
-    
-    /*
-    if (index > items){
-        return ""; 
-    }
-    else {
-        if (items % 2 == 0){
-            // Special condition to decide if two region values are for two regions and one criteria
-            // or one region for two criteria
-            if ((items == 2) && (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2))){
-                if (index == 1){
-                    return "rgba(255,0,0,0.5)";
-                }
-                else {
-                    return "rgba(86,66,232,0.5)";
-                }
-            }                        
-            else if ((index == 1) || (index ==2)){
-                return "rgba(255,0,0,0.5)";
-            }
-            else if ((index == 3) || (index ==4)){
-                return "rgba(86,66,232,0.5)";
-            }
-            else {
-                return "rgba(20,255,0,0.5)";
-            }
-        }
-        else{
-            if ((index == 1) || (index == 4)){
-                return "rgba(20,255,0,0.5)";
-            }
-            else if ((index == 2)|| (index == 5)){
-                return "rgba(255,0,0,0.5)";
-            }
-            else if ((index == 3)|| (index == 6)){
-                return "rgba(86,66,232,0.5)";
-            }
-        }
-    }   
-    */
 }
 
 function getBarChartValue(regionIndex, criteriaIndex){
@@ -300,7 +198,7 @@ function getBarChartValue(regionIndex, criteriaIndex){
     if ((regionIndex <= getSelectedItems("Region"))
         &&
         (criteriaIndex <= getSelectedItems("Criteria"))){
-        if (criteriaIndex == 1){
+        if ((criteriaIndex%2) == 1){
             ret = [localStorage[getItem("Region", regionIndex)+getItem("Criteria", criteriaIndex)], 0];
         }
         else{
@@ -308,41 +206,11 @@ function getBarChartValue(regionIndex, criteriaIndex){
         }
     }
     return ret;
-    
-/*    
-    
-    var ret = "";
-    if (index > items){
-        ret = ""; 
-    }
-    else{
-        var region = json[index-1];
-        // Special condition to decide if two region values are for two regions and one criteria
-        // or one region for two criteria
-        if ((items == 2) && (getBarChartInfo("Criteria", 1) === getBarChartInfo("Criteria", 2))){
-                return [region[type], 0];
-        }
-        else if (items % 2 == 0){
-            if ((index % 2) != 0){
-                ret = [region[type], 0];
-            }
-            else{
-                ret = [0, region[type]];
-            }
-        }
-        else {
-            var check = [region[type], 0];
-            ret = [region[type], 0];
-        }
-    }    
-    return ret;
-    
-*/    
 }
 function getBarChartInfo(type, index) {
 
     if (type == "Labels"){
-        return getBarChartLabels();                
+        return getBarChartLabels(index);                
     }
     else if (type == "YAxis"){
         return getBarChartYAxis(index);                
@@ -365,186 +233,93 @@ function setupBarChart(){
     // Setup for a bar chart specified by chartjs
     // Setup at most six datasets - three regions times two criteria each
     // Values from getBarChartInfo() 
-    
-    var barChartData = {
-    labels: getBarChartInfo("Labels", 0),
-    datasets: [{
-        label: getBarChartInfo("Region", 1),
-        backgroundColor: getBarChartInfo("bgColor", 1),
-        yAxisID: getBarChartInfo("YAxis", 1),
-        data: getBarChartValue(1,1)
-        }, {
-        label: getBarChartInfo("Region", 2),
-        backgroundColor: getBarChartInfo("bgColor", 2),
-        yAxisID: getBarChartInfo("YAxis", 2),
-//        data: getBarChartValue(2,1)
-        data: getBarChartValue(2,1)
-        }, {
-        label: getBarChartInfo("Region", 3),
-        backgroundColor: getBarChartInfo("bgColor", 3),
-        yAxisID: getBarChartInfo("YAxis", 3),
-        data: getBarChartValue(3,1)
-        }, {
-        label: getBarChartInfo("Region", 1),
-        backgroundColor: getBarChartInfo("bgColor", 1),
-        yAxisID: getBarChartInfo("YAxis", 4),
-        data: getBarChartValue(1,2)
-        }, {
-        label: getBarChartInfo("Region", 2),
-        backgroundColor: getBarChartInfo("bgColor", 2),
-        yAxisID: getBarChartInfo("YAxis", 5),
-        data: getBarChartValue(2,2)
-        }, {
-        label: getBarChartInfo("Region", 3),
-        backgroundColor: getBarChartInfo("bgColor", 3),
-        yAxisID: getBarChartInfo("YAxis", 6),
-        data: getBarChartValue(3,2)
-        }]
-     };
-     
-     
-     
-    // Clear out old canvas charts
+
+
     document.getElementById("chartContainer").innerHTML = '&nbsp;';
-    document.getElementById("chartContainer").innerHTML = '<canvas id="myChart"></canvas>';
-    var ctx = document.getElementById("myChart").getContext("2d");            
-
-    // Create a bar chart object with two y-axis, one for each possible criteria
-    var newChart = Chart.Bar(ctx, {
-        data: barChartData, 
-        options: {
-            responsive: true,
-            hoverMode: 'label',
-            hoverAnimationDuration: 400,
-            stacked: false,
-            scales: {
-                yAxes: [{
-                    type: "linear",
-                    display: true,
-                    position: "left",
-                    id: "y-axis-1",
-                }, {
-                    type: "linear",
-                    display: true,
-                    position: "right",
-                    id: "y-axis-2",
-                    gridLines: {
-                        drawOnChartArea: false
-                    }
-                }],
-            }
-        }
-    });     
-     
-     
-     /*     
-     
-    var regionData = document.getElementsByName("Region[]");
-    var criteriaData = document.getElementsByName("Criteria[]"); 
-    for(var y=0;y<criteriaData[0].childElementCount;y++){
-        for(var x=0;x<regionData[0].childElementCount;x++){        
-           newChart.datasets[0].bars[0].value = localStorage[regionData[0][x].value+criteriaData[0][y].value];
-           newChart.datasets[0].bars[0].value = localStorage[regionData[0][x].value+criteriaData[0][y].value];
-           
-        }
-    }
-    
-    
-    
+    document.getElementById("chartContainer").innerHTML = '<canvas id="myChart1"></canvas><canvas id="myChart2"></canvas>';
 
 
-    for(var x=0;x<regionData[0].childElementCount;x++){    
-        if (regionData[0][x].selected){
-            formData += "&"; 
-            formData += "Region[]="; 
-            formData += regionData[0][x].value;
-        }
-    }
-    for(var y=0;y<criteriaData[0].childElementCount;y++){
-        if (criteriaData[0][y].selected){
-            formData += "&"; 
-            formData += "Criteria[]="; 
-            formData += criteriaData[0][y].value;
-        }
-    }
-    
-                        arr = {
-                            "Region":regionData[0][x].value,
-                            "Criteria":criteriaData[0][y].value,
-                            "Value":localStorage[regionData[0][x].value+criteriaData[0][y].value]
-                        };    
-    
-*/
-    
-/*    
-    var barChartData = {
-        labels: getBarChartInfo("Labels", 0),
+    var charts = getSelectedItems("Criteria")/2;
+    for (var chartIndex= 0; chartIndex<charts;chartIndex++){
+
+
+
+
+
+
+        var barChartData = {
+        labels: getBarChartInfo("Labels", chartIndex),
         datasets: [{
             label: getBarChartInfo("Region", 1),
             backgroundColor: getBarChartInfo("bgColor", 1),
             yAxisID: getBarChartInfo("YAxis", 1),
-            data: getBarChartInfo("Value", 1)
+            data: getBarChartValue(1,1+(chartIndex*2))
             }, {
             label: getBarChartInfo("Region", 2),
             backgroundColor: getBarChartInfo("bgColor", 2),
             yAxisID: getBarChartInfo("YAxis", 2),
-            data: getBarChartInfo("Value", 2)
+            data: getBarChartValue(2,1+(chartIndex*2))
             }, {
             label: getBarChartInfo("Region", 3),
             backgroundColor: getBarChartInfo("bgColor", 3),
             yAxisID: getBarChartInfo("YAxis", 3),
-            data: getBarChartInfo("Value", 3)
+            data: getBarChartValue(3,1+(chartIndex*2))
             }, {
-            label: getBarChartInfo("Region", 4),
-            backgroundColor: getBarChartInfo("bgColor", 4),
+            label: getBarChartInfo("Region", 1),
+            backgroundColor: getBarChartInfo("bgColor", 1),
             yAxisID: getBarChartInfo("YAxis", 4),
-            data: getBarChartInfo("Value", 4)
+            data: getBarChartValue(1,2+(chartIndex*2))
             }, {
-            label: getBarChartInfo("Region", 5),
-            backgroundColor: getBarChartInfo("bgColor", 5),
+            label: getBarChartInfo("Region", 2),
+            backgroundColor: getBarChartInfo("bgColor", 2),
             yAxisID: getBarChartInfo("YAxis", 5),
-            data: getBarChartInfo("Value", 5)
+            data: getBarChartValue(2,2+(chartIndex*2))
             }, {
-            label: getBarChartInfo("Region", 6),
-            backgroundColor: getBarChartInfo("bgColor", 6),
+            label: getBarChartInfo("Region", 3),
+            backgroundColor: getBarChartInfo("bgColor", 3),
             yAxisID: getBarChartInfo("YAxis", 6),
-            data: getBarChartInfo("Value", 6)
+            data: getBarChartValue(3,2+(chartIndex*2))
             }]
-    };
+         };
 
-    // Clear out old canvas charts
-    document.getElementById("chartContainer").innerHTML = '&nbsp;';
-    document.getElementById("chartContainer").innerHTML = '<canvas id="myChart"></canvas>';
-    var ctx = document.getElementById("myChart").getContext("2d");            
 
-    // Create a bar chart object with two y-axis, one for each possible criteria
-    var newChart = Chart.Bar(ctx, {
-        data: barChartData, 
-        options: {
-            responsive: true,
-            hoverMode: 'label',
-            hoverAnimationDuration: 400,
-            stacked: false,
-            scales: {
-                yAxes: [{
-                    type: "linear",
-                    display: true,
-                    position: "left",
-                    id: "y-axis-1",
-                }, {
-                    type: "linear",
-                    display: true,
-                    position: "right",
-                    id: "y-axis-2",
-                    gridLines: {
-                        drawOnChartArea: false
-                    }
-                }],
-            }
+
+        // Clear out old canvas charts
+        var ctx;
+        if (chartIndex == 0){
+            var ctx = document.getElementById("myChart1").getContext("2d");  
         }
-    });
-    
-*/    
+        else {
+            var ctx = document.getElementById("myChart2").getContext("2d");            
+        }
+
+        // Create a bar chart object with two y-axis, one for each possible criteria
+        var newChart = Chart.Bar(ctx, {
+            data: barChartData, 
+            options: {
+                responsive: true,
+                hoverMode: 'label',
+                hoverAnimationDuration: 400,
+                stacked: false,
+                scales: {
+                    yAxes: [{
+                        type: "linear",
+                        display: true,
+                        position: "left",
+                        id: "y-axis-1",
+                    }, {
+                        type: "linear",
+                        display: true,
+                        position: "right",
+                        id: "y-axis-2",
+                        gridLines: {
+                            drawOnChartArea: false
+                        }
+                    }],
+                }
+            }
+        });     
+    }
     
 }
 
@@ -655,8 +430,6 @@ function refreshLocalStorage(){
             localStorage.clear(regionData[0][x].value+criteriaData[0][y].value);            
         }
     }    
-    
-//    localStorage.clear();
 }
 
 /*
@@ -694,7 +467,7 @@ var myRegionInfo = {
         }
         else {    
 //            console.log(value);
-            setupBarChart()
+            setupBarChart();
         }
    
         map = initMap();

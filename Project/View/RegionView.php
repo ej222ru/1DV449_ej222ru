@@ -55,7 +55,8 @@ class RegionView {
         </div>  
        <div id="error" class="Hide"> </div>
         <div id="chartContainer" class="Hide">   
-            <canvas id="myChart"></canvas>
+            <canvas id="myChart1"></canvas>
+            <canvas id="myChart2"></canvas>
         </div>';
    }
 }

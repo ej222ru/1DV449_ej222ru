@@ -22,12 +22,6 @@ $regionView = new \view\RegionView();
 $mapView = new \view\MapView();
 $regionController = new \controller\RegionController($regionModel, $regionView, $mapView);
 
-
-
-//Controller must be run first since state is changed
-// $regionController->doControl();
-
-
 //Generate output
 $layoutView = new \view\LayoutView();
 
