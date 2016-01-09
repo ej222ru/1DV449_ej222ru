@@ -5,17 +5,19 @@ var openInfoWindow = "";
 
 function initMap() {
     var startPos = {lat: 59.35, lng: 18.1}; 
-    map = localStorage["map"];
     map = new google.maps.Map(document.getElementById('map'), {
        center: startPos,
        zoom: 10
     });
-    localStorage["map"] = map;
-    console.log("New map:" + map);   
   return map;  
 }
 
-function addMarker(pos, map, heading, text){
+function addMarker(pos, map, heading, text, type){
+    var iconBase = 'https://maps.google.com/mapfiles/kml/';
+    var icon = 'paddle/R.png';
+    if (type == "policeReports")
+        icon = 'shapes/police.png';
+
     var contentString = '<div id="content">'+
           '<div id="siteNotice">'+
           '</div>'+
@@ -29,10 +31,12 @@ function addMarker(pos, map, heading, text){
         content: contentString
       });
 
+
       var marker = new google.maps.Marker({
         position: pos,
         map: map,
-        title: heading
+        title: heading,
+        icon: iconBase + icon,
       });
       markers.push(marker);
       

@@ -28,6 +28,10 @@ class QueriesSCB {
          else if ($query == "Medelålder"){
              $url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/BE/BE0101/BE0101B/BefolkningMedelAlder";
          }
+         else if ($query == "Rapporterade brott"){
+             $url = "http://brottsplatskartan.se/api.php?action=getEvents&period=1440&area=Stockholms%20L%C3%A4n";
+         }
+             //
          //
         // TEST err code $url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/AA/BB0003/AA0003D/IntGr6Kom";
           

@@ -43,17 +43,28 @@ class RegionView {
            <button type="button" id="getSCB" class="btn btn-info">Visa</button>  
            <button type="button" id="displayInfo" class="btn btn-info">Info</button>
            <button type="button" id="refreshLocalStorage" class="btn btn-info">Hämta</button>
+           
+           <form action="#" method="post" class="crimeForm" id="crimeForm">
+               <fieldset>
+                   <div id="categories">Visa inrapporterade brott senaste dygnet:
+                       <label><input id="policeReportsCheckBox" type="checkbox" name="policeReports"/></label>
+                   </div>
+               </fieldset>
+           </form>    
 
-        <div id="Info" class="Hide">   
-            Välj mellan en till fyra kommuner i drop down menyn. Har du redan valt fyra 
-            och vill välja om måste du först avmarkera någon av de du redan valt. 
-            <br>Välj jämförelsetal i den andra drop down menyn. Du kan som mest jämföra 
-            fyra egenskaper samtidigt.
-            <br> Klicka på knappen < <b>Visa</b> > för att visa vald information
-            <br> Klicka på < <b>Hämta</b> > för att rensa lokalt sparad data och istället hämta data från 
-            informationskällan.
-            <br> Hovra över staplarna för att se vad de representerar.
-        </div>  
+
+
+            <div id="Info" class="Hide">   
+                Välj mellan en till fyra kommuner i drop down menyn. Har du redan valt fyra 
+                och vill välja om måste du först avmarkera någon av de du redan valt. 
+                <br>Välj jämförelsetal i den andra drop down menyn. Du kan som mest jämföra 
+                fyra egenskaper samtidigt.
+                <br> Klicka på knappen < <b>Visa</b> > för att visa vald information
+                <br> Klicka på < <b>Hämta</b> > för att rensa lokalt sparad data och istället hämta data från 
+                informationskällan.
+                <br> Hovra över staplarna för att se vad de representerar.
+            </div>  
+        
        <div id="error" class="Hide"> </div>
         <div id="chartContainer" class="Hide">   
             <canvas id="myChart1"></canvas>

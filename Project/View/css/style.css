@@ -20,6 +20,14 @@ body, html{
    margin-top: 10px;
 }
 
+#categories
+{
+    font-weight: bold;
+    color: red;
+}
+
+
+
 #myChart1{
    max-width: 560px;
    margin-top: 10px;

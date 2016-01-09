@@ -20,6 +20,7 @@
                     // check if value for requested region/criteria combination exist in localStorage 
                     var test = localStorage[regionData[0][x].value+criteriaData[0][y].value];
                     if(test != undefined){
+                        console.log("SCBData from localStorage region:" + regionData[0][x].value + " criteria:" + criteriaData[0][y].value);
                         arr = {
                             "Region":regionData[0][x].value,
                             "Criteria":criteriaData[0][y].value,
@@ -35,6 +36,7 @@
                         
                     }
                     else{
+                        console.log("SCBData from server region:" + regionData[0][x].value + " criteria:" + criteriaData[0][y].value);
                         formData += "&"; 
                         formData += "Region[]="; 
                         formData += regionData[0][x].value;

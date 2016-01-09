@@ -39,6 +39,34 @@ class RegionController {
     }   
     
     
+    public function curl_get_request($url){
+        $ch = curl_init( $url );
+        # Return response instead of printing.
+        
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+        # Send request.
+        $result = false;
+        $result = curl_exec($ch);
+        if(!$result){
+           $message = curl_error($ch);
+           $this->setErrorMessage($message);
+           return "";
+        }
+        else if ($result === false){
+           $message = curl_error($ch);
+           $this->setErrorMessage($message);
+           return "";
+        }
+        else if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200){
+            $message = "Något gick fel i hämtning av data";
+            $this->setErrorMessage($message);
+            return "";
+        }
+        curl_close($ch);
+        return $result;
+    }
+    
+    
     public function curl_post_request($url, $data){
         $ch = curl_init( $url );
         // test settings
@@ -128,6 +156,13 @@ class RegionController {
         $arrValue;
         $json;
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if(isset($_POST['Crime'])){   
+                $response = $this->curl_get_request($this->regionModel->getRequestUrl1());
+                header('Content-type: application/text');
+                 echo $response;
+                 return;
+            }
+            
             if((isset($_POST['Region'])) && (isset($_POST['Criteria']))){   
                 $return = "";
                 // At most three regions for two criteria each hence the condition < 6

@@ -11,9 +11,10 @@ class LayoutView {
             <head>
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+                <link rel="stylesheet" href="View/css/bootstrap.min.css" type="text/css">
                 <link rel="stylesheet" href="View/css/bootstrap-multiselect.css" type="text/css">
-                <link rel="stylesheet" type="text/css" href="View/css/style.css">
+                
+                <link rel="stylesheet" href="View/css/style.css" type="text/css">
 
                 <title>Kommunjämförelsen</title>
             </head>
@@ -21,6 +22,8 @@ class LayoutView {
                 <div class="container" >
                     <div id="header">
                         <h1>Kommunjämförelsen</h1> 
+           <div  id="CrimeMessages">
+           </div>  
                         
                     </div>
                     <?php 
@@ -41,6 +44,7 @@ class LayoutView {
                 <script src="View/js/Chart.js"  type="text/javascript"></script> 
                 <script src="View/js/setupGoogleMap.js" type="text/javascript"></script> 
                 <script src="View/js/requestSCB2.js" type="text/javascript"></script> 
+                <script src="View/js/crimeReport.js" type="text/javascript"></script> 
                 <script src="View/js/regionInfo.js" type="text/javascript"></script> 
             </body>
         </html>

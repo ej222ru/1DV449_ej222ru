@@ -58,7 +58,6 @@ function setupCriteriaSelectBox(){
                           return !$(this).is(':selected');
                       });
 
-                      var dropdown = $('#CriteriaId').siblings('.multiselect-container');
                       nonSelectedOptions.each(function() {
                           var input = $('input[value="' + $(this).val() + '"]');
                           input.prop('disabled', true);
@@ -144,8 +143,6 @@ function getSelectedItems(type){
 
 function getBarChartTypeInfo(type, index){
 
-    var regionData = document.getElementsByName("Region[]");
-    var criteriaData = document.getElementsByName("Criteria[]"); 
     var ret = "";
     if (type == "Region"){
         if (index <= getSelectedItems("Region"))
@@ -204,28 +201,6 @@ function getBarChartValue(regionIndex, criteriaIndex){
     }
     return ret;
 }
-function getBarChartInfo(type, index) {
-
-    if (type == "Labels"){
-        return getBarChartLabels(index);                
-    }
-    else if (type == "YAxis"){
-        return getBarChartYAxis(index);                
-    }
-    else if (type == "bgColor"){
-        return getBarChartColor(index);
-    }
-    else if (type == "Value"){
-
-        return getBarChartValue(type, index);
-    }
-    else {
-        return getBarChartTypeInfo(type, index);    
-    }
- };
-
-
-
 
 function setupChartDataset(regionIndex, criteriaIndex){
     return  {
@@ -242,7 +217,6 @@ function setupBarChart(){
     
     document.getElementById("chartContainer").innerHTML = '&nbsp;';
     document.getElementById("chartContainer").innerHTML = '<canvas id="myChart1"></canvas><canvas id="myChart2"></canvas>';
-
 
     var charts = getSelectedItems("Criteria")/2;
     for (var chartIndex= 0; chartIndex<charts;chartIndex++){
@@ -261,8 +235,6 @@ function setupBarChart(){
                 setupChartDataset(4, criteriaIndexY2)
             ]
          };
-
-
 
         // Clear out old canvas charts
         var ctx;
@@ -345,12 +317,12 @@ function getRegionPosition(region){
 /*
  * Caluclates the map center position for one to three positions 
  */
-function calcCenterPosition(pos1, pos2, pos3){
+function calcCenterPosition(pos){
     var posLat=0;
     var posLng=0;
     var nbrPos=0;
     var posCenter = 0;
-    
+    var ret = "";
     var addPos = function(pos){
         if (pos != undefined){
             posLat += pos["lat"];
@@ -358,56 +330,35 @@ function calcCenterPosition(pos1, pos2, pos3){
             nbrPos++;
         }
     } 
-    addPos(pos1);
-    addPos(pos2);
-    addPos(pos3);
-    
-    var posLat = posLat /  nbrPos;
-    var posLng = posLng /  nbrPos;
-    posCenter = '{ "lat":' + posLat + ',"lng":' + posLng + '}';
-    return JSON.parse(posCenter);
+    for (var i=0;i<pos.length;i++){
+        addPos(pos[i]);
+    }
+
+    if (nbrPos != 0){
+        var posLat = posLat /  nbrPos;
+        var posLng = posLng /  nbrPos;
+        posCenter = '{ "lat":' + posLat + ',"lng":' + posLng + '}';
+        ret = JSON.parse(posCenter)
+    }
+    return ret;
 }
 
 /*
  * Add markers to the map for the choosen regions in the drop down menu
  */
 function markRegionOnMap(){
-    var region1;
-    var region2;
-    var region3;
+    var regions = [];
+    var pos = [];
     
-    // If two criteria selected for each region then they are stored as
-    // index 1:  region1-criteria1
-    // index 2:  region1-criteria2
-    // index 3:  region2-criteria1
-    // index 4:  region2-criteria2
-    // index 5:  region3-criteria1
-    // index 6:  region3-criteria2
-    // If one criteria selected for each region then they are stored as
-    // index 1:  region1-criteria1
-    // index 2:  region2-criteria1
-    // index 3:  region3-criteria1
-    
-    
-    var items = getBarChartInfo("Items", 0);
-    if (items > 3){
-        region1 = getBarChartInfo("Region", 1)
-        region2 = getBarChartInfo("Region", 3)
-        region3 = getBarChartInfo("Region", 5)
+    for (var i=1; i<=getSelectedItems("Region"); i++){
+        regions.push(getBarChartTypeInfo("Region", i));
+        pos.push(getRegionPosition(regions[i-1]));    
+        addMarker(pos[i-1], map, regions[i-1], "", "region");
     }
-    else {
-        region1 = getBarChartInfo("Region", 1)
-        region2 = getBarChartInfo("Region", 2)
-        region3 = getBarChartInfo("Region", 3)
+    var center = calcCenterPosition(pos);
+    if ( center != ""){
+        map.setCenter(center);
     }
-    
-    var pos1 = getRegionPosition(region1);     
-    var pos2 = getRegionPosition(region2);     
-    var pos3 = getRegionPosition(region3);     
-    addMarker(pos1, map, region1, "");
-    addMarker(pos2, map, region2, "");
-    addMarker(pos3, map, region3, "");
-    map.setCenter(calcCenterPosition(pos1, pos2, pos3));
 }
 
 /*
@@ -442,9 +393,7 @@ function refreshLocalStorage(){
     }
  }
 var myRegionInfo = {
-    init: function(){
-        
-        
+    init: function(url){
         document.getElementById("getSCB").addEventListener("click",getSCBData);
         document.getElementById("displayInfo").addEventListener("click",displayInfo);
         document.getElementById("refreshLocalStorage").addEventListener("click",refreshLocalStorage);
@@ -469,6 +418,10 @@ var myRegionInfo = {
         if (document.getElementById('chartContainer').className == "Show"){
             markRegionOnMap();
         }
+        
+        // CrimeMessages();
+        attachCrimeCheckboxHandler();        
+        
     }      
 };
 window.addEventListener("load", myRegionInfo.init());
