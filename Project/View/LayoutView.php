@@ -16,24 +16,23 @@ class LayoutView {
                 
                 <link rel="stylesheet" href="View/css/style.css" type="text/css">
 
-                <title>Kommunjämförelsen</title>
+                <title>Kommuninfo</title>
             </head>
             <body>
                 <div class="container" >
                     <div id="header">
-                        <h1>Kommunjämförelsen</h1> 
-           <div  id="CrimeMessages">
-           </div>  
+                        <h1>Kommuninfo Stockholm</h1> 
+                        <div  id="CrimeMessages">
+                        </div>  
                         
                     </div>
                     <?php 
                       echo $regionView->createSelectionForm();
                       echo $mapView->createMap();
-                ?>
-                    
-                </div>
-                <div>
-                    <em>This site uses cookies to improve user experience. By continuing to browse the site you are agreeing to our use of cookies.</em>
+                    ?>
+                    <div>
+                        <em>This site uses cookies to improve user experience. By continuing to browse the site you are agreeing to our use of cookies.</em>
+                    </div>
                 </div>
                 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -42,8 +41,8 @@ class LayoutView {
                 
                 <script src="View/js/bootstrap-multiselect.js" type="text/javascript" ></script>                
                 <script src="View/js/Chart.js"  type="text/javascript"></script> 
-                <script src="View/js/setupGoogleMap.js" type="text/javascript"></script> 
-                <script src="View/js/requestSCB2.js" type="text/javascript"></script> 
+                <script src="View/js/setupGoogleMap.min.js" type="text/javascript"></script> 
+                <script src="View/js/requestSCB.js" type="text/javascript"></script> 
                 <script src="View/js/crimeReport.js" type="text/javascript"></script> 
                 <script src="View/js/regionInfo.js" type="text/javascript"></script> 
             </body>

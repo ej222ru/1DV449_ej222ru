@@ -34,8 +34,8 @@ class RegionView {
                   <option value="Inkomst rel riket">Inkomst hushåll</option>
                   <option value="Kommunal skattesats">Kommunal skattesats</option>
                   <option value="Ohälsotal dagar">Ohälsotal</option>
-                  <option value="Andel egna hem">Egna hem</option>
-                  <option value="Andel egna hem,utlandsfödda exkl EU">Egna hem utlandsfödda exkl EU</option>
+                  <option value="Egna hem">Egna hem</option>
+                  <option value="Egna hem,utlandsfödda exkl EU">Egna hem utlandsfödda exkl EU</option>
                   <option value="Röstdeltagande">Röstdeltagande</option>
                   <option value="Medelålder">Medelålder</option>
                 </select>

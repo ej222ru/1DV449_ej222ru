@@ -2,20 +2,15 @@ body, html{
     height: 100%; 
     margin: 0; 
     padding: 0;
+    background-color: lightblue;
 }
 
-#kalle { 
-    width:1200px;
-    border: 10px;
-    border-style:solid;
-    border-radius:20px;
-}
-
-#header {
-    
+.container{
+    background-color: white;
+    margin-top:20px;
 }
 #map{
-   max-width: 800px;
+   max-width: 1150px;
    height: 800px;
    margin-top: 10px;
 }
@@ -25,8 +20,6 @@ body, html{
     font-weight: bold;
     color: red;
 }
-
-
 
 #myChart1{
    max-width: 560px;
@@ -60,8 +53,8 @@ body, html{
     min-height:40px;
     font-style: bold;
     color:red;
+    width:800px;
 }
-
 
 .Hide 
 {

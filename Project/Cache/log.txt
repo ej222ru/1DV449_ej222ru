@@ -1,0 +1,18 @@
+160110--File does not exist Cache/NackaEgna hem.txt
+160110--curl_post_request return successfully
+160110--curl_get_request return successfully
+160110--curl_get_request return successfully
+160110--File does not exist Cache/TäbyEgna hem.txt
+160110--curl_post_request return successfully
+160110--curl_get_request return successfully
+160110--File does not exist Cache/SolnaInkomst rel riket.txt
+160110--curl_post_request return successfully
+160110--curl_get_request return successfully
+160110--File does not exist Cache/VallentunaKommunal skattesats.txt
+160110--curl_post_request return successfully
+160110--File does not exist Cache/VallentunaOhälsotal dagar.txt
+160110--curl_post_request return successfully
+160110--File does not exist Cache/VärmdöKommunal skattesats.txt
+160110--curl_post_request return successfully
+160110--File does not exist Cache/VärmdöOhälsotal dagar.txt
+160110--curl_post_request return successfully

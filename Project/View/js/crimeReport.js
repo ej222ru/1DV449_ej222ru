@@ -29,6 +29,7 @@ function renderPoliceReports(){
                 var lng = xmlDoc1.getElementsByTagName("lng");
                 var descrip = xmlDoc1.getElementsByTagName("description");
                 var place = xmlDoc1.getElementsByTagName("place");
+                var text = xmlDoc1.getElementsByTagName("text");
                 var event = xmlDoc1.getElementsByTagName("event");
                 for (var i=0;i<event.length;i++){
                     var msg = [];
@@ -37,6 +38,7 @@ function renderPoliceReports(){
                     msg["pos"] = pos;
                     msg["header"] = descrip[i].childNodes[0].nodeValue
                     msg["descript"] = place[i].childNodes[0].nodeValue;
+                    msg["text"] = text[i].childNodes[0].nodeValue;
                     policeReports.push(msg);
                 }
             }           
@@ -44,7 +46,7 @@ function renderPoliceReports(){
             for (var i=0;i<policeReports.length ;i++){
                 var pos = policeReports[i]["pos"]
                 var header = policeReports[i]["header"];
-                var description = '<b>' + policeReports[i]["descript"];
+                var description = '<b>' + policeReports[i]["descript"] + '</br>' + '</b>' + policeReports[i]["text"];
                 addMarker(pos, map, header, description, "policeReports");
             }
         }

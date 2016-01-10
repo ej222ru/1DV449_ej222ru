@@ -1,11 +1,18 @@
 <?php
 
+//set_include_path ('/home/www/ej222ru.co.nf');
+//define('__ROOT__', dirname(dirname(__FILE__)));
+//require_once(__ROOT__.'/ej222ru.co.nf/Settings.php'); 
+
+//
 require_once("Settings.php");
-require_once("controller/RegionController.php");
-require_once("view/LayoutView.php");
-require_once("view/RegionView.php");
-require_once("view/MapView.php");
-require_once("MODEL/RegionModel.php");
+
+        
+require_once("Controller/RegionController.php");
+require_once("View/LayoutView.php");
+require_once("View/RegionView.php");
+require_once("View/MapView.php");
+require_once("Model/RegionModel.php");
 
 if (Settings::DISPLAY_ERRORS) {
     error_reporting(-1);

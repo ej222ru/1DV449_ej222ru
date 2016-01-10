@@ -118,7 +118,6 @@ function getItem(type, index){
 
 
 
-
 function getSelectedItems(type){
     var regionData = document.getElementsByName("Region[]");
     var criteriaData = document.getElementsByName("Criteria[]"); 

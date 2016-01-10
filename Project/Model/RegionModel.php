@@ -2,8 +2,8 @@
 
 namespace model;
 
-require_once("model/QueriesSCB.php");
-require_once("model/QueriesBrottsplatsen.php");
+require_once("Model/QueriesSCB.php");
+require_once("Model/QueriesBrottsplatsen.php");
 
 class RegionModel {
 
@@ -15,7 +15,7 @@ class RegionModel {
         $this->queriesBrottsplatsen = new \model\QueriesBrottsplatsen();
     }   
 
-    public function getRequestUrl1() {
+    public function getRequestUrlCrime() {
         return $this->queriesBrottsplatsen->getUrl();
     }
 

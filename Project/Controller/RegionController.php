@@ -5,9 +5,8 @@
  */
 namespace controller;
 
-
-require_once("model/RegionModel.php");
-require_once("view/RegionView.php");
+require_once("Model/RegionModel.php");
+require_once("View/RegionView.php");
 
 
 class RegionController {
@@ -17,7 +16,6 @@ class RegionController {
     private $mapView;
     private static $errMessage = "RegionController::errMessage";
             
-
     public function __construct(\model\RegionModel $regionModel, \view\RegionView $regionView, \view\MapView $mapView) {
             $this->regionModel = $regionModel;
             $this->regionView =  $regionView;
@@ -27,6 +25,7 @@ class RegionController {
     public function setErrorMessage($error) {
         $_SESSION[self::$errMessage] = $error;
     }   
+    
     public function getErrorMessage() {
         if (isset($_SESSION[self::$errMessage])) {
             $message = $_SESSION[self::$errMessage];
@@ -38,30 +37,32 @@ class RegionController {
         }
     }   
     
-    
     public function curl_get_request($url){
         $ch = curl_init( $url );
         # Return response instead of printing.
-        
         curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
         # Send request.
         $result = false;
         $result = curl_exec($ch);
         if(!$result){
-           $message = curl_error($ch);
-           $this->setErrorMessage($message);
-           return "";
+            $message = curl_error($ch);
+            $this->logDebug("curl_get_request result null, error message:" . $message ." url:" . $url);
+            $this->setErrorMessage($message);
+            return "";
         }
         else if ($result === false){
            $message = curl_error($ch);
+           $this->logDebug("curl_get_request result false, error message: " . $message );
            $this->setErrorMessage($message);
            return "";
         }
         else if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200){
+            $this->logDebug("curl_get_request http code: " . curl_getinfo($ch, CURLINFO_HTTP_CODE));
             $message = "Något gick fel i hämtning av data";
             $this->setErrorMessage($message);
             return "";
         }
+        $this->logDebug("curl_get_request return successfully");
         curl_close($ch);
         return $result;
     }
@@ -80,19 +81,28 @@ class RegionController {
         curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
         # Send request.
         $result = curl_exec($ch);
-        if ($result === false){
+        if(!$result){
+            $message = curl_error($ch);
+            $this->logDebug("curl_post_request result null, error message:" . $message ." url:" . $url);
+            $this->setErrorMessage($message);
+            return "";
+        }
+        else if ($result === false){
            $message = curl_error($ch);
+           $this->logDebug("curl_post_request result false, errör message:" . $message);
            $this->setErrorMessage($message);
            return "";
         }
         else if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200){
+            $this->logDebug("curl_post_request http code: " . curl_getinfo($ch, CURLINFO_HTTP_CODE));
             $message = "Något gick fel i hämtning av data";
             $this->setErrorMessage($message);
             return "";
         }
         else {
-            $result = substr($result, 3);
+            $result = substr($result, 3); // Remove DOM mark, first three char
         }
+        $this->logDebug("curl_post_request return successfully");
         curl_close($ch);
         return $result;
     }
@@ -100,15 +110,15 @@ class RegionController {
     
     public function logDebug($text){
         $file;
-        $filename = "cache/log.txt";
+        $filename = "Cache/log.txt";
         $today = date ( "ymd",time());
         $file = fopen($filename, "a");
-        $ch = fwrite($file, $today . "--" . $text);
+        $ch = fwrite($file, $today . "--" . $text . PHP_EOL);
         fclose($file);        
     }
     
     public function saveToCache($region, $criteria, $value) {
-        $filename = "cache/" . $region . $criteria . ".txt";
+        $filename = "Cache/" . $region . $criteria . ".txt";
         $file;
         $exist = file_exists($filename);
         if (!$exist){
@@ -124,7 +134,7 @@ class RegionController {
 
     public function getFromCache($region, $criteria) {
         $value = "";
-        $filename = "cache/" . $region . $criteria . ".txt";
+        $filename = "Cache/" . $region . $criteria . ".txt";
         $file;
         $exist = file_exists($filename);
         if ($exist){
@@ -132,18 +142,18 @@ class RegionController {
             $dateChanged = date("ymd",filemtime($filename));
             $today = date ( "ymd",time());
             if ($today > $dateChanged){
-                $this->logDebug("File exist but content old " . $filename . PHP_EOL);
+                $this->logDebug("File exist but content old " . $filename);
                // return $value = ""  to signal a new get from source    
             }
             else{
-                $this->logDebug("File exist content fresh " . $filename . PHP_EOL);
+                $this->logDebug("File exist content fresh " . $filename);
                 $file = fopen($filename, "r");
                 $value = fread($file, filesize($filename));
             }
             fclose($file);        
         }
         else{
-            $this->logDebug("File does not exist " . $filename . PHP_EOL);
+            $this->logDebug("File does not exist " . $filename);
         }
         return $value;
     }
@@ -157,10 +167,10 @@ class RegionController {
         $json;
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             if(isset($_POST['Crime'])){   
-                $response = $this->curl_get_request($this->regionModel->getRequestUrl1());
+                $response = $this->curl_get_request($this->regionModel->getRequestUrlCrime());
                 header('Content-type: application/text');
-                 echo $response;
-                 return;
+                echo $response;
+                return;
             }
             
             if((isset($_POST['Region'])) && (isset($_POST['Criteria']))){   

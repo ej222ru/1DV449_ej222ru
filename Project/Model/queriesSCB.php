@@ -19,10 +19,10 @@ class QueriesSCB {
          else if ($query == "Röstdeltagande"){
             $url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/AA/AA0003/AA0003J/IntGr9Kom1";
          }
-         else if ($query == "Andel egna hem"){
+         else if ($query == "Egna hem"){
             $url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/AA/AA0003/AA0003D/IntGr6Kom";
          }
-         else if ($query == "Andel egna hem,utlandsfödda exkl EU"){
+         else if ($query == "Egna hem,utlandsfödda exkl EU"){
             $url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/AA/AA0003/AA0003D/IntGr6Kom";
          }
          else if ($query == "Medelålder"){
@@ -274,7 +274,7 @@ class QueriesSCB {
               }
             }';   
         }        
-        else if ($query == "Andel egna hem"){
+        else if ($query == "Egna hem"){
             $q = '{
               "query": [
                 {
@@ -319,7 +319,7 @@ class QueriesSCB {
               }
             }';        
         }
-        else if ($query == "Andel egna hem,utlandsfödda exkl EU"){
+        else if ($query == "Egna hem,utlandsfödda exkl EU"){
             $q = '{
                 "query": [
                   {
