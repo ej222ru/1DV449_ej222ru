@@ -67,7 +67,6 @@ Utmaningen ligger just i det kreativa att hitta dessa kombinationer av redan bef
 ## Buggar
 I Firefox visar inte hovringen någon info för staplarna i första charten när man har två charts.
 Med ”Inspektera element” och med begärd ”visa” en gång till fungerar det. I Chrome och IE fungerar det.
-Jag hade ursprungligen  tänkt ta in ytterligare en källa med brottsstatistik som historiskt jämförande data mellan kommuner pss som för data från SCB men den källan med ett bra API (http://www.mashup.se/api/brottsstatistik-api-fran-svt-pejl ) hade slutat vara tillgänglig och alternativet från BRÅ hade inget vettigt API. Jag har letat efter fler källor med övergripande statistik för kommuner men tyvärr inte hittat någon. Det jag gjorde då istället var att ta in information från brottsplatskartan.se och placerar ut senaste dygnets inrapporterade brott på kartan. Nu verkar det dock som om den infon dom presenterar är ganska ofullständig. Jag vet  
 
 ## Vidareutveckling av applikationen 
 Det som står på tur är att 
@@ -76,6 +75,9 @@ Det som står på tur är att
 *	Fler typer av chart, exempelvis segment i cirklar (Pie-chart)
 *	Fler samtida kriterier som presenteras i flera chart. 
 *	Möjlighet att välja bort visning av kartan och därmed ge mer utrymme åt diagram
+
+## Vad jag inte gjorde
+Jag hade ursprungligen  tänkt ta in ytterligare en källa med brottsstatistik som historiskt jämförande data mellan kommuner pss som för data från SCB men den källan med ett bra API (http://www.mashup.se/api/brottsstatistik-api-fran-svt-pejl ) hade slutat vara tillgänglig och alternativet från BRÅ hade inget vettigt API. Jag har letat efter fler källor med övergripande statistik för kommuner men tyvärr inte hittat någon. Det jag gjorde då istället var att ta in information från brottsplatskartan.se och placerar ut senaste dygnets inrapporterade brott på kartan. Nu verkar det dock som om den infon dom presenterar är ganska ofullständig. Jag vet inte om det beror på brottsplatskartan eller den källa hos polisen som dom hämtar ifrån. Med tanke på senaste veckans mediala diskussion om polisens informationshantering verkar det som att det bara är en del av alla inkomna rappporter som publiceras på polisens web.
 
 
 
