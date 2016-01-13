@@ -63,3 +63,330 @@
 160113--File does not exist Cache/DanderydKommunal skattesats.txt
 160113--curl_post_request return successfully
 160113--curl_get_request return successfully
+160113--File does not exist Cache/BotkyrkaInkomst rel riket.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/BotkyrkaKommunal skattesats.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/BotkyrkaOhälsotal dagar.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/BotkyrkaEgna hem.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/DanderydInkomst rel riket.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/HaningeOhälsotal dagar.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/HaningeEgna hem.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/BotkyrkaInkomst rel riket.txt
+160113--File exist content fresh Cache/BotkyrkaKommunal skattesats.txt
+160113--File exist content fresh Cache/BotkyrkaOhälsotal dagar.txt
+160113--File exist content fresh Cache/BotkyrkaEgna hem.txt
+160113--File exist content fresh Cache/DanderydInkomst rel riket.txt
+160113--File exist content fresh Cache/DanderydKommunal skattesats.txt
+160113--File exist content fresh Cache/DanderydOhälsotal dagar.txt
+160113--File exist content fresh Cache/DanderydEgna hem.txt
+160113--File exist content fresh Cache/EkeröInkomst rel riket.txt
+160113--File exist content fresh Cache/EkeröKommunal skattesats.txt
+160113--File exist content fresh Cache/EkeröOhälsotal dagar.txt
+160113--File exist content fresh Cache/EkeröEgna hem.txt
+160113--File exist content fresh Cache/HaningeInkomst rel riket.txt
+160113--File exist content fresh Cache/HaningeKommunal skattesats.txt
+160113--File exist content fresh Cache/HaningeOhälsotal dagar.txt
+160113--File exist content fresh Cache/HaningeEgna hem.txt
+160113--File exist content fresh Cache/BotkyrkaInkomst rel riket.txt
+160113--File exist content fresh Cache/BotkyrkaKommunal skattesats.txt
+160113--File exist content fresh Cache/BotkyrkaOhälsotal dagar.txt
+160113--File exist content fresh Cache/BotkyrkaEgna hem.txt
+160113--File exist content fresh Cache/DanderydInkomst rel riket.txt
+160113--File exist content fresh Cache/DanderydKommunal skattesats.txt
+160113--File exist content fresh Cache/DanderydOhälsotal dagar.txt
+160113--File exist content fresh Cache/DanderydEgna hem.txt
+160113--File exist content fresh Cache/EkeröInkomst rel riket.txt
+160113--File exist content fresh Cache/EkeröKommunal skattesats.txt
+160113--File exist content fresh Cache/EkeröOhälsotal dagar.txt
+160113--File exist content fresh Cache/EkeröEgna hem.txt
+160113--File exist content fresh Cache/HaningeInkomst rel riket.txt
+160113--File exist content fresh Cache/HaningeKommunal skattesats.txt
+160113--File exist content fresh Cache/HaningeOhälsotal dagar.txt
+160113--File exist content fresh Cache/HaningeEgna hem.txt
+160113--File does not exist Cache/BotkyrkaRöstdeltagande.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/DanderydRöstdeltagande.txt
+160113--File exist content fresh Cache/DanderydEgna hem.txt
+160113--File exist content fresh Cache/EkeröEgna hem.txt
+160113--File exist content fresh Cache/HaningeEgna hem.txt
+160113--File does not exist Cache/NackaInkomst rel riket.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/NackaKommunal skattesats.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/NackaOhälsotal dagar.txt
+160113--curl_post_request return successfully
+160113--File exist but content old Cache/NackaEgna hem.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/BotkyrkaOhälsotal dagar.txt
+160113--File exist content fresh Cache/BotkyrkaEgna hem.txt
+160113--File exist content fresh Cache/HuddingeEgna hem.txt
+160113--File exist content fresh Cache/JärfällaEgna hem.txt
+160113--File does not exist Cache/SundbybergInkomst rel riket.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/SundbybergKommunal skattesats.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/SundbybergOhälsotal dagar.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/SundbybergEgna hem.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/TyresöInkomst rel riket.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/TyresöKommunal skattesats.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/TyresöOhälsotal dagar.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/TyresöEgna hem.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/TäbyInkomst rel riket.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/TäbyKommunal skattesats.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/TäbyOhälsotal dagar.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/TäbyEgna hem.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/Upplands VäsbyInkomst rel riket.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/Upplands VäsbyKommunal skattesats.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/Upplands VäsbyOhälsotal dagar.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/Upplands VäsbyEgna hem.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/BotkyrkaEgna hem,utlandsfödda exkl EU.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/BotkyrkaRöstdeltagande.txt
+160113--File does not exist Cache/DanderydEgna hem,utlandsfödda exkl EU.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/DanderydRöstdeltagande.txt
+160113--File exist content fresh Cache/EkeröEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/EkeröRöstdeltagande.txt
+160113--File does not exist Cache/HuddingeEgna hem,utlandsfödda exkl EU.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/HuddingeRöstdeltagande.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/BotkyrkaInkomst rel riket.txt
+160113--File exist content fresh Cache/BotkyrkaKommunal skattesats.txt
+160113--File exist content fresh Cache/BotkyrkaEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/BotkyrkaRöstdeltagande.txt
+160113--File exist content fresh Cache/DanderydInkomst rel riket.txt
+160113--File exist content fresh Cache/DanderydKommunal skattesats.txt
+160113--File exist content fresh Cache/DanderydEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/DanderydRöstdeltagande.txt
+160113--File exist content fresh Cache/EkeröInkomst rel riket.txt
+160113--File exist content fresh Cache/EkeröKommunal skattesats.txt
+160113--File exist content fresh Cache/EkeröEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/EkeröRöstdeltagande.txt
+160113--File does not exist Cache/HuddingeInkomst rel riket.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/HuddingeKommunal skattesats.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/HuddingeEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/HuddingeRöstdeltagande.txt
+160113--File exist content fresh Cache/BotkyrkaOhälsotal dagar.txt
+160113--File exist content fresh Cache/BotkyrkaEgna hem.txt
+160113--File exist content fresh Cache/DanderydOhälsotal dagar.txt
+160113--File exist content fresh Cache/DanderydEgna hem.txt
+160113--File exist content fresh Cache/EkeröOhälsotal dagar.txt
+160113--File exist content fresh Cache/EkeröEgna hem.txt
+160113--File exist content fresh Cache/HuddingeOhälsotal dagar.txt
+160113--File exist content fresh Cache/HuddingeEgna hem.txt
+160113--File does not exist Cache/BotkyrkaMedelålder.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/DanderydMedelålder.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/StockholmInkomst rel riket.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/StockholmEgna hem,utlandsfödda exkl EU.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/StockholmRöstdeltagande.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/StockholmMedelålder.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/SundbybergInkomst rel riket.txt
+160113--File does not exist Cache/SundbybergEgna hem,utlandsfödda exkl EU.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/SundbybergRöstdeltagande.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/SundbybergMedelålder.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/BotkyrkaInkomst rel riket.txt
+160113--File exist content fresh Cache/BotkyrkaEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/BotkyrkaRöstdeltagande.txt
+160113--File exist content fresh Cache/BotkyrkaMedelålder.txt
+160113--File exist content fresh Cache/DanderydInkomst rel riket.txt
+160113--File exist content fresh Cache/DanderydEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/DanderydRöstdeltagande.txt
+160113--File exist content fresh Cache/DanderydMedelålder.txt
+160113--File exist content fresh Cache/StockholmInkomst rel riket.txt
+160113--File exist content fresh Cache/StockholmEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/StockholmRöstdeltagande.txt
+160113--File exist content fresh Cache/StockholmMedelålder.txt
+160113--File exist content fresh Cache/SundbybergInkomst rel riket.txt
+160113--File exist content fresh Cache/SundbybergEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/SundbybergRöstdeltagande.txt
+160113--File exist content fresh Cache/SundbybergMedelålder.txt
+160113--curl_get_request return successfully
+160113--File exist content fresh Cache/BotkyrkaOhälsotal dagar.txt
+160113--File exist content fresh Cache/BotkyrkaEgna hem.txt
+160113--File exist content fresh Cache/DanderydOhälsotal dagar.txt
+160113--File exist content fresh Cache/DanderydEgna hem.txt
+160113--File exist content fresh Cache/EkeröInkomst rel riket.txt
+160113--File exist content fresh Cache/EkeröOhälsotal dagar.txt
+160113--File exist content fresh Cache/EkeröEgna hem.txt
+160113--File exist content fresh Cache/EkeröRöstdeltagande.txt
+160113--File exist content fresh Cache/HuddingeInkomst rel riket.txt
+160113--File exist content fresh Cache/HuddingeOhälsotal dagar.txt
+160113--File exist content fresh Cache/HuddingeEgna hem.txt
+160113--File exist content fresh Cache/HuddingeRöstdeltagande.txt
+160113--File exist content fresh Cache/BotkyrkaInkomst rel riket.txt
+160113--File exist content fresh Cache/BotkyrkaOhälsotal dagar.txt
+160113--File exist content fresh Cache/BotkyrkaEgna hem.txt
+160113--File exist content fresh Cache/BotkyrkaRöstdeltagande.txt
+160113--File exist content fresh Cache/DanderydInkomst rel riket.txt
+160113--File exist content fresh Cache/DanderydOhälsotal dagar.txt
+160113--File exist content fresh Cache/DanderydEgna hem.txt
+160113--File exist content fresh Cache/DanderydRöstdeltagande.txt
+160113--File exist content fresh Cache/EkeröInkomst rel riket.txt
+160113--File exist content fresh Cache/EkeröOhälsotal dagar.txt
+160113--File exist content fresh Cache/EkeröEgna hem.txt
+160113--File exist content fresh Cache/EkeröRöstdeltagande.txt
+160113--File exist content fresh Cache/HuddingeInkomst rel riket.txt
+160113--File exist content fresh Cache/HuddingeOhälsotal dagar.txt
+160113--File exist content fresh Cache/HuddingeEgna hem.txt
+160113--File exist content fresh Cache/HuddingeRöstdeltagande.txt
+160113--File exist content fresh Cache/BotkyrkaEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/HuddingeEgna hem,utlandsfödda exkl EU.txt
+160113--File exist but content old Cache/SolnaInkomst rel riket.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/SolnaInkomst rel riket.txt
+160113--File does not exist Cache/SolnaOhälsotal dagar.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/SolnaEgna hem,utlandsfödda exkl EU.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/SolnaRöstdeltagande.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/StockholmInkomst rel riket.txt
+160113--File does not exist Cache/StockholmOhälsotal dagar.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/StockholmEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/StockholmRöstdeltagande.txt
+160113--File exist content fresh Cache/NackaInkomst rel riket.txt
+160113--File exist content fresh Cache/NackaOhälsotal dagar.txt
+160113--File exist content fresh Cache/NackaEgna hem.txt
+160113--File does not exist Cache/NackaRöstdeltagande.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/BotkyrkaInkomst rel riket.txt
+160113--File exist content fresh Cache/BotkyrkaOhälsotal dagar.txt
+160113--File exist content fresh Cache/BotkyrkaEgna hem.txt
+160113--File exist content fresh Cache/BotkyrkaRöstdeltagande.txt
+160113--File exist content fresh Cache/DanderydInkomst rel riket.txt
+160113--File exist content fresh Cache/DanderydOhälsotal dagar.txt
+160113--File exist content fresh Cache/DanderydEgna hem.txt
+160113--File exist content fresh Cache/DanderydRöstdeltagande.txt
+160113--File exist content fresh Cache/EkeröInkomst rel riket.txt
+160113--File exist content fresh Cache/EkeröOhälsotal dagar.txt
+160113--File exist content fresh Cache/EkeröEgna hem.txt
+160113--File exist content fresh Cache/EkeröRöstdeltagande.txt
+160113--File exist content fresh Cache/NackaInkomst rel riket.txt
+160113--File exist content fresh Cache/NackaOhälsotal dagar.txt
+160113--File exist content fresh Cache/NackaEgna hem.txt
+160113--File exist content fresh Cache/NackaRöstdeltagande.txt
+160113--File exist content fresh Cache/BotkyrkaKommunal skattesats.txt
+160113--File exist content fresh Cache/DanderydKommunal skattesats.txt
+160113--File exist content fresh Cache/NackaKommunal skattesats.txt
+160113--curl_get_request return successfully
+160113--File exist content fresh Cache/BotkyrkaEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/HaningeInkomst rel riket.txt
+160113--File exist content fresh Cache/HaningeKommunal skattesats.txt
+160113--File does not exist Cache/HaningeEgna hem,utlandsfödda exkl EU.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/HaningeRöstdeltagande.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/HuddingeInkomst rel riket.txt
+160113--File exist content fresh Cache/HuddingeKommunal skattesats.txt
+160113--File exist content fresh Cache/HuddingeEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/HuddingeRöstdeltagande.txt
+160113--File does not exist Cache/NackaEgna hem,utlandsfödda exkl EU.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/BotkyrkaInkomst rel riket.txt
+160113--File exist content fresh Cache/BotkyrkaKommunal skattesats.txt
+160113--File exist content fresh Cache/BotkyrkaEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/BotkyrkaRöstdeltagande.txt
+160113--File exist content fresh Cache/HaningeInkomst rel riket.txt
+160113--File exist content fresh Cache/HaningeKommunal skattesats.txt
+160113--File exist content fresh Cache/HaningeEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/HaningeRöstdeltagande.txt
+160113--File exist content fresh Cache/HuddingeInkomst rel riket.txt
+160113--File exist content fresh Cache/HuddingeKommunal skattesats.txt
+160113--File exist content fresh Cache/HuddingeEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/HuddingeRöstdeltagande.txt
+160113--File exist content fresh Cache/NackaInkomst rel riket.txt
+160113--File exist content fresh Cache/NackaKommunal skattesats.txt
+160113--File exist content fresh Cache/NackaEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/NackaRöstdeltagande.txt
+160113--curl_get_request return successfully
+160113--File exist content fresh Cache/SolnaInkomst rel riket.txt
+160113--File does not exist Cache/SolnaKommunal skattesats.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/SolnaEgna hem,utlandsfödda exkl EU.txt
+160113--File exist content fresh Cache/SolnaRöstdeltagande.txt
+160113--File exist content fresh Cache/DanderydKommunal skattesats.txt
+160113--File exist content fresh Cache/DanderydOhälsotal dagar.txt
+160113--File exist content fresh Cache/EkeröKommunal skattesats.txt
+160113--File exist content fresh Cache/EkeröOhälsotal dagar.txt
+160113--File exist content fresh Cache/BotkyrkaOhälsotal dagar.txt
+160113--File exist content fresh Cache/BotkyrkaEgna hem.txt
+160113--File exist content fresh Cache/DanderydInkomst rel riket.txt
+160113--File exist content fresh Cache/DanderydEgna hem.txt
+160113--File exist content fresh Cache/DanderydRöstdeltagande.txt
+160113--File exist content fresh Cache/EkeröInkomst rel riket.txt
+160113--File exist content fresh Cache/EkeröEgna hem.txt
+160113--File exist content fresh Cache/EkeröRöstdeltagande.txt
+160113--File exist content fresh Cache/HaningeOhälsotal dagar.txt
+160113--File exist content fresh Cache/HaningeEgna hem.txt
+160113--File exist content fresh Cache/HuddingeOhälsotal dagar.txt
+160113--File exist content fresh Cache/HuddingeEgna hem.txt
+160113--File exist content fresh Cache/JärfällaInkomst rel riket.txt
+160113--File exist content fresh Cache/JärfällaOhälsotal dagar.txt
+160113--File exist content fresh Cache/JärfällaEgna hem.txt
+160113--File does not exist Cache/JärfällaRöstdeltagande.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/BotkyrkaInkomst rel riket.txt
+160113--File exist content fresh Cache/BotkyrkaOhälsotal dagar.txt
+160113--File exist content fresh Cache/BotkyrkaEgna hem.txt
+160113--File exist content fresh Cache/BotkyrkaRöstdeltagande.txt
+160113--File exist content fresh Cache/DanderydInkomst rel riket.txt
+160113--File exist content fresh Cache/DanderydOhälsotal dagar.txt
+160113--File exist content fresh Cache/DanderydEgna hem.txt
+160113--File exist content fresh Cache/DanderydRöstdeltagande.txt
+160113--File exist content fresh Cache/HuddingeInkomst rel riket.txt
+160113--File exist content fresh Cache/HuddingeOhälsotal dagar.txt
+160113--File exist content fresh Cache/HuddingeEgna hem.txt
+160113--File exist content fresh Cache/HuddingeRöstdeltagande.txt
+160113--File exist content fresh Cache/JärfällaInkomst rel riket.txt
+160113--File exist content fresh Cache/JärfällaOhälsotal dagar.txt
+160113--File exist content fresh Cache/JärfällaEgna hem.txt
+160113--File exist content fresh Cache/JärfällaRöstdeltagande.txt
+160113--curl_get_request return successfully
+160113--File exist content fresh Cache/EkeröInkomst rel riket.txt
+160113--File exist content fresh Cache/EkeröOhälsotal dagar.txt
+160113--File exist content fresh Cache/EkeröEgna hem.txt
+160113--File exist content fresh Cache/EkeröRöstdeltagande.txt
+160113--File exist content fresh Cache/SolnaInkomst rel riket.txt
+160113--File exist content fresh Cache/SolnaOhälsotal dagar.txt
+160113--File does not exist Cache/SolnaEgna hem.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/SolnaRöstdeltagande.txt
+160113--File exist content fresh Cache/StockholmInkomst rel riket.txt
+160113--File exist content fresh Cache/StockholmOhälsotal dagar.txt
+160113--File does not exist Cache/StockholmEgna hem.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/StockholmRöstdeltagande.txt
+160113--curl_get_request return successfully
