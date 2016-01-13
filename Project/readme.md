@@ -52,7 +52,7 @@ Användarna har inga möjligehter att skriva in egen info i några input fält. 
 Det är i största allmänhet en rolig typ av projekt att samla data från olika källor, sammanställa och presentera och på det sättet skapa ett mervärde eller tom helt ny typ av information, dvs det som brukar beskrivas som att 1+1=3.
 Utmaningen ligger just i det kreativa att hitta dessa kombinationer av redan befintlig data för att skapa ny information. Min applikation är kanske inte banbrytande i det avseendet men har i alla fall varit rolig att göra. Det handlar ju till stor del om träna sig i själva tekniken. 
 
-###	Jag har fått lägga väldigt mycket tid på problem som jag inte förväntat mig skulle ta mycket tid
+####	Jag har fått lägga väldigt mycket tid på problem som jag inte förväntat mig skulle ta mycket tid
 *	En arbetsdag på att kunna ställa frågor och tolka svar från SCB. Bland annat att inse att svaren inleddes med BOM-mark som måste filtreras bort
 *	En arbetsdag att få till ajax med multichoice
 *	En dag på att tweaka bootstrap multiselect
