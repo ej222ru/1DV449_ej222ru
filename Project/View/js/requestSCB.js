@@ -1,17 +1,17 @@
 "use strict";
 
+
+// Either get data from localStorage if it is there or get it from the
+// server with in turn reads it from cache or get it from SCB QpenAPI
+// When read from server the response will be placed in localStorage for 
+// future client requests
+// Each combination of region and criteria is stored separately and can thus be retrieved 
+// from localStorage while other parts of the request can be fetched from the server
  function getSCBData() {
     var  formData="";
     var regionData = document.getElementsByName("Region[]");
     var criteriaData = document.getElementsByName("Criteria[]");
     
-//    console.log("getSCBData");
-    var json="[";
-    var jsonPartReply="";
-    
-    var arr={};
-    var first = true;
-    localStorage.removeItem("responsePart");
     if ((getSelectedItems("Region") == 0) || (getSelectedItems("Criteria") == 0)){
         document.getElementById('chartContainer').className = "Hide";
         document.getElementById('error').className = "Show";
@@ -27,19 +27,6 @@
                         var test = localStorage[regionData[0][x].value+criteriaData[0][y].value];
                         if(test != undefined){
                             console.log("SCBData from localStorage region:" + regionData[0][x].value + " criteria:" + criteriaData[0][y].value);
-                            arr = {
-                                "Region":regionData[0][x].value,
-                                "Criteria":criteriaData[0][y].value,
-                                "Value":localStorage[regionData[0][x].value+criteriaData[0][y].value]
-                            };
-                            if (!first){
-                                json +=',';
-                                jsonPartReply +=',';
-                            }
-                            first = false;
-                            json += JSON.stringify(arr);
-                            jsonPartReply += JSON.stringify(arr);
-
                         }
                         else{
                             console.log("SCBData from server region:" + regionData[0][x].value + " criteria:" + criteriaData[0][y].value);
@@ -86,10 +73,3 @@
     }
     myRegionInfo.init();        
 };
-
-
-
-
-
-
-

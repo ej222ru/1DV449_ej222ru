@@ -1,5 +1,118 @@
-
+// crimeReport.js
 "use strict";
+
+function renderPoliceReports(){
+
+    var policeReports = [];
+    
+    // Slightly move a position if it already exist one at the same position
+    function modifyPosIfDuplicate(lat, lng, posIndex, pos){
+        var duplicates = 0;
+        for (var i=0; i<posIndex; i++){
+            if ((parseFloat(lat[i].childNodes[0].nodeValue) == parseFloat(lat[posIndex].childNodes[0].nodeValue)) &&
+                (parseFloat(lng[i].childNodes[0].nodeValue) == parseFloat(lng[posIndex].childNodes[0].nodeValue))) {
+                duplicates++;
+                var newLat = parseFloat(lat[posIndex].childNodes[0].nodeValue) + duplicates*0.01;
+                var newLng = parseFloat(lng[posIndex].childNodes[0].nodeValue) + duplicates*0.01;
+                pos = {lat: newLat,lng: newLng};
+            }
+        }
+        return pos;
+    }
+
+    // display all police reports in the map when checkbox is checked
+    // Either get them from local storage if they already have been fethed
+    if (document.getElementById("policeReportsCheckBox").checked == true){
+        localStorage["displayPoliceReports"] = "Show";
+        
+        // Either get police reports from localStorage or the source
+        // either way they are put in localStorage after call to getPoliceReports()
+        getPoliceReports();
+        
+        if (localStorage["policeReports"] != undefined){
+            
+            //get police reports from local storage, parse them and push them to
+            // the array policeReports
+            var xmlDoc1 = jQuery.parseXML(localStorage["policeReports"]);
+            if (xmlDoc1) {
+                var lat = xmlDoc1.getElementsByTagName("lat");
+                var lng = xmlDoc1.getElementsByTagName("lng");
+                var descrip = xmlDoc1.getElementsByTagName("description");
+                var place = xmlDoc1.getElementsByTagName("place");
+                var text = xmlDoc1.getElementsByTagName("text");
+                var event = xmlDoc1.getElementsByTagName("event");
+                for (var i=0;i<event.length;i++){
+                    var msg = [];
+                    var pos = {lat: parseFloat(lat[i].childNodes[0].nodeValue), lng:  parseFloat(lng[i].childNodes[0].nodeValue)};
+                    pos = modifyPosIfDuplicate(lat, lng, i, pos);
+                    msg["pos"] = pos;
+                    msg["header"] = descrip[i].childNodes[0].nodeValue
+                    msg["descript"] = place[i].childNodes[0].nodeValue;
+                    msg["text"] = text[i].childNodes[0].nodeValue;
+                    policeReports.push(msg);
+                }
+            }           
+            // creat a marker in the map for all police reports from array policeReports
+            for (var i=0;i<policeReports.length ;i++){
+                var pos = policeReports[i]["pos"]
+                var header = policeReports[i]["header"];
+                var description = '<b>' + policeReports[i]["descript"] + '</br>' + '</b>' + policeReports[i]["text"];
+                addMarker(pos, map, header, description, "policeReports");
+            }
+        }
+    }
+    else{
+        localStorage["displayPoliceReports"] = "Hide";        
+        clearMarkers();
+        markRegionOnMap();
+    };
+}
+
+function attachCrimeCheckboxHandler() {
+    var crimeForm = document.getElementById('crimeForm');
+    var checkBox = crimeForm.getElementsByTagName('input');
+    
+    // assign renderPoliceReports function to onclick property of checkbox
+    if ( checkBox[0].type === 'checkbox' ) {
+        checkBox[0].onclick = renderPoliceReports;
+    }
+}
+
+
+
+// Get police reports from the web if not existing in localStorage or if they have not
+// been read from that source recently (initially set to within last minute)
+function getPoliceReports() {
+    
+    var date = new Date();
+    var now = date.getTime();
+    var lastDataRead = localStorage.getItem("lastDataRead");
+    var test = now - lastDataRead - 60000;
+    if ((localStorage["policeReports"] === null) || (lastDataRead === null) || (test > 0)){
+        console.log("read from brottsstatistik now:" + now + "---" + "last read from brottsstatistik:" + lastDataRead + "  diff:" + test);   
+        var formData = "&Crime=true"; 
+        $.ajax({
+             url : "index.php",
+             type: "POST",
+             async:false,
+             data : formData,
+             datatype : "text",
+             success: function(data, textStatus, jqXHR)
+             {
+                localStorage["policeReports"] = data; // police reports from a xml-file in text format
+                localStorage["lastDataRead"] = now;
+             },
+             error: function (jqXHR, textStatus, errorThrown)
+             {
+             }
+        });
+    }
+    else{
+        console.log("read from cache   now:" + now + "---" + "last read from brottsstatistik:" + localStorage.getItem("lastDataRead") + "  diff:" + test);   
+    }
+}
+
+// regionInfo.js
 
 var map;
 
@@ -429,3 +542,166 @@ var myRegionInfo = {
     }      
 };
 window.addEventListener("load", myRegionInfo.init());
+
+// requestSCB.js
+
+
+
+// Either get data from localStorage if it is there or get it from the
+// server with in turn reads it from cache or get it from SCB QpenAPI
+// When read from server the response will be placed in localStorage for 
+// future client requests
+// Each combination of region and criteria is stored separately and can thus be retrieved 
+// from localStorage while other parts of the request can be fetched from the server
+ function getSCBData() {
+    var  formData="";
+    var regionData = document.getElementsByName("Region[]");
+    var criteriaData = document.getElementsByName("Criteria[]");
+    
+    if ((getSelectedItems("Region") == 0) || (getSelectedItems("Criteria") == 0)){
+        document.getElementById('chartContainer').className = "Hide";
+        document.getElementById('error').className = "Show";
+        document.getElementById('error').innerHTML = "Du måste välja minst en kommun och ett jämförelsetal";
+    }
+    else {
+        for(var x=0;x<regionData[0].childElementCount;x++){
+            if (regionData[0][x].selected){
+                for(var y=0;y<criteriaData[0].childElementCount;y++){
+                     formData="";
+                     if (criteriaData[0][y].selected){
+                        // check if value for requested region/criteria combination exist in localStorage 
+                        var test = localStorage[regionData[0][x].value+criteriaData[0][y].value];
+                        if(test != undefined){
+                            console.log("SCBData from localStorage region:" + regionData[0][x].value + " criteria:" + criteriaData[0][y].value);
+                        }
+                        else{
+                            console.log("SCBData from server region:" + regionData[0][x].value + " criteria:" + criteriaData[0][y].value);
+                            formData += "&"; 
+                            formData += "Region[]="; 
+                            formData += regionData[0][x].value;
+                            formData += "&"; 
+                            formData += "Criteria[]="; 
+                            formData += criteriaData[0][y].value;    
+
+                            $.ajax({
+                                 url : "index.php",
+                                 type: "POST",
+                                 async:false,
+                                 data : formData,
+                                 success: function(data, textStatus, jqXHR)
+                                 {
+                                     var json = JSON.parse(data);
+                                     if (json["error"] == "true"){
+                                         localStorage.removeItem("response");
+                                         var text = json["errorText"];
+                                         document.getElementById('error').innerHTML = text;
+                                         document.getElementById('error').className = "Show";
+                                     }
+                                     else{
+                                        localStorage["response"] = "true";
+                                        var json = JSON.parse(data);
+                                        localStorage[json["Region"]+json["Criteria"]] = json["Value"];
+                                     }
+                                 },
+                                 error: function (jqXHR, textStatus, errorThrown)
+                                 {
+                                     localStorage.removeItem("response");
+                                 }
+                             });
+                        }
+                    }
+                }
+            }
+        }
+
+        document.getElementById('chartContainer').className = "Show";
+        document.getElementById('error').className = "Hide";
+    }
+    myRegionInfo.init();        
+};
+
+
+// setupGoogleMap.js
+
+
+var markers = [];
+var openInfoWindow = "";
+
+function initMap() {
+    var startPos = {lat: 59.35, lng: 18.1}; 
+    map = new google.maps.Map(document.getElementById('map'), {
+       center: startPos,
+       zoom: 10
+    });
+  return map;  
+}
+
+function addMarker(pos, map, heading, text, type){
+    var iconBase = 'https://maps.google.com/mapfiles/kml/';
+    var icon = 'paddle/R.png';
+    if (type == "policeReports")
+        icon = 'shapes/police.png';
+
+    var contentString = '<div id="content">'+
+          '<div id="siteNotice">'+
+          '</div>'+
+          '<h1 id="firstHeading" class="firstHeading">' + heading + '</h1>'+
+          '<div id="bodyContent">'+
+          text +
+          '</div>'+
+          '</div>';
+
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+
+
+      var marker = new google.maps.Marker({
+        position: pos,
+        map: map,
+        title: heading,
+        icon: iconBase + icon,
+      });
+      markers.push(marker);
+      
+      marker.addListener('click', function() {
+        if (openInfoWindow != ""){
+            openInfoWindow.close();
+        }
+        infowindow.open(map, marker);
+        openInfoWindow = infowindow;
+
+      });
+      marker.setAnimation(null);
+} 
+
+// Sets the map on all markers in the array.
+function setMapOnAll(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+  setMapOnAll(null);
+}
+
+// Shows any markers currently in the array.
+function showMarkers() {
+  setMapOnAll(map);
+}
+
+// Deletes all markers in the array by removing references to them.
+function deleteMarkers() {
+  clearMarkers();
+  markers = [];
+}
+
+function toggleBounce(marker) {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+}
+

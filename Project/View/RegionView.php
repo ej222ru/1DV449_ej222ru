@@ -7,7 +7,7 @@ class RegionView {
     public function createSelectionForm(){
         
         echo '
-            <div id="form1">
+            <div id="formSelection">
                 <select id="RegionId" name="Region[]" size="3" multiple>
                     <option value="Botkyrka">Botkyrka</option>
                     <option value="Danderyd">Danderyd</option>
@@ -29,7 +29,7 @@ class RegionView {
                 </select>
             </div>
             
-            <div id="form1">
+            <div id="formSelection">
                 <select id="CriteriaId" name="Criteria[]" size="3" multiple>
                   <option value="Inkomst rel riket">Inkomst hushåll</option>
                   <option value="Kommunal skattesats">Kommunal skattesats</option>
@@ -46,7 +46,7 @@ class RegionView {
            
            <form action="#" method="post" class="crimeForm" id="crimeForm">
                <fieldset>
-                   <div id="categories">Visa inrapporterade brott senaste dygnet:
+                   <div id="policeReports">Visa inrapporterade brott senaste dygnet:
                        <label><input id="policeReportsCheckBox" type="checkbox" name="policeReports"/></label>
                    </div>
                </fieldset>

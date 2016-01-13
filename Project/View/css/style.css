@@ -15,7 +15,7 @@ body, html{
    margin-top: 10px;
 }
 
-#categories
+#policeReports
 {
     font-weight: bold;
     color: red;
@@ -31,7 +31,7 @@ body, html{
    margin-top: 10px;
 }
 
-#form1
+#formSelection
 {
     float:left;
     margin-right: 10px;
@@ -44,7 +44,6 @@ body, html{
   height: 34px;
   margin-right: 10px;   
 }
-
 
 #error 
 {

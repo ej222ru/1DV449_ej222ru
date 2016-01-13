@@ -1,9 +1,10 @@
 "use strict";
 
-
 function renderPoliceReports(){
 
     var policeReports = [];
+    
+    // Slightly move a position if it already exist one at the same position
     function modifyPosIfDuplicate(lat, lng, posIndex, pos){
         var duplicates = 0;
         for (var i=0; i<posIndex; i++){
@@ -18,11 +19,19 @@ function renderPoliceReports(){
         return pos;
     }
 
+    // display all police reports in the map when checkbox is checked
+    // Either get them from local storage if they already have been fethed
     if (document.getElementById("policeReportsCheckBox").checked == true){
         localStorage["displayPoliceReports"] = "Show";
         
+        // Either get police reports from localStorage or the source
+        // either way they are put in localStorage after call to getPoliceReports()
         getPoliceReports();
+        
         if (localStorage["policeReports"] != undefined){
+            
+            //get police reports from local storage, parse them and push them to
+            // the array policeReports
             var xmlDoc1 = jQuery.parseXML(localStorage["policeReports"]);
             if (xmlDoc1) {
                 var lat = xmlDoc1.getElementsByTagName("lat");
@@ -42,7 +51,7 @@ function renderPoliceReports(){
                     policeReports.push(msg);
                 }
             }           
-
+            // creat a marker in the map for all police reports from array policeReports
             for (var i=0;i<policeReports.length ;i++){
                 var pos = policeReports[i]["pos"]
                 var header = policeReports[i]["header"];
@@ -62,14 +71,16 @@ function attachCrimeCheckboxHandler() {
     var crimeForm = document.getElementById('crimeForm');
     var checkBox = crimeForm.getElementsByTagName('input');
     
-    // assign renderCrimeMessages function to onclick property of checkbox
+    // assign renderPoliceReports function to onclick property of checkbox
     if ( checkBox[0].type === 'checkbox' ) {
         checkBox[0].onclick = renderPoliceReports;
     }
-    renderPoliceReports();
 }
 
 
+
+// Get police reports from the web if not existing in localStorage or if they have not
+// been read from that source recently (initially set to within last minute)
 function getPoliceReports() {
     
     var date = new Date();
@@ -87,7 +98,7 @@ function getPoliceReports() {
              datatype : "text",
              success: function(data, textStatus, jqXHR)
              {
-                localStorage["policeReports"] = data; // the xml file 
+                localStorage["policeReports"] = data; // police reports from a xml-file in text format
                 localStorage["lastDataRead"] = now;
              },
              error: function (jqXHR, textStatus, errorThrown)
@@ -98,5 +109,4 @@ function getPoliceReports() {
     else{
         console.log("read from cache   now:" + now + "---" + "last read from brottsstatistik:" + localStorage.getItem("lastDataRead") + "  diff:" + test);   
     }
-     
 }

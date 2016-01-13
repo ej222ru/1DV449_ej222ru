@@ -14,7 +14,7 @@ class LayoutView {
                 <link rel="stylesheet" href="View/css/bootstrap.min.css" type="text/css">
                 <link rel="stylesheet" href="View/css/bootstrap-multiselect.css" type="text/css">
                 
-                <link rel="stylesheet" href="View/css/style.css" type="text/css">
+                <link rel="stylesheet" href="View/css/style.min.css" type="text/css">
 
                 <title>Kommuninfo</title>
             </head>
@@ -39,12 +39,17 @@ class LayoutView {
                 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>            
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvsiVcOe7SvxeLOYG0e_5bwO2V6Pvml4"></script>                
                 
-                <script src="View/js/bootstrap-multiselect.js" type="text/javascript" ></script>                
-                <script src="View/js/Chart.js"  type="text/javascript"></script> 
+                <script src="View/js/bootstrap-multiselect.min.js" type="text/javascript" ></script>                
+                <script src="View/js/Chart.min.js"  type="text/javascript"></script> 
+                
+<!--                
                 <script src="View/js/setupGoogleMap.min.js" type="text/javascript"></script> 
-                <script src="View/js/requestSCB.js" type="text/javascript"></script> 
-                <script src="View/js/crimeReport.js" type="text/javascript"></script> 
-                <script src="View/js/regionInfo.js" type="text/javascript"></script> 
+                <script src="View/js/requestSCB.min.js" type="text/javascript"></script> 
+                <script src="View/js/crimeReport.min.js" type="text/javascript"></script> 
+                <script src="View/js/regionInfo.min.js" type="text/javascript"></script> 
+-->                
+                <script src="View/js/bulkScripts.min.js" type="text/javascript"></script> 
+                
             </body>
         </html>
         <?php

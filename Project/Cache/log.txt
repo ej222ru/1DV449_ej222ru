@@ -16,3 +16,50 @@
 160110--curl_post_request return successfully
 160110--File does not exist Cache/VärmdöOhälsotal dagar.txt
 160110--curl_post_request return successfully
+160113--curl_get_request return successfully
+160113--curl_get_request return successfully
+160113--curl_get_request return successfully
+160113--File does not exist Cache/EkeröInkomst rel riket.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/EkeröKommunal skattesats.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/HaningeInkomst rel riket.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/HaningeKommunal skattesats.txt
+160113--curl_post_request return successfully
+160113--File exist content fresh Cache/EkeröInkomst rel riket.txt
+160113--File exist content fresh Cache/EkeröKommunal skattesats.txt
+160113--File exist content fresh Cache/HaningeInkomst rel riket.txt
+160113--File exist content fresh Cache/HaningeKommunal skattesats.txt
+160113--curl_get_request return successfully
+160113--File does not exist Cache/DanderydOhälsotal dagar.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/DanderydEgna hem.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/HuddingeOhälsotal dagar.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/HuddingeEgna hem.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/DanderydRöstdeltagande.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/EkeröRöstdeltagande.txt
+160113--curl_post_request return successfully
+160113--curl_get_request return successfully
+160113--File does not exist Cache/EkeröOhälsotal dagar.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/EkeröEgna hem.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/EkeröEgna hem,utlandsfödda exkl EU.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/JärfällaInkomst rel riket.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/JärfällaOhälsotal dagar.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/JärfällaEgna hem.txt
+160113--curl_post_request return successfully
+160113--File does not exist Cache/JärfällaEgna hem,utlandsfödda exkl EU.txt
+160113--curl_post_request return successfully
+160113--curl_get_request return successfully
+160113--File does not exist Cache/DanderydKommunal skattesats.txt
+160113--curl_post_request return successfully
+160113--curl_get_request return successfully
