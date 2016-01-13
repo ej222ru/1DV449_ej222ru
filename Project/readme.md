@@ -1,9 +1,10 @@
 
 ## Inledning
 
+Jag har gjort en applikation som hämtar olika typer av data för kommuner i Stockholm. Dessa används för att göra jämförelser mellan olika kommuner. Vilka kommuner som ska jämföras och med avseende på vilka kriterier väljer användaren i drop down menyer. Jämförelserna presenteras sedan i stapeldiagram. De valda kommunerna markeras på en karta. 
+Användaren kan också välja att få se senaste dygnets polisrapporter inplacerade på kartan. Information om dessa visas när användaren klickar på dem.
 
-•	Inledning där du kort beskriver vad du gjort och bakgrunden till din applikation. Finns det liknande applikationer redan? Vilka tekniker har använts.
-•	Inkludera en schematisk bild över applikationens beståndsdelar så att läsaren har enklare att förstå applikationens dataflöde.
+
 
 ## Design
 
