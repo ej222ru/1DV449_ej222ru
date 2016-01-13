@@ -1,4 +1,8 @@
 
+# Projektrapport 1DV449, Erland Jönsson ej222ru
+
+[Publicerad körbart program](http://ej222ru.co.nf/1DV449/index.php)
+
 ## Inledning
 
 Jag har gjort en applikation som hämtar olika typer av data för kommuner i Stockholm. Dessa används för att göra jämförelser mellan olika kommuner. Vilka kommuner som ska jämföras och med avseende på vilka kriterier väljer användaren i drop down menyer. Jämförelserna presenteras sedan i stapeldiagram. De valda kommunerna markeras på en karta. 
