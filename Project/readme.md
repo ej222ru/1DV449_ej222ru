@@ -8,8 +8,8 @@
 ## Design
 
 
-* [Server design](https://github.com/ej222ru/1DV449_ej222ru/blob/master/Project/Doc/serverDesign.PNG)
-* [Client design](https://github.com/ej222ru/1DV449_ej222ru/blob/master/Project/Doc/clientDesign.PNG)
+[Server design](https://github.com/ej222ru/1DV449_ej222ru/blob/master/Project/Doc/serverDesign.PNG)
+[Client design](https://github.com/ej222ru/1DV449_ej222ru/blob/master/Project/Doc/clientDesign.PNG)
 * [Start sequence](https://github.com/ej222ru/1DV449_ej222ru/blob/master/Project/Doc/StartSequence.PNG)
 * [hämta SCB data sequence](https://github.com/ej222ru/1DV449_ej222ru/blob/master/Project/Doc/getSCBData.PNG)
 * [hämta Brottsplats data sequence](https://github.com/ej222ru/1DV449_ej222ru/blob/master/Project/Doc/brottsplatssequence.PNG)
