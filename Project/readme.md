@@ -9,6 +9,9 @@
 
 ### Filträd
 
+* [Filträd](https://github.com/ej222ru/1DV449_ej222ru/blob/master/Project/Doc/DirStructure.PNG)
+ 
+
 
 ### Cache 
 Filen log.txt innehåller loggar från vad som redan finns cachat och vad som hämtas från källan samt resultatet av cUrl-operationer.
