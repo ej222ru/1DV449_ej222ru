@@ -40,7 +40,7 @@
                             $.ajax({
                                  url : "index.php",
                                  type: "POST",
-                                 async:false,
+                                 async:true,
                                  data : formData,
                                  success: function(data, textStatus, jqXHR)
                                  {
