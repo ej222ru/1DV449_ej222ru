@@ -41,14 +41,16 @@ class LayoutView {
                 
                 <script src="View/js/bootstrap-multiselect.min.js" type="text/javascript" ></script>                
                 <script src="View/js/Chart.min.js"  type="text/javascript"></script> 
+
                 
+                <script src="View/js/setupGoogleMap.js" type="text/javascript"></script> 
+                <script src="View/js/requestSCB.js" type="text/javascript"></script> 
+                <script src="View/js/crimeReport.js" type="text/javascript"></script> 
+                <script src="View/js/regionInfo.js" type="text/javascript"></script> 
 <!--                
-                <script src="View/js/setupGoogleMap.min.js" type="text/javascript"></script> 
-                <script src="View/js/requestSCB.min.js" type="text/javascript"></script> 
-                <script src="View/js/crimeReport.min.js" type="text/javascript"></script> 
-                <script src="View/js/regionInfo.min.js" type="text/javascript"></script> 
--->                
+
                 <script src="View/js/bulkScripts.min.js" type="text/javascript"></script> 
+-->                
                 
             </body>
         </html>
